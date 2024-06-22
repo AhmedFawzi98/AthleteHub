@@ -1,0 +1,10 @@
+.vs/
+AthleteHub.Api/obj/
+AthleteHub.Api/bin/
+AthleteHub.Infrastructure/obj/
+AthleteHub.Infrastructure/bin/
+AthleteHub.Application/obj/
+AthleteHub.Application/bin/
+AthleteHub.Domain/obj/
+AthleteHub.Domain/bin/
+
