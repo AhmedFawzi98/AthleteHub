@@ -1,4 +1,5 @@
-﻿using AthleteHub.Application.Subscribtions.Dtos;
+﻿using AthleteHub.Application.Services.SortingService;
+using AthleteHub.Application.Subscribtions.Dtos;
 using AthleteHub.Domain.Entities;
 using AthleteHub.Domain.Interfaces.Repositories;
 using AutoMapper;
@@ -17,7 +18,7 @@ namespace AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtions
     {
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
-        //private readonly ISortingService _sortingService;
+        private readonly ISortingService _sortingService;
         //private readonly IBlobStorageService _blobStorageService;
 
         public GetAllSubscribtionsQueryHandler(IMapper mapper, IUnitOfWork unitOfWork)
