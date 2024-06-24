@@ -8,6 +8,9 @@ using AthleteHub.Application.Subscribtions.Queries.FindSubscribtion;
 using AthleteHub.Application.Subscribtions.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using AthleteHub.Domain.Constants;
+using AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtions;
+using AthleteHub.Application.Subscribtions.Commands.DeleteSubscribtion;
+using AthleteHub.Application.Subscribtions.Commands.UpdateSubscribtion;
 
 namespace AthleteHub.Api.Controllers
 {
@@ -41,11 +44,30 @@ namespace AthleteHub.Api.Controllers
 
         [HttpPost("subscribtions")]
         [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(SubscribtionDto))]
-        [Authorize(Roles = RolesConstants.Coach)]
+        //[Authorize(Roles = RolesConstants.Coach)]
         public async Task<IActionResult> AddSubscribtion(CreateSubscribtionCommand createSubscribtionCommand)
         {
             var addedSubscribtion = await _mediator.Send(createSubscribtionCommand);
             return CreatedAtAction(nameof(GetSubscribtionById), new {addedSubscribtion.Id}, addedSubscribtion);
+        }
+
+        [HttpDelete("subscribtions/{id:int}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        public async Task<IActionResult> DeleteSubscribtion(int id)
+        {
+            await _mediator.Send(new DeleteSubscribtionCommand { Id = id });
+            return NoContent();
+        }
+
+        [HttpPatch("subscribtions/{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SubscribtionDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        public async Task<IActionResult> UpdateSubscribtion(int id, UpdateSubscribtionCommand updateSubscribtionCommand)
+        {
+            updateSubscribtionCommand.SetId(id);
+            var updatedSubscribtion = await _mediator.Send(updateSubscribtionCommand);
+            return Ok(updatedSubscribtion);
         }
     }
 }
