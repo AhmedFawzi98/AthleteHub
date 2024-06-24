@@ -1,4 +1,7 @@
-﻿using FluentValidation;
+﻿using AthleteHub.Application.Services.FilterService;
+using AthleteHub.Application.Services.SearchService;
+using AthleteHub.Application.Services.SortingService;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,5 +19,13 @@ public static class ServiceCollectionExtensions
                 .AddFluentValidationAutoValidation();
 
         services.AddHttpContextAccessor();
+
+        services.AddMediatR(config => config.RegisterServicesFromAssembly(applicationAssembly));
+
+        services.AddScoped<IFilterService, FilterService>();
+
+        services.AddScoped<ISearchService, SearchService>();
+
+        services.AddScoped<ISortService, SortService>();
     }
 }
