@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AthleteHub.Application.Subscribtions.Commands.CreateSubscribtion
+namespace AthleteHub.Application.Subscribtions.Commands.UpdateSubscribtion
 {
-    public class CreateSubscribtionCommandValidator : AbstractValidator<CreateSubscribtionCommand>
+    public class UpdateSubscribtionCommandValidator : AbstractValidator<UpdateSubscribtionCommand>
     {
-        public CreateSubscribtionCommandValidator()
+        public UpdateSubscribtionCommandValidator()
         {
-            RuleFor(dto=>dto.Name)
+            RuleFor(dto => dto.Name)
                 .NotEmpty().WithMessage("Must provide a name.")
-                .Length(3,100).WithMessage("Name length must be between 3 and 100 letters.");
+                .Length(3, 100).WithMessage("Name length must be between 3 and 100 letters.");
 
             RuleFor(dto => dto.SubscribtionFeatures)
                 .NotEmpty().WithMessage("Subscribtion must have features.");
