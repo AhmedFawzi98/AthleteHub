@@ -7,6 +7,7 @@ public class ApplicationUser : IdentityUser
 {
     public string FirstName {  get; set; }
     public string LastName { get; set; }
+    public string PhoneNumber {  get; set; }
     public Gender Gender { get; set; }
     public DateOnly DateOfBirth {  get; set; }
     public string? ProfilePicture {  get; set; }
@@ -15,4 +16,5 @@ public class ApplicationUser : IdentityUser
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public virtual Athlete Athlete { get; set; }
     public virtual Coach Coach { get; set; }
+    public virtual ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
 }

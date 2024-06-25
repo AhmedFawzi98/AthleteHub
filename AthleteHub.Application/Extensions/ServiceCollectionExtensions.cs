@@ -1,6 +1,8 @@
-﻿using FluentValidation;
+﻿using AthleteHub.Application.Users;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
+using Resturants.Application.Users;
 
 namespace AthleteHub.Application.Extensions;
 
@@ -15,6 +17,11 @@ public static class ServiceCollectionExtensions
         services.AddValidatorsFromAssembly(applicationAssembly)
                 .AddFluentValidationAutoValidation();
 
+        services.AddMediatR(config => config.RegisterServicesFromAssembly(applicationAssembly));
+
+
         services.AddHttpContextAccessor();
+        services.AddScoped<IUserContext, UserContext>();
+
     }
 }
