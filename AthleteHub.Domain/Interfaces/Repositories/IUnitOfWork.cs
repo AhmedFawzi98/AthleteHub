@@ -8,6 +8,7 @@ public interface IUnitOfWork : IDisposable
     public IGenericRepository<AthleteActiveSubscribtion> AthleteActiveSubscribtions { get; }
     public IGenericRepository<AthleteCoach> AthletesCoaches { get; }
     public IGenericRepository<AthleteSubscribtionHistory> AthletesSubscribtionsHistory { get; }
+    public IGenericRepository<AthleteFavouriteCoach> AthleteFavouriteCoach { get; }
     public IGenericRepository<Coach> Coaches { get; }
     public IGenericRepository<Content> Contents { get; }
     public IGenericRepository<Feature> Features { get; }

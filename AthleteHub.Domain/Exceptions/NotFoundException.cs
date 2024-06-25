@@ -1,8 +1,15 @@
-﻿namespace AthleteHub.Domain.Exceptions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class NotFoundException : Exception
+namespace AthleteHub.Domain.Exceptions
 {
-    public NotFoundException(string resourceType, string resourceId):base($"{resourceType} [{resourceId}] doesn't exist")
+    public class NotFoundException : Exception
     {
+        public NotFoundException(string resourceType, string resourceId):base($"{resourceType} [{resourceId}] doesn't exist") 
+        {
+        }
     }
 }
