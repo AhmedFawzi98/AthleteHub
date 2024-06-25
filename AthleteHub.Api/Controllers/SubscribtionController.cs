@@ -26,10 +26,10 @@ namespace AthleteHub.Api.Controllers
 
         [HttpGet("coaches/{id:int}/subscribtions")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SubscribtionDto>))]
-        public async Task<IActionResult> GetAllSubscribtions(int id, [FromQuery] GetAllSubscribtionsQuery getAllSubscribtionsQuery)
+        public async Task<IActionResult> GetAllSubscribtionsByCoachId(int id, [FromQuery] GetAllSubscribtionsQueryByCoachId getAllSubscribtionsQueryByCoachId)
         {
-            getAllSubscribtionsQuery.SetCoachId(id);
-            var subscribtionsDtos = await _mediator.Send(getAllSubscribtionsQuery);
+            getAllSubscribtionsQueryByCoachId.SetCoachId(id);
+            var subscribtionsDtos = await _mediator.Send(getAllSubscribtionsQueryByCoachId);
             return Ok(subscribtionsDtos);
         }
 
