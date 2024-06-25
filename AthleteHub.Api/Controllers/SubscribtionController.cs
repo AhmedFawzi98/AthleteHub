@@ -24,10 +24,11 @@ namespace AthleteHub.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("subscribtions")]
+        [HttpGet("coaches/{id:int}/subscribtions")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SubscribtionDto>))]
-        public async Task<IActionResult> GetAllSubscribtions([FromQuery] GetAllSubscribtionsQuery getAllSubscribtionsQuery)
+        public async Task<IActionResult> GetAllSubscribtions(int id, [FromQuery] GetAllSubscribtionsQuery getAllSubscribtionsQuery)
         {
+            getAllSubscribtionsQuery.SetCoachId(id);
             var subscribtionsDtos = await _mediator.Send(getAllSubscribtionsQuery);
             return Ok(subscribtionsDtos);
         }
@@ -44,7 +45,7 @@ namespace AthleteHub.Api.Controllers
 
         [HttpPost("subscribtions")]
         [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(SubscribtionDto))]
-        //[Authorize(Roles = RolesConstants.Coach)]
+        [Authorize(Roles = RolesConstants.Coach)]
         public async Task<IActionResult> AddSubscribtion(CreateSubscribtionCommand createSubscribtionCommand)
         {
             var addedSubscribtion = await _mediator.Send(createSubscribtionCommand);

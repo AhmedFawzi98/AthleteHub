@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtions
+namespace AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtionsByCoachId
 {
-    public class GetAllSubscribtionsQueryValidator : AbstractValidator<GetAllSubscribtionsQuery>
+    public class GetAllSubscribtionsQueryByCoachIdValidator : AbstractValidator<GetAllSubscribtionsQueryByCoachId>
     {
         private readonly int[] allowedPageSizes = [5, 10, 15, 20, 50];
 
@@ -18,7 +18,7 @@ namespace AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtions
                 nameof(SubscribtionDto.price),
             ];
 
-        public GetAllSubscribtionsQueryValidator()
+        public GetAllSubscribtionsQueryByCoachIdValidator()
         {
             RuleFor(r => r.PageNumber).GreaterThanOrEqualTo(1).WithMessage("Page number must be equal or greater than 1.");
 

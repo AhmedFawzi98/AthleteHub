@@ -1,6 +1,7 @@
 ﻿using AthleteHub.Application.Services.SortingService;
 using AthleteHub.Application.Subscribtions.Dtos;
 using AthleteHub.Domain.Entities;
+using AthleteHub.Domain.Exceptions;
 using AthleteHub.Domain.Interfaces.Repositories;
 using AutoMapper;
 using MediatR;
@@ -12,26 +13,27 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtions
+namespace AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtionsByCoachId
 {
-    public class GetAllSubscribtionsQueryHandler : IRequestHandler<GetAllSubscribtionsQuery, PageResultsDto<SubscribtionDto>>
+    public class GetAllSubscribtionsQueryByCoachIdHandler : IRequestHandler<GetAllSubscribtionsQueryByCoachId, PageResultsDto<SubscribtionDto>>
     {
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ISortingService _sortingService;
         //private readonly IBlobStorageService _blobStorageService;
 
-        public GetAllSubscribtionsQueryHandler(IMapper mapper, IUnitOfWork unitOfWork)
+        public GetAllSubscribtionsQueryByCoachIdHandler(IMapper mapper, IUnitOfWork unitOfWork)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<PageResultsDto<SubscribtionDto>> Handle(GetAllSubscribtionsQuery request, CancellationToken cancellationToken)
+        public async Task<PageResultsDto<SubscribtionDto>> Handle(GetAllSubscribtionsQueryByCoachId request, CancellationToken cancellationToken)
         {
             IEnumerable<Subscribtion> subscribtions;
             int totalCount;
-
+            var coach = await _unitOfWork.Coaches.FindAsync(c => c.Id == request.CoachId)??
+                throw new NotFoundException(nameof(Coach),request.CoachId.ToString());
             Dictionary<Expression<Func<Subscribtion, object>>, KeyValuePair<Expression<Func<object, object>>, Expression<Func<object, object>>>> includes = new();
             if (request.Includes)
             {
@@ -44,18 +46,11 @@ namespace AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtions
             if (request.SortBy != null)
                 sortingExpression = _sortingService.GetSubscribtionSortingExpression(request.SortBy);
 
-            //if (!string.IsNullOrEmpty(request.SearchCriteria))
-            //{
-            //    var lowerSearchCriteria = request.SearchCriteria.Trim().ToLower();
 
-            //    (subscribtions, totalCount) = await _unitOfWork.Subscribtions.GetAllAsync(
-            //        request.PageSize, request.PageNumber,
-            //        request.SortingDirection, sortingExpression);
-            //}
-            //else
+            Expression<Func<Subscribtion, bool>> criteria = s => s.CoachId == request.CoachId;
             (subscribtions, totalCount) = await _unitOfWork.Subscribtions.GetAllAsync(
                 request.PageSize, request.PageNumber, request.SortingDirection, 
-                sortingExpression, null, null, includes);
+                sortingExpression, null, criteria, includes);
 
             var subscribtionsDtos = _mapper.Map<IEnumerable<SubscribtionDto>>(subscribtions);
             
