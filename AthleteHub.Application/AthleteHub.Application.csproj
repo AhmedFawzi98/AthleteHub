@@ -14,8 +14,6 @@
     <Folder Include="Athletes\Commands\" />
     <Folder Include="Athletes\Dtos\" />
     <Folder Include="Athletes\Queries\" />
-    <Folder Include="Coaches\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
