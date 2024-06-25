@@ -10,5 +10,8 @@ internal class AthleteConfiguration : IEntityTypeConfiguration<Athlete>
     {
         builder.HasMany(a => a.Measurements).WithOne(m => m.Athlete).HasForeignKey(m => m.AthleteId);
         builder.HasMany(a => a.Posts).WithOne(p => p.Athlete).HasForeignKey(p => p.AthleteId);
+
+        builder.Property(u => u.HeightInCm).HasColumnType("decimal(5, 2)");
+
     }
 }

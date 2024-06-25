@@ -26,8 +26,9 @@ internal class UserContext : IUserContext
 
         var userId = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
         var userName = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
-        var userRoles = user.Claims.Where(c => c.Type == ClaimTypes.Role).Select(r => r.Value);
+        var userEmail = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+        var userRoles = user.Claims.Where(c => c.Type == ClaimTypes.Role).Select(r => r.Value).ToList();
 
-        return new CurrentUser(userName, userId, userRoles);
+        return new CurrentUser(userName, userId, userEmail, userRoles);
     }
 }
