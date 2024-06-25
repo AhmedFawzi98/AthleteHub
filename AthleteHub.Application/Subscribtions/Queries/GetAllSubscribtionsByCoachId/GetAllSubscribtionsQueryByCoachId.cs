@@ -8,15 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtions
+namespace AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtionsByCoachId
 {
-    public class GetAllSubscribtionsQuery : IRequest<PageResultsDto<SubscribtionDto>>
+    public class GetAllSubscribtionsQueryByCoachId : IRequest<PageResultsDto<SubscribtionDto>>
     {
         public bool Includes { get; init; }
-        public string? SearchCriteria { get; init; }
+        public int CoachId { get; private set; }
         public int PageSize { get; init; }
         public int PageNumber { get; init; }
         public string? SortBy { get; init; }
         public SortingDirection SortingDirection { get; init; } = SortingDirection.Ascending;
+
+        public void SetCoachId(int coachId)
+        {
+            CoachId = coachId;
+        }
     }
 }

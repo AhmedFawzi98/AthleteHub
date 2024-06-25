@@ -1,4 +1,5 @@
 ﻿using AthleteHub.Application.Subscribtions.Commands.CreateSubscribtion;
+using AthleteHub.Application.Subscribtions.Commands.UpdateSubscribtion;
 using AthleteHub.Domain.Entities;
 using AutoMapper;
 using System;
@@ -13,9 +14,10 @@ namespace AthleteHub.Application.Subscribtions.Dtos
     {
         public SubscribtionMappingProfile()
         {
-            CreateMap<Subscribtion, SubscribtionDto>()
-                .ForMember(d => d.SubscribtionFeatures, opt => opt.MapFrom(src => src.SubscribtionsFeatures))
-                .ReverseMap();
+            CreateMap<UpdateSubscribtionCommand, Subscribtion>();
+            CreateMap<CreateSubscribtionCommand, Subscribtion>()
+                .ForMember(dest => dest.SubscribtionsFeatures, opt => opt.Ignore());
+            CreateMap<Subscribtion, SubscribtionDto>();
         }
     }
 }
