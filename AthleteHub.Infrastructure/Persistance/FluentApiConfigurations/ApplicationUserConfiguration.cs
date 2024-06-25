@@ -13,6 +13,7 @@ internal class ApplicationUserConfiguration : IEntityTypeConfiguration<Applicati
 
         builder.Property(u => u.FirstName).HasMaxLength(100);
         builder.Property(u => u.LastName).HasMaxLength(100);
+        builder.Property(u => u.PhoneNumber).HasMaxLength(15);
     }
 
 }

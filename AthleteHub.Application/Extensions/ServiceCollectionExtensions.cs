@@ -1,3 +1,4 @@
+﻿using AthleteHub.Application.Users;
 ﻿using AthleteHub.Application.Services.FilterService;
 using AthleteHub.Application.Services.SearchService;
 using AthleteHub.Application.Services.SortingService;
@@ -20,16 +21,16 @@ public static class ServiceCollectionExtensions
         services.AddValidatorsFromAssembly(applicationAssembly)
                 .AddFluentValidationAutoValidation();
 
-        services.AddHttpContextAccessor();
-
         services.AddMediatR(config => config.RegisterServicesFromAssembly(applicationAssembly));
 
+
+        services.AddHttpContextAccessor();
+      
+        services.AddScoped<IUserContext, UserContext>();
+
         services.AddScoped<IFilterService, FilterService>();
-
         services.AddScoped<ISearchService, SearchService>();
-
         services.AddScoped<ISortService, SortService>();
 
-        services.AddScoped<IUserContext, UserContext>();
     }
 }

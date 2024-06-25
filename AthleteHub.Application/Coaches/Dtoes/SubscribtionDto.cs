@@ -10,7 +10,6 @@ namespace AthleteHub.Application.Coaches.Dtoes
     public class SubscribtionDto
     {
         public int Id { get; set; }
-        public int CoachId { get; }
         public string Name { get; set; }
         public decimal price { get; set; }
         public int DurationInMonths { get; set; }

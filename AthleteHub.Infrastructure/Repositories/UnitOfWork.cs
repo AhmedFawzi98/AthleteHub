@@ -9,6 +9,8 @@ internal class UnitOfWork(AthleteHubDbContext _context) : IUnitOfWork
     private bool _isDisposed;
     private IGenericRepository<Athlete> _athletes;
     private IGenericRepository<AthleteActiveSubscribtion> _athleteActiveSubscribtions;
+    private IGenericRepository<AthleteFavouriteCoach> _athleteFavouriteCoach;
+
     private IGenericRepository<AthleteCoach> _athletesCoaches;
     private IGenericRepository<AthleteSubscribtionHistory> _athletesSubscribtionsHistory;
     private IGenericRepository<Coach> _coaches;
@@ -34,6 +36,14 @@ internal class UnitOfWork(AthleteHubDbContext _context) : IUnitOfWork
         {
             _athleteActiveSubscribtions ??= new GenericRepository<AthleteActiveSubscribtion>(_context);
             return _athleteActiveSubscribtions;
+        }
+    }
+    public IGenericRepository<AthleteFavouriteCoach> AthleteFavouriteCoach
+    {
+        get
+        {
+            _athleteFavouriteCoach ??= new GenericRepository<AthleteFavouriteCoach>(_context);
+            return _athleteFavouriteCoach;
         }
     }
 
