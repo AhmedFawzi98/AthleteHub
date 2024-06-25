@@ -8,5 +8,6 @@ namespace AthleteHub.Application.Athletes.Dtos
         public int SubscribtionId { get; set; }
         public DateOnly? SubscribtionStartDate { get; set; } = DateOnly.FromDateTime(DateTime.Now);
         public DateOnly? SubscribtionEndDate { get; set; }
+        public bool CanSubscribe { get; set; }
     }
 }
