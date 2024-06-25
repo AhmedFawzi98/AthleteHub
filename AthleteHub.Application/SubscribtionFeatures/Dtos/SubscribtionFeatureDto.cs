@@ -8,7 +8,6 @@ namespace AthleteHub.Application.SubscribtionFeatures.Dtos
 {
     public class SubscribtionFeatureDto
     {
-        public int SubscribtionId { get; set; }
         public int FeatureId { get; set; }
         public string FeatureName { get; set; }
     }
