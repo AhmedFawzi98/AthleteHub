@@ -21,20 +21,23 @@ namespace AthleteHub.Application.Athletes.Commands.AddToFavourite
         {
             var athlete = await _unitOfWork.Athletes.FindAsync(a => a.Id == request.AthleteId);
             if (athlete == null) 
-                throw new NotFoundException("Athlete", request.AthleteId.ToString());
+                throw new NotFoundException(nameof(Athlete), request.AthleteId.ToString());
             var coach = await _unitOfWork.Coaches.FindAsync(c => c.Id == request.CoachId);
             if (coach == null)
-                throw new NotFoundException("Athlete", request.AthleteId.ToString());
+                throw new NotFoundException(nameof(Coach), request.CoachId.ToString());
             var athletefavcoach = await _unitOfWork.AthleteFavouriteCoach
                                   .FindAsync(a=>a.AthleteId == request.AthleteId&&a.CoachId==request.CoachId);
+            //Edit
             if (athletefavcoach != null)
-                throw new AlreadyAddedToFavouriteException(request.AthleteId,request.CoachId);
+               return new AthleteFavouriteCoachDto() { AthleteId=request.AthleteId,CoachId=request.CoachId,CanAddToFavourite=false};    
+
             athletefavcoach = new AthleteFavouriteCoach();
             athletefavcoach.AthleteId = request.AthleteId;
             athletefavcoach.CoachId = request.CoachId;
             await _unitOfWork.AthleteFavouriteCoach.AddAsync(athletefavcoach);
             await _unitOfWork.CommitAsync();
             var athletefavcoachDto = _mapper.Map<AthleteFavouriteCoachDto>(athletefavcoach);
+            athletefavcoachDto.CanAddToFavourite = true;
             return athletefavcoachDto;
         }
     }

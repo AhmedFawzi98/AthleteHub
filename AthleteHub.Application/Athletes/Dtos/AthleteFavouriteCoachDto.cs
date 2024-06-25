@@ -6,5 +6,6 @@ namespace AthleteHub.Application.Athletes.Dtos
     {
         public int AthleteId { get; set; }
         public int CoachId { get; set; }
+        public bool CanAddToFavourite { get; set; } 
     }
 }

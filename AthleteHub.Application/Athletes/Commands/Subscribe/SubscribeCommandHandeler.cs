@@ -24,15 +24,24 @@ namespace AthleteHub.Application.Athletes.Commands.Subscribe
         }
         public async Task<AthleteActiveSubscribtionDto> Handle(SubscribeCommand request, CancellationToken cancellationToken)
         {
-            //check if the athlete is currently subsribed with the same coach
+           
             var athleteCoach = await _unitOfWork.AthletesCoaches.FindAsync(ac => ac.CoachId == request.CoachId && ac.AthleteId == request.AthleteId);
+            //Edit
             if (athleteCoach != null && athleteCoach.IsCurrentlySubscribed)
-                throw new SubscribedWithSameCoachException();
-            //check if the athlete is currently subscribed with the same subcriptoin plan
+                return new AthleteActiveSubscribtionDto() { AthleteId = request.AthleteId
+                                                   ,SubscribtionId=request.SubscribtionId, CanSubscribe=false};
+
+
             var athleteActiveSubscribtion = await _unitOfWork.AthleteActiveSubscribtions
                        .FindAsync(a => a.AthleteId == request.AthleteId && a.SubscribtionId == request.SubscribtionId);
+            //Edit
             if (athleteActiveSubscribtion != null)
-                throw new AthleteSubscribeInTheSameSubscriptionPlan();
+                return new AthleteActiveSubscribtionDto()
+                {
+                    AthleteId = request.AthleteId                          ,
+                    SubscribtionId = request.SubscribtionId,
+                    CanSubscribe = false
+                };
 
             //Do Payment in someway
 
@@ -56,6 +65,7 @@ namespace AthleteHub.Application.Athletes.Commands.Subscribe
             await _unitOfWork.AthleteActiveSubscribtions.AddAsync(athleteActiveSubscribtion);
             await _unitOfWork.CommitAsync();
             var athleteActiveSubscribtionDto = _mapper.Map<AthleteActiveSubscribtionDto>(athleteActiveSubscribtion);
+            athleteActiveSubscribtionDto.CanSubscribe = true;
             return athleteActiveSubscribtionDto;
         }
     }

@@ -1,6 +1,7 @@
 ﻿using AthleteHub.Application.Coaches.Dtoes;
 using AthleteHub.Application.Coaches.Queries.GetAllCoaches;
 using AthleteHub.Domain.Entities;
+using AthleteHub.Domain.Exceptions;
 using AthleteHub.Domain.Interfaces.Repositories;
 using AutoMapper;
 using MediatR;
@@ -39,8 +40,11 @@ namespace AthleteHub.Application.Coaches.Queries.FindCoach
             includes.Add(c => c.CoachesRatings,
                 new KeyValuePair<Expression<Func<object, object>>, Expression<Func<object, object>>>(exp1, exp2));
 
+            
             var coach = await _unitOfWork.Coaches.FindAsync(c => c.Id==request.Id, includes);
-            if (coach == null) return null;
+            
+            if (coach == null) throw new NotFoundException(nameof(Coach),request.Id.ToString()); 
+            
             var coatchDto = _mapper.Map<CoachDto>(coach);
             return coatchDto;
         }

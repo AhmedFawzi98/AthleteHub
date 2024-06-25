@@ -3,6 +3,7 @@ using AthleteHub.Application.Services.FilterService;
 using AthleteHub.Application.Services.SearchService;
 using AthleteHub.Application.Services.SortingService;
 using AthleteHub.Domain.Entities;
+using AthleteHub.Domain.Exceptions;
 using AthleteHub.Domain.Interfaces.Repositories;
 using AutoMapper;
 using MediatR;
@@ -31,6 +32,7 @@ namespace AthleteHub.Application.Coaches.Queries.GetAllCoaches
         public async Task<PageResultsDto<CoachDto>> Handle(GetAllCoachesQuery request, CancellationToken cancellationToken)
         {
             IEnumerable<Coach> coaches;
+            
             int totalCount;
             Dictionary<Expression<Func<Coach, object>>, KeyValuePair<Expression<Func<object, object>>, Expression<Func<object, object>>>> includes = new()
             {
@@ -53,10 +55,14 @@ namespace AthleteHub.Application.Coaches.Queries.GetAllCoaches
                                               request.RateFilterCritrea, request.AgeFilterCritrea, request.PriceFilterCritrea);
 
             Expression<Func<Coach, bool>> searchExperssion = _searchService.GetCoachSearchExpression(request.SearchCritrea);
+            
             Expression<Func<Coach, object>> sortExperssion = _sortService.GetCoachSortingExpression(request.SortByCritrea, request.SortingDirection);
+            
             (coaches, totalCount) = await _unitOfWork.Coaches.GetAllAsync(request.PageSize, request.PageNumber, 
                                       request.SortingDirection, sortExperssion, filterExpressions, searchExperssion, includes);
+
             var coachesDtos = _mapper.Map<IEnumerable<CoachDto>>(coaches);
+
             return new PageResultsDto<CoachDto>(coachesDtos, totalCount, request.PageNumber, request.PageSize);
         }
     }
