@@ -32,9 +32,13 @@ namespace AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtions
             IEnumerable<Subscribtion> subscribtions;
             int totalCount;
 
-            string[] includes = null!;
+            Dictionary<Expression<Func<Subscribtion, object>>, KeyValuePair<Expression<Func<object, object>>, Expression<Func<object, object>>>> includes = new();
             if (request.Includes)
-                includes = ["SubscribtionsFeatures"];
+            {
+                Expression<Func<object, object>> exp1 = (sf => ((SubscribtionFeature)sf).Feature);
+                includes.Add(s => s.SubscribtionsFeatures,
+                    new KeyValuePair<Expression<Func<object, object>>, Expression<Func<object, object>>>(exp1, null));
+            }
 
             Expression<Func<Subscribtion, object>> sortingExpression = null;
             if (request.SortBy != null)

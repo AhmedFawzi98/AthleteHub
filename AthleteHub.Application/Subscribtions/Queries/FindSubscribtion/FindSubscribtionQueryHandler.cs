@@ -7,6 +7,7 @@ using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,9 +26,13 @@ namespace AthleteHub.Application.Subscribtions.Queries.FindSubscribtion
 
         public async Task<SubscribtionDto> Handle(FindSubscribtionQuery request, CancellationToken cancellationToken)
         {
-            string[] includes = null!;
+            Dictionary<Expression<Func<Subscribtion, object>>, KeyValuePair<Expression<Func<object, object>>, Expression<Func<object, object>>>> includes = new();
             if (request.Includes)
-                includes = ["SubscribtionsFeatures"];
+            {
+                Expression<Func<object, object>> exp1 = (sf => ((SubscribtionFeature)sf).Feature);
+                includes.Add(s => s.SubscribtionsFeatures,
+                    new KeyValuePair<Expression<Func<object, object>>, Expression<Func<object, object>>>(exp1, null));
+            }
 
             var subscribtion = await _unitOfWork.Subscribtions.FindAsync(request.Criteria, includes) ?? throw new NotFoundException(nameof(Subscribtion), request.Id.ToString());
 
