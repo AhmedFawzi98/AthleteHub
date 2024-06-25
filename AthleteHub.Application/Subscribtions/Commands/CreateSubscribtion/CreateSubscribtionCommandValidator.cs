@@ -15,7 +15,7 @@ namespace AthleteHub.Application.Subscribtions.Commands.CreateSubscribtion
                 .NotEmpty().WithMessage("Must provide a name.")
                 .Length(3,100).WithMessage("Name length must be between 3 and 100 letters.");
 
-            RuleFor(dto => dto.SubscribtionFeatures)
+            RuleFor(dto => dto.SubscribtionsFeatures)
                 .NotEmpty().WithMessage("Subscribtion must have features.");
 
             RuleFor(dto => dto.price)

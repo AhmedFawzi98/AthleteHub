@@ -8,7 +8,7 @@ using AthleteHub.Application.Subscribtions.Queries.FindSubscribtion;
 using AthleteHub.Application.Subscribtions.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using AthleteHub.Domain.Constants;
-using AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtions;
+using AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtionsByCoachId;
 using AthleteHub.Application.Subscribtions.Commands.DeleteSubscribtion;
 using AthleteHub.Application.Subscribtions.Commands.UpdateSubscribtion;
 
@@ -64,6 +64,7 @@ namespace AthleteHub.Api.Controllers
         [HttpPatch("subscribtions/{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SubscribtionDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [Authorize(Roles = RolesConstants.Coach)]
         public async Task<IActionResult> UpdateSubscribtion(int id, UpdateSubscribtionCommand updateSubscribtionCommand)
         {
             updateSubscribtionCommand.SetId(id);

@@ -12,8 +12,6 @@ namespace AthleteHub.Application.SubscribtionFeatures.Dtos
     {
         public SubscribtionFeatureMappingProfile()
         {
-            //CreateMap<CreateSubscribtionFeatureCommand, SubscribtionFeature>();
-
             CreateMap<SubscribtionFeature, SubscribtionFeatureDto>()
                 .ForMember(d => d.FeatureName,opt=>opt.MapFrom(src=>src.Feature.Name)).ReverseMap() ;
         }

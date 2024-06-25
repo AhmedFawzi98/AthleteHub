@@ -2,10 +2,13 @@
 using AthleteHub.Application.Users;
 using AthleteHub.Domain.Constants;
 using AthleteHub.Domain.Entities;
+using AthleteHub.Domain.Exceptions;
 using AthleteHub.Domain.Interfaces.Repositories;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -32,13 +35,23 @@ namespace AthleteHub.Application.Subscribtions.Commands.CreateSubscribtion
         }
         public async Task<SubscribtionDto> Handle(CreateSubscribtionCommand request, CancellationToken cancellationToken)
         {
-            var currentUser = _userContext.GetCurrentUser();
-            
-            int coachId;
-            int.TryParse(currentUser.Id, out coachId);
+            var currentUser = _userContext.GetCurrentUser() ??
+                throw new UnAuthorizedException();
+
+            var coach = await _unitOfWork.Coaches.FindAsync(c => c.ApplicationUserId == currentUser.Id) ??
+                throw new NotFoundException(nameof(Coach), currentUser.Id.ToString());
 
             var newSubscribtion = _mapper.Map<Subscribtion>(request);
-            newSubscribtion.CoachId = coachId;
+            newSubscribtion.CoachId = coach.Id;
+            foreach (var featureDto in request.SubscribtionsFeatures)
+            {
+                var subscribtionFeature = new SubscribtionFeature
+                {
+                    FeatureId = featureDto.FeatureId,
+                    Subscribtion = newSubscribtion
+                };
+                newSubscribtion.SubscribtionsFeatures.Add(subscribtionFeature);
+            }
 
             await _unitOfWork.Subscribtions.AddAsync(newSubscribtion);
             await _unitOfWork.CommitAsync();

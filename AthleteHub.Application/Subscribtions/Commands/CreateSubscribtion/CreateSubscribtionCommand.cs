@@ -14,6 +14,6 @@ namespace AthleteHub.Application.Subscribtions.Commands.CreateSubscribtion
         public string Name { get; set; }
         public decimal price { get; set; }
         public int DurationInMonths { get; set; }
-        public List<SubscribtionFeatureDto> SubscribtionFeatures { get; set; } = new List<SubscribtionFeatureDto>();
+        public List<AddedSubscribtionFeatureDto> SubscribtionsFeatures { get; set; } = new List<AddedSubscribtionFeatureDto>();
     }
 }

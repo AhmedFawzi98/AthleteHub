@@ -2181,3 +2181,547 @@ END"
         FROM [Features] AS [f]) THEN CAST(1 AS bit)
     ELSE CAST(0 AS bit)
 END"
+[Warning] 25-06 17:20:02 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 25-06 17:20:02 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 25-06 17:20:03 || Executed DbCommand ("17"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 25-06 17:20:03 || Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 25-06 17:20:03 || Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 25-06 17:20:03 || Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 25-06 17:20:03 || Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 25-06 17:20:03 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 25-06 17:20:03 || Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 25-06 17:20:03 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 25-06 17:20:03 || Applying migration '"20240623125056_addingPhoneNumberToApplicationUser"'.
+[Information] 25-06 17:20:03 || Executed DbCommand ("485"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""DECLARE @var0 sysname;
+SELECT @var0 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[AspNetUsers]') AND [c].[name] = N'PhoneNumber');
+IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [AspNetUsers] DROP CONSTRAINT [' + @var0 + '];');
+UPDATE [AspNetUsers] SET [PhoneNumber] = N'' WHERE [PhoneNumber] IS NULL;
+ALTER TABLE [AspNetUsers] ALTER COLUMN [PhoneNumber] nvarchar(15) NOT NULL;
+ALTER TABLE [AspNetUsers] ADD DEFAULT N'' FOR [PhoneNumber];"
+[Information] 25-06 17:20:03 || Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240623125056_addingPhoneNumberToApplicationUser', N'8.0.6');"
+[Information] 25-06 17:20:03 || Applying migration '"20240623162934_makingCertificateNullable"'.
+[Information] 25-06 17:20:03 || Executed DbCommand ("83"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""DECLARE @var1 sysname;
+SELECT @var1 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Coaches]') AND [c].[name] = N'Certificate');
+IF @var1 IS NOT NULL EXEC(N'ALTER TABLE [Coaches] DROP CONSTRAINT [' + @var1 + '];');
+ALTER TABLE [Coaches] ALTER COLUMN [Certificate] nvarchar(max) NULL;"
+[Information] 25-06 17:20:03 || Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240623162934_makingCertificateNullable', N'8.0.6');"
+[Information] 25-06 17:20:03 || Applying migration '"20240623201159_removingSubscribtionIdFromAthlete"'.
+[Information] 25-06 17:20:04 || Executed DbCommand ("36"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""DECLARE @var2 sysname;
+SELECT @var2 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Athletes]') AND [c].[name] = N'SubscribtionId');
+IF @var2 IS NOT NULL EXEC(N'ALTER TABLE [Athletes] DROP CONSTRAINT [' + @var2 + '];');
+ALTER TABLE [Athletes] DROP COLUMN [SubscribtionId];"
+[Information] 25-06 17:20:04 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240623201159_removingSubscribtionIdFromAthlete', N'8.0.6');"
+[Information] 25-06 17:20:04 || Applying migration '"20240623202351_addingHeightPropertyToAthlete"'.
+[Information] 25-06 17:20:04 || Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""ALTER TABLE [Athletes] ADD [HeightInCm] decimal(5,2) NOT NULL DEFAULT 0.0;"
+[Information] 25-06 17:20:04 || Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240623202351_addingHeightPropertyToAthlete', N'8.0.6');"
+[Information] 25-06 17:20:04 || Applying migration '"20240624202947_addingRefreshTokens"'.
+[Information] 25-06 17:20:04 || Executed DbCommand ("128"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [RefreshToken] (
+    [ApplicationUserId] nvarchar(450) NOT NULL,
+    [Id] int NOT NULL IDENTITY,
+    [Token] nvarchar(max) NOT NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [ExpiresOn] datetime2 NOT NULL,
+    [RevokedOn] datetime2 NULL,
+    CONSTRAINT [PK_RefreshToken] PRIMARY KEY ([ApplicationUserId], [Id]),
+    CONSTRAINT [FK_RefreshToken_AspNetUsers_ApplicationUserId] FOREIGN KEY ([ApplicationUserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);"
+[Information] 25-06 17:20:04 || Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240624202947_addingRefreshTokens', N'8.0.6');"
+[Information] 25-06 17:20:04 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 25-06 17:20:04 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 25-06 17:20:04 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 25-06 17:20:04 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Warning] 25-06 17:21:02 || Failed to determine the https port for redirect.
+[Information] 25-06 17:21:04 || Executed DbCommand ("21"ms) [Parameters=["@__normalizedEmail_0='COACH1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 25-06 17:21:04 || Executed DbCommand ("21"ms) [Parameters=["@__normalizedUserName_0='COACH1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 25-06 17:21:04 || Executed DbCommand ("39"ms) [Parameters=["@__userId_0='7ed0fd73-d2bc-4133-8670-2477aa321dcb' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0"
+[Information] 25-06 17:21:04 || Executed DbCommand ("23"ms) [Parameters=["@__user_Id_0='7ed0fd73-d2bc-4133-8670-2477aa321dcb' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+FROM [Coaches] AS [c]
+WHERE [c].[ApplicationUserId] = @__user_Id_0"
+[Information] 25-06 17:21:04 || Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='7ed0fd73-d2bc-4133-8670-2477aa321dcb' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0"
+[Information] 25-06 17:21:04 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='COACH1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 25-06 17:21:04 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='COACH1@ATHLETEHUB.COM' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 25-06 17:21:05 || Executed DbCommand ("100"ms) [Parameters=["@p22='7ed0fd73-d2bc-4133-8670-2477aa321dcb' (Nullable = false) (Size = 450), @p0='0', @p1=NULL (Size = 4000), @p2='fe64185d-8c43-4efd-98e5-c5f9afa2bd73' (Size = 4000), @p23='a8388456-5744-4d41-8de3-1ab277d3297f' (Size = 4000), @p3='2024-06-22T21:54:29.5702010', @p4='02/02/2000' (DbType = Date), @p5='coach1@athletehub.com' (Size = 256), @p6='True', @p7='coach' (Nullable = false) (Size = 100), @p8='0', @p9='True', @p10='coach' (Nullable = false) (Size = 100), @p11='True', @p12=NULL (DbType = DateTimeOffset), @p13='COACH1@ATHLETEHUB.COM' (Size = 256), @p14='COACH1' (Size = 256), @p15='AQAAAAIAAYagAAAAELnf0Ekb98R831fZUEXKms4uJgEzroXWz0UtwbxMhT8z7UeWpoiIi9oPcHKluobqZQ==' (Size = 4000), @p16='' (Nullable = false) (Size = 15), @p17='False', @p18=NULL (Size = 4000), @p19='NELFNRLA3ODKNP35PWSJ7TUH2WNJH5JI' (Size = 4000), @p20='False', @p21='coach1' (Size = 256), @p24='7ed0fd73-d2bc-4133-8670-2477aa321dcb' (Nullable = false) (Size = 450), @p25='2024-06-25T14:21:04.9022929Z', @p26='2024-06-26T14:21:04.9023384Z', @p27=NULL (DbType = DateTime2), @p28='ugX75OMfxx21RK8JN7einyXxNOluaSpVjXSApP612lM%3D' (Nullable = false) (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [Bio] = @p1, [ConcurrencyStamp] = @p2, [CreatedAt] = @p3, [DateOfBirth] = @p4, [Email] = @p5, [EmailConfirmed] = @p6, [FirstName] = @p7, [Gender] = @p8, [IsActive] = @p9, [LastName] = @p10, [LockoutEnabled] = @p11, [LockoutEnd] = @p12, [NormalizedEmail] = @p13, [NormalizedUserName] = @p14, [PasswordHash] = @p15, [PhoneNumber] = @p16, [PhoneNumberConfirmed] = @p17, [ProfilePicture] = @p18, [SecurityStamp] = @p19, [TwoFactorEnabled] = @p20, [UserName] = @p21
+OUTPUT 1
+WHERE [Id] = @p22 AND [ConcurrencyStamp] = @p23;
+INSERT INTO [RefreshToken] ([ApplicationUserId], [CreatedOn], [ExpiresOn], [RevokedOn], [Token])
+OUTPUT INSERTED.[Id]
+VALUES (@p24, @p25, @p26, @p27, @p28);"
+[Information] 25-06 17:21:05 || HTTP "POST" "/api/Identity/login" responded 200 in 2376.7786 ms
+[Information] 25-06 17:22:10 || Executed DbCommand ("3"ms) [Parameters=["@__currentUser_Id_0='7ed0fd73-d2bc-4133-8670-2477aa321dcb' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+FROM [Coaches] AS [c]
+WHERE [c].[ApplicationUserId] = @__currentUser_Id_0"
+[Information] 25-06 17:22:10 || Executed DbCommand ("158"ms) [Parameters=["@p6='1', @p0='7ed0fd73-d2bc-4133-8670-2477aa321dcb' (Nullable = false) (Size = 450), @p1='CertifcateUrl' (Size = 4000), @p2='True', @p3='False', @p4='4.50' (Nullable = true) (Precision = 18) (Scale = 2), @p5='1' (Nullable = true), @p7=NULL (Nullable = false) (Size = 4000), @p8='7mada' (Nullable = false) (Size = 4000), @p9='1', @p10='9', @p11='sub1' (Nullable = false) (Size = 100), @p12='30' (Precision = 8) (Scale = 2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Coaches] SET [ApplicationUserId] = @p0, [Certificate] = @p1, [IsApproved] = @p2, [IsSuspended] = @p3, [OverallRating] = @p4, [RatingsCount] = @p5
+OUTPUT 1
+WHERE [Id] = @p6;
+INSERT INTO [Features] ([Description], [Name])
+OUTPUT INSERTED.[Id]
+VALUES (@p7, @p8);
+INSERT INTO [Subscribtions] ([CoachId], [DurationInMonths], [Name], [price])
+OUTPUT INSERTED.[Id]
+VALUES (@p9, @p10, @p11, @p12);"
+[Error] 25-06 17:22:10 || An exception occurred in the database while saving changes for context type '"AthleteHub.Infrastructure.Persistance.AthleteHubDbContext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Description', table 'AthleteHubDb.dbo.Features'; column does not allow nulls. INSERT fails.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:f5a0b33b-c645-4b7e-abe8-25662adf2514
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)"
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Description', table 'AthleteHubDb.dbo.Features'; column does not allow nulls. INSERT fails.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:f5a0b33b-c645-4b7e-abe8-25662adf2514
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+[Information] 25-06 17:22:10 || HTTP "POST" "/api/subscribtions" responded 500 in 657.9097 ms
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Description', table 'AthleteHubDb.dbo.Features'; column does not allow nulls. INSERT fails.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:f5a0b33b-c645-4b7e-abe8-25662adf2514
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at AthleteHub.Infrastructure.Repositories.UnitOfWork.CommitAsync() in D:\Work\ITI-SD\API\AthleteHub\AthleteHub\AthleteHub.Infrastructure\Repositories\UnitOfWork.cs:line 143
+   at AthleteHub.Application.Subscribtions.Commands.CreateSubscribtion.CreateSubscribtionCommandHandler.Handle(CreateSubscribtionCommand request, CancellationToken cancellationToken) in D:\Work\ITI-SD\API\AthleteHub\AthleteHub\AthleteHub.Application\Subscribtions\Commands\CreateSubscribtion\CreateSubscribtionCommandHandler.cs:line 48
+   at AthleteHub.Api.Controllers.SubscribtionController.AddSubscribtion(CreateSubscribtionCommand createSubscribtionCommand) in D:\Work\ITI-SD\API\AthleteHub\AthleteHub\AthleteHub.Api\Controllers\SubscribtionController.cs:line 51
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[Error] 25-06 17:22:10 || An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Description', table 'AthleteHubDb.dbo.Features'; column does not allow nulls. INSERT fails.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:f5a0b33b-c645-4b7e-abe8-25662adf2514
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at AthleteHub.Infrastructure.Repositories.UnitOfWork.CommitAsync() in D:\Work\ITI-SD\API\AthleteHub\AthleteHub\AthleteHub.Infrastructure\Repositories\UnitOfWork.cs:line 143
+   at AthleteHub.Application.Subscribtions.Commands.CreateSubscribtion.CreateSubscribtionCommandHandler.Handle(CreateSubscribtionCommand request, CancellationToken cancellationToken) in D:\Work\ITI-SD\API\AthleteHub\AthleteHub\AthleteHub.Application\Subscribtions\Commands\CreateSubscribtion\CreateSubscribtionCommandHandler.cs:line 48
+   at AthleteHub.Api.Controllers.SubscribtionController.AddSubscribtion(CreateSubscribtionCommand createSubscribtionCommand) in D:\Work\ITI-SD\API\AthleteHub\AthleteHub\AthleteHub.Api\Controllers\SubscribtionController.cs:line 51
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+[Error] 25-06 17:22:10 || An error occurred while saving the entity changes. See the inner exception for details.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Description', table 'AthleteHubDb.dbo.Features'; column does not allow nulls. INSERT fails.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:f5a0b33b-c645-4b7e-abe8-25662adf2514
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at AthleteHub.Infrastructure.Repositories.UnitOfWork.CommitAsync() in D:\Work\ITI-SD\API\AthleteHub\AthleteHub\AthleteHub.Infrastructure\Repositories\UnitOfWork.cs:line 143
+   at AthleteHub.Application.Subscribtions.Commands.CreateSubscribtion.CreateSubscribtionCommandHandler.Handle(CreateSubscribtionCommand request, CancellationToken cancellationToken) in D:\Work\ITI-SD\API\AthleteHub\AthleteHub\AthleteHub.Application\Subscribtions\Commands\CreateSubscribtion\CreateSubscribtionCommandHandler.cs:line 48
+   at AthleteHub.Api.Controllers.SubscribtionController.AddSubscribtion(CreateSubscribtionCommand createSubscribtionCommand) in D:\Work\ITI-SD\API\AthleteHub\AthleteHub\AthleteHub.Api\Controllers\SubscribtionController.cs:line 51
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+[Warning] 25-06 17:40:39 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 25-06 17:40:39 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 25-06 17:40:40 || Executed DbCommand ("17"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 25-06 17:40:40 || Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 25-06 17:40:40 || Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 25-06 17:40:40 || Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 25-06 17:40:40 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 25-06 17:40:40 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 25-06 17:40:40 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Warning] 25-06 17:41:24 || Failed to determine the https port for redirect.
+[Information] 25-06 17:41:24 || Executed DbCommand ("26"ms) [Parameters=["@__normalizedEmail_0='COACH' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 25-06 17:41:24 || Executed DbCommand ("4"ms) [Parameters=["@__normalizedUserName_0='COACH' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 25-06 17:41:24 || HTTP "POST" "/api/Identity/login" responded 200 in 357.4219 ms
+[Information] 25-06 17:41:58 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='COACH1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 25-06 17:41:58 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='COACH1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 25-06 17:41:58 || Executed DbCommand ("3"ms) [Parameters=["@__userId_0='7ed0fd73-d2bc-4133-8670-2477aa321dcb' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0"
+[Information] 25-06 17:41:58 || Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='7ed0fd73-d2bc-4133-8670-2477aa321dcb' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+FROM [Coaches] AS [c]
+WHERE [c].[ApplicationUserId] = @__user_Id_0"
+[Information] 25-06 17:41:58 || Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='7ed0fd73-d2bc-4133-8670-2477aa321dcb' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0"
+[Information] 25-06 17:41:58 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='COACH1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 25-06 17:41:58 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='COACH1@ATHLETEHUB.COM' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 25-06 17:41:58 || Executed DbCommand ("31"ms) [Parameters=["@p22='7ed0fd73-d2bc-4133-8670-2477aa321dcb' (Nullable = false) (Size = 450), @p0='0', @p1=NULL (Size = 4000), @p2='af73fc3b-3782-4ac8-8543-c0220b9b9682' (Size = 4000), @p23='fe64185d-8c43-4efd-98e5-c5f9afa2bd73' (Size = 4000), @p3='2024-06-22T21:54:29.5702010', @p4='02/02/2000' (DbType = Date), @p5='coach1@athletehub.com' (Size = 256), @p6='True', @p7='coach' (Nullable = false) (Size = 100), @p8='0', @p9='True', @p10='coach' (Nullable = false) (Size = 100), @p11='True', @p12=NULL (DbType = DateTimeOffset), @p13='COACH1@ATHLETEHUB.COM' (Size = 256), @p14='COACH1' (Size = 256), @p15='AQAAAAIAAYagAAAAELnf0Ekb98R831fZUEXKms4uJgEzroXWz0UtwbxMhT8z7UeWpoiIi9oPcHKluobqZQ==' (Size = 4000), @p16='' (Nullable = false) (Size = 15), @p17='False', @p18=NULL (Size = 4000), @p19='NELFNRLA3ODKNP35PWSJ7TUH2WNJH5JI' (Size = 4000), @p20='False', @p21='coach1' (Size = 256), @p24='7ed0fd73-d2bc-4133-8670-2477aa321dcb' (Nullable = false) (Size = 450), @p25='2024-06-25T14:41:58.3841293Z', @p26='2024-06-26T14:41:58.3841746Z', @p27=NULL (DbType = DateTime2), @p28='3f1ClzymSqH886Lt3xlChCC1jj%2BFbonxEbPJKAcGzRc%3D' (Nullable = false) (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [Bio] = @p1, [ConcurrencyStamp] = @p2, [CreatedAt] = @p3, [DateOfBirth] = @p4, [Email] = @p5, [EmailConfirmed] = @p6, [FirstName] = @p7, [Gender] = @p8, [IsActive] = @p9, [LastName] = @p10, [LockoutEnabled] = @p11, [LockoutEnd] = @p12, [NormalizedEmail] = @p13, [NormalizedUserName] = @p14, [PasswordHash] = @p15, [PhoneNumber] = @p16, [PhoneNumberConfirmed] = @p17, [ProfilePicture] = @p18, [SecurityStamp] = @p19, [TwoFactorEnabled] = @p20, [UserName] = @p21
+OUTPUT 1
+WHERE [Id] = @p22 AND [ConcurrencyStamp] = @p23;
+INSERT INTO [RefreshToken] ([ApplicationUserId], [CreatedOn], [ExpiresOn], [RevokedOn], [Token])
+OUTPUT INSERTED.[Id]
+VALUES (@p24, @p25, @p26, @p27, @p28);"
+[Information] 25-06 17:41:58 || HTTP "POST" "/api/Identity/login" responded 200 in 647.3299 ms
+[Information] 25-06 17:42:53 || Executed DbCommand ("3"ms) [Parameters=["@__currentUser_Id_0='7ed0fd73-d2bc-4133-8670-2477aa321dcb' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+FROM [Coaches] AS [c]
+WHERE [c].[ApplicationUserId] = @__currentUser_Id_0"
+[Information] 25-06 17:42:53 || Executed DbCommand ("3"ms) [Parameters=["@p0='1', @p1='9', @p2='sub1' (Nullable = false) (Size = 100), @p3='30' (Precision = 8) (Scale = 2)"], CommandType='Text', CommandTimeout='30']"
+""SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Subscribtions] ([CoachId], [DurationInMonths], [Name], [price])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);"
+[Information] 25-06 17:42:53 || Executed DbCommand ("39"ms) [Parameters=["@p4='4', @p5='5', @p6='5', @p7='5', @p8='6', @p9='5'"], CommandType='Text', CommandTimeout='30']"
+""SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [SubscribtionFeatures] ([FeatureId], [SubscribtionId])
+VALUES (@p4, @p5),
+(@p6, @p7),
+(@p8, @p9);"
+[Information] 25-06 17:42:53 || CreateSubscribtionCommand was invoked by "coach1" with id = "7ed0fd73-d2bc-4133-8670-2477aa321dcb", Created restaurant: Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }] }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }] } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }] } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }] } }] }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }] }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }] } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }] } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }] } }] } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }] }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }] } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }] } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }] } }] } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }] }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }] } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }] } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: 5, CoachId: 1, Name: "sub1", price: 30, DurationInMonths: 9, Coach: Coach { Id: 1, ApplicationUserId: "7ed0fd73-d2bc-4133-8670-2477aa321dcb", ApplicationUser: null, Certificate: "CertifcateUrl", IsApproved: True, IsSuspended: False, RatingsCount: 1, OverallRating: 4.50, AthleteCoaches: [], Contents: [], Subscribtions: [Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null }], AthletesFavouriteCoaches: [], CoachesRatings: [], CoachesBlockedAthletees: [] }, AthletesActiveSubscribtions: [], SubscribtionsFeatures: [SubscribtionFeature { SubscribtionId: 5, FeatureId: 4, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 5, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }, SubscribtionFeature { SubscribtionId: 5, FeatureId: 6, Feature: null, Subscribtion: Subscribtion { Id: null, CoachId: null, Name: null, price: null, DurationInMonths: null, Coach: null, AthletesActiveSubscribtions: null, SubscribtionsFeatures: null } }] } }] } }] }
+[Information] 25-06 17:42:53 || HTTP "POST" "/api/subscribtions" responded 201 in 357.9669 ms
+[Information] 25-06 17:43:17 || Executed DbCommand ("12"ms) [Parameters=["@__request_CoachId_0='1'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+FROM [Coaches] AS [c]
+WHERE [c].[Id] = @__request_CoachId_0"
+[Information] 25-06 17:43:17 || Executed DbCommand ("2"ms) [Parameters=["@__request_CoachId_0='1'"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Subscribtions] AS [s]
+WHERE [s].[CoachId] = @__request_CoachId_0"
+[Warning] 25-06 17:43:17 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Warning] 25-06 17:43:17 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Information] 25-06 17:43:17 || Executed DbCommand ("3"ms) [Parameters=["@__request_CoachId_0='1', @__p_1='0', @__p_2='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [Subscribtions] AS [s]
+WHERE [s].[CoachId] = @__request_CoachId_0
+ORDER BY (SELECT 1)
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY"
+[Information] 25-06 17:43:17 || HTTP "GET" "/api/coaches/1/subscribtions" responded 200 in 152.7786 ms
+[Information] 25-06 17:43:23 || Executed DbCommand ("1"ms) [Parameters=["@__request_CoachId_0='1'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+FROM [Coaches] AS [c]
+WHERE [c].[Id] = @__request_CoachId_0"
+[Information] 25-06 17:43:23 || Executed DbCommand ("1"ms) [Parameters=["@__request_CoachId_0='1'"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Subscribtions] AS [s]
+WHERE [s].[CoachId] = @__request_CoachId_0"
+[Warning] 25-06 17:43:23 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Warning] 25-06 17:43:23 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Information] 25-06 17:43:23 || Executed DbCommand ("9"ms) [Parameters=["@__request_CoachId_0='1', @__p_1='0', @__p_2='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[CoachId], [t].[DurationInMonths], [t].[Name], [t].[price], [t0].[SubscribtionId], [t0].[FeatureId], [t0].[Id], [t0].[Description], [t0].[Name]
+FROM (
+    SELECT [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+    FROM [Subscribtions] AS [s]
+    WHERE [s].[CoachId] = @__request_CoachId_0
+    ORDER BY (SELECT 1)
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+LEFT JOIN (
+    SELECT [s0].[SubscribtionId], [s0].[FeatureId], [f].[Id], [f].[Description], [f].[Name]
+    FROM [SubscribtionFeatures] AS [s0]
+    INNER JOIN [Features] AS [f] ON [s0].[FeatureId] = [f].[Id]
+) AS [t0] ON [t].[Id] = [t0].[SubscribtionId]
+ORDER BY [t].[Id], [t0].[SubscribtionId], [t0].[FeatureId]"
+[Information] 25-06 17:43:23 || HTTP "GET" "/api/coaches/1/subscribtions" responded 200 in 56.0255 ms
