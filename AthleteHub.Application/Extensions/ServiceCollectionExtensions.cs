@@ -6,7 +6,6 @@ using AthleteHub.Application.Users;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
-using Resturants.Application.Users;
 
 namespace AthleteHub.Application.Extensions;
 

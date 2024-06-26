@@ -2,8 +2,8 @@
 using AthleteHub.Application.Users;
 using Microsoft.AspNetCore.Http;
 
-namespace Resturants.Application.Users;
-internal class UserContext : IUserContext
+namespace AthleteHub.Application.Users;
+public class UserContext : IUserContext
 {
     private readonly IHttpContextAccessor _contextAccessor;
 

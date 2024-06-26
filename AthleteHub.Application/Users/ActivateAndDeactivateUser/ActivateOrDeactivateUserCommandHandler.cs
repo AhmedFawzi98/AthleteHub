@@ -6,7 +6,6 @@ using AthleteHub.Domain.Interfaces.Repositories;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Resturants.Application.Users;
 using static AthleteHub.Domain.Exceptions.BadRequestException;
 
 namespace AthleteHub.Application.Users.ActivateAndDeactivateUser;

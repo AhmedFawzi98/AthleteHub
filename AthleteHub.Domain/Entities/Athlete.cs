@@ -4,6 +4,7 @@ public class Athlete
 {
     public int Id { get; set; }
     public string ApplicationUserId { get; set; }
+    
     public virtual ApplicationUser ApplicationUser { get; set; }
     public decimal HeightInCm { get; set; }
     public virtual ICollection<AthleteCoach> AthletesCoaches { get; set; } = new List<AthleteCoach>();

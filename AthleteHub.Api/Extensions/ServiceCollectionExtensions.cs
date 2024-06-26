@@ -1,4 +1,5 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using AthleteHub.Infrastructure.Authorization.Services.Payment;
+using Microsoft.OpenApi.Models;
 using Resturants.Infrastructure.CustomJsonConverters;
 using Serilog;
 using AthleteHub.Infrastructure.Constants;

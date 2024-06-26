@@ -6,7 +6,6 @@ using AthleteHub.Domain.Interfaces.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Resturants.Application.Users;
 
 namespace AthleteHub.Application.Users.Authenticaion.RefreshUserToken;
 
