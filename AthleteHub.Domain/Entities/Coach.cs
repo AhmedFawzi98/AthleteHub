@@ -17,5 +17,4 @@ public class Coach
     public virtual ICollection<CoachRating> CoachesRatings { get; set; } = new List<CoachRating>();
     public virtual ICollection<CoachBlockedAthlete> CoachesBlockedAthletees { get; set; } = new List<CoachBlockedAthlete>();
     
-
 }

@@ -10,6 +10,6 @@ namespace AthleteHub.Application.Services.SearchService
 {
     public interface ISearchService
     {
-        Expression<Func<Coach, bool>> GetCoachSearchExpression(string? SearchCritrea);
+        Expression<Func<Coach, bool>> GetCoachSearchExpression(string? SearchCritrea, int? athleteId);
     }
 }
