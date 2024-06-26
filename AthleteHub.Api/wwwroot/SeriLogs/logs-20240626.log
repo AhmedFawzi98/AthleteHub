@@ -1,0 +1,567 @@
+[Warning] 26-06 00:19:15 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 26-06 00:19:15 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 26-06 00:19:16 || Executed DbCommand ("23"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 26-06 00:19:16 || Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 26-06 00:19:16 || Executed DbCommand ("37"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 26-06 00:19:16 || Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 26-06 00:19:16 || Executed DbCommand ("16"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 26-06 00:19:16 || Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 26-06 00:19:16 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 26-06 00:19:16 || Start installing Hangfire SQL objects...
+[Information] 26-06 00:19:17 || Hangfire SQL objects installed.
+[Information] 26-06 00:19:18 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 26-06 00:19:18 || Using the following options for SQL Server job storage: Queue poll interval: 01:00:00.
+[Information] 26-06 00:19:18 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 26-06 00:19:18 || Server ahmedfawzi_msi:17244:db0b008d successfully announced in 403.1657 ms
+[Information] 26-06 00:19:18 || Server ahmedfawzi_msi:17244:db0b008d is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 26-06 00:19:18 || Server ahmedfawzi_msi:17244:db0b008d all the dispatchers started
+[Warning] 26-06 00:19:24 || Stopping the server due to DomainUnload or ProcessExit event...
+[Information] 26-06 00:19:24 || Server ahmedfawzi_msi:17244:db0b008d caught stopping signal...
+[Information] 26-06 00:19:24 || Server ahmedfawzi_msi:17244:db0b008d caught stopped signal...
+[Warning] 26-06 00:19:24 || Server ahmedfawzi_msi:17244:db0b008d caught shutdown signal...
+[Warning] 26-06 00:19:24 || Server ahmedfawzi_msi:17244:db0b008d stopped non-gracefully due to ExpirationManager, Worker. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+[Information] 26-06 00:19:24 || Server ahmedfawzi_msi:17244:db0b008d successfully reported itself as stopped in 11.2611 ms
+[Information] 26-06 00:19:24 || Server ahmedfawzi_msi:17244:db0b008d has been stopped in total 15.1297 ms
+[Warning] 26-06 00:20:22 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 26-06 00:20:22 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 26-06 00:20:23 || Executed DbCommand ("18"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 26-06 00:20:23 || Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 26-06 00:20:23 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 26-06 00:20:23 || Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 26-06 00:20:23 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 26-06 00:20:23 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 26-06 00:20:23 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 26-06 00:20:23 || Start installing Hangfire SQL objects...
+[Information] 26-06 00:20:23 || Hangfire SQL objects installed.
+[Information] 26-06 00:20:23 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 26-06 00:20:23 || Using the following options for SQL Server job storage: Queue poll interval: 01:00:00.
+[Information] 26-06 00:20:23 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 26-06 00:20:23 || Server ahmedfawzi_msi:20404:6839aa45 successfully announced in 112.2934 ms
+[Information] 26-06 00:20:23 || Server ahmedfawzi_msi:20404:6839aa45 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 26-06 00:20:23 || Server ahmedfawzi_msi:20404:6839aa45 all the dispatchers started
+[Warning] 26-06 00:20:35 || Failed to determine the https port for redirect.
+[Information] 26-06 00:20:35 || HTTP "GET" "/hangfiredashboard" responded 200 in 277.8428 ms
+[Information] 26-06 00:20:35 || HTTP "GET" "/hangfiredashboard/css-dark181401049137067" responded 200 in 9.3454 ms
+[Information] 26-06 00:20:35 || HTTP "GET" "/hangfiredashboard/css181401418215926" responded 200 in 17.8309 ms
+[Information] 26-06 00:20:35 || HTTP "GET" "/hangfiredashboard/js181402093349339" responded 200 in 20.3179 ms
+[Information] 26-06 00:20:35 || HTTP "GET" "/hangfiredashboard/fonts/glyphicons-halflings-regular/woff2" responded 200 in 1.6665 ms
+[Information] 26-06 00:20:37 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 66.3467 ms
+[Information] 26-06 00:20:39 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 15.2232 ms
+[Information] 26-06 00:20:41 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 10.6140 ms
+[Information] 26-06 00:20:43 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 13.4850 ms
+[Information] 26-06 00:20:45 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 10.5731 ms
+[Information] 26-06 00:20:47 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 13.3341 ms
+[Information] 26-06 00:20:49 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 10.3169 ms
+[Warning] 26-06 00:20:56 || Stopping the server due to DomainUnload or ProcessExit event...
+[Information] 26-06 00:20:56 || Server ahmedfawzi_msi:20404:6839aa45 caught stopping signal...
+[Information] 26-06 00:20:56 || Server ahmedfawzi_msi:20404:6839aa45 caught stopped signal...
+[Warning] 26-06 00:20:56 || Server ahmedfawzi_msi:20404:6839aa45 caught shutdown signal...
+[Warning] 26-06 00:20:56 || Server ahmedfawzi_msi:20404:6839aa45 stopped non-gracefully due to ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+[Information] 26-06 00:20:56 || Server ahmedfawzi_msi:20404:6839aa45 successfully reported itself as stopped in 8.9764 ms
+[Information] 26-06 00:20:56 || Server ahmedfawzi_msi:20404:6839aa45 has been stopped in total 11.7409 ms
+[Warning] 26-06 01:06:08 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 26-06 01:06:08 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 26-06 01:06:08 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 26-06 01:06:08 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 26-06 01:06:08 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 26-06 01:06:08 || Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 26-06 01:06:09 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 26-06 01:06:09 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 26-06 01:06:09 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 26-06 01:06:09 || Start installing Hangfire SQL objects...
+[Information] 26-06 01:06:09 || Hangfire SQL objects installed.
+[Information] 26-06 01:06:09 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 26-06 01:06:09 || Using the following options for SQL Server job storage: Queue poll interval: 01:00:00.
+[Information] 26-06 01:06:09 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 26-06 01:06:09 || Server ahmedfawzi_msi:26936:21da1736 successfully announced in 15.0041 ms
+[Information] 26-06 01:06:09 || Server ahmedfawzi_msi:26936:21da1736 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 26-06 01:06:09 || Server ahmedfawzi_msi:26936:21da1736 all the dispatchers started
+[Warning] 26-06 01:06:16 || Failed to determine the https port for redirect.
+[Error] 26-06 01:06:16 || HTTP "GET" "/dashboard" responded 404 in 45.1125 ms
+[Error] 26-06 01:06:16 || HTTP "GET" "/favicon.ico" responded 404 in 1.9807 ms
+[Information] 26-06 01:06:22 || HTTP "GET" "/hangfiredashboard" responded 200 in 140.5313 ms
+[Information] 26-06 01:06:22 || HTTP "GET" "/hangfiredashboard/css-dark181401551834633" responded 200 in 4.2795 ms
+[Information] 26-06 01:06:22 || HTTP "GET" "/hangfiredashboard/js18140900223286" responded 200 in 16.4077 ms
+[Information] 26-06 01:06:22 || HTTP "GET" "/hangfiredashboard/css181401839759689" responded 200 in 19.8076 ms
+[Information] 26-06 01:06:25 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 44.8831 ms
+[Information] 26-06 01:06:27 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 11.4061 ms
+[Information] 26-06 01:06:29 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 10.3525 ms
+[Information] 26-06 01:06:31 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 10.0564 ms
+[Information] 26-06 01:06:33 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 50.8438 ms
+[Information] 26-06 01:06:35 || HTTP "GET" "/hangfiredashboard/recurring" responded 200 in 121.1346 ms
+[Information] 26-06 01:06:37 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 15.1581 ms
+[Information] 26-06 01:06:39 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 3.1918 ms
+[Information] 26-06 01:06:41 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 1.5609 ms
+[Information] 26-06 01:06:43 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 3.0827 ms
+[Information] 26-06 01:06:45 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.7407 ms
+[Information] 26-06 01:06:47 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.5446 ms
+[Information] 26-06 01:06:49 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.2154 ms
+[Information] 26-06 01:06:51 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.5521 ms
+[Information] 26-06 01:06:53 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.3549 ms
+[Information] 26-06 01:06:55 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.3137 ms
+[Information] 26-06 01:06:57 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.5309 ms
+[Information] 26-06 01:06:59 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.2224 ms
+[Information] 26-06 01:07:01 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.7939 ms
+[Information] 26-06 01:07:03 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.6925 ms
+[Information] 26-06 01:07:05 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 4.3953 ms
+[Information] 26-06 01:07:07 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.5503 ms
+[Information] 26-06 01:07:09 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 35.8731 ms
+[Information] 26-06 01:07:09 || Executed DbCommand ("14"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:07:09 || Executed DbCommand ("5"ms) [Parameters=["@__athleteActivesubscribtion_AthleteId_0='1', @__athleteActivesubscribtion_Subscribtion_CoachId_1='1'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[AthleteId], [a].[CoachId], [a].[IsCurrentlySubscribed]
+FROM [AthletesCoaches] AS [a]
+WHERE [a].[AthleteId] = @__athleteActivesubscribtion_AthleteId_0 AND [a].[CoachId] = @__athleteActivesubscribtion_Subscribtion_CoachId_1"
+[Information] 26-06 01:07:10 || Executed DbCommand ("10"ms) [Parameters=["@p0='1', @p1='1', @p3='1', @p4='1', @p2='False', @p5='1', @p6='06/26/2024' (Nullable = true) (DbType = Date), @p7='1', @p8='06/01/2024' (Nullable = true) (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DELETE FROM [AthleteActiveSubscribtions]
+OUTPUT 1
+WHERE [AthleteId] = @p0 AND [SubscribtionId] = @p1;
+UPDATE [AthletesCoaches] SET [IsCurrentlySubscribed] = @p2
+OUTPUT 1
+WHERE [AthleteId] = @p3 AND [CoachId] = @p4;
+INSERT INTO [AthletesSubscribtionsHistory] ([AthleteId], [SubscribtionEndDate], [SubscribtionId], [SubscribtionStartDate])
+OUTPUT INSERTED.[Id]
+VALUES (@p5, @p6, @p7, @p8);"
+[Information] 26-06 01:07:11 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 9.9372 ms
+[Information] 26-06 01:07:13 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 1.9134 ms
+[Information] 26-06 01:07:15 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.6562 ms
+[Information] 26-06 01:07:15 || HTTP "GET" "/hangfiredashboard/servers" responded 200 in 20.7508 ms
+[Information] 26-06 01:07:17 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.8549 ms
+[Information] 26-06 01:07:19 || HTTP "GET" "/hangfiredashboard/jobs/enqueued" responded 200 in 13.3430 ms
+[Information] 26-06 01:07:22 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 3.0387 ms
+[Information] 26-06 01:07:24 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.7610 ms
+[Information] 26-06 01:07:26 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.2282 ms
+[Information] 26-06 01:07:28 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.5970 ms
+[Information] 26-06 01:07:30 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.5494 ms
+[Warning] 26-06 01:07:32 || Stopping the server due to DomainUnload or ProcessExit event...
+[Information] 26-06 01:07:32 || Server ahmedfawzi_msi:26936:21da1736 caught stopping signal...
+[Information] 26-06 01:07:32 || Server ahmedfawzi_msi:26936:21da1736 caught stopped signal...
+[Warning] 26-06 01:07:32 || Server ahmedfawzi_msi:26936:21da1736 caught shutdown signal...
+[Warning] 26-06 01:07:32 || Server ahmedfawzi_msi:26936:21da1736 stopped non-gracefully due to ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+[Information] 26-06 01:07:32 || Server ahmedfawzi_msi:26936:21da1736 successfully reported itself as stopped in 22.1102 ms
+[Information] 26-06 01:07:32 || Server ahmedfawzi_msi:26936:21da1736 has been stopped in total 25.2571 ms
+[Warning] 26-06 01:07:43 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 26-06 01:07:43 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 26-06 01:07:43 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 26-06 01:07:43 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 26-06 01:07:43 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 26-06 01:07:44 || Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 26-06 01:07:44 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 26-06 01:07:44 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 26-06 01:07:44 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 26-06 01:07:44 || Start installing Hangfire SQL objects...
+[Information] 26-06 01:07:44 || Hangfire SQL objects installed.
+[Information] 26-06 01:07:44 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 26-06 01:07:44 || Using the following options for SQL Server job storage: Queue poll interval: 00:01:00.
+[Information] 26-06 01:07:44 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 26-06 01:07:44 || Server ahmedfawzi_msi:19788:2fb8ad75 successfully announced in 15.6531 ms
+[Information] 26-06 01:07:44 || Server ahmedfawzi_msi:19788:2fb8ad75 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 26-06 01:07:44 || Server ahmedfawzi_msi:19788:2fb8ad75 all the dispatchers started
+[Warning] 26-06 01:08:14 || Failed to determine the https port for redirect.
+[Information] 26-06 01:08:14 || HTTP "GET" "/hangfiredashboard" responded 200 in 208.5000 ms
+[Information] 26-06 01:08:14 || HTTP "GET" "/hangfiredashboard/css-dark181401101865896" responded 200 in 7.1776 ms
+[Information] 26-06 01:08:14 || HTTP "GET" "/hangfiredashboard/css1814016593988" responded 200 in 18.9363 ms
+[Information] 26-06 01:08:14 || HTTP "GET" "/hangfiredashboard/js18140972892150" responded 200 in 14.7983 ms
+[Information] 26-06 01:08:14 || HTTP "GET" "/hangfiredashboard/fonts/glyphicons-halflings-regular/woff2" responded 200 in 1.0712 ms
+[Information] 26-06 01:08:15 || Executed DbCommand ("12"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:08:16 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 37.5473 ms
+[Information] 26-06 01:08:16 || HTTP "GET" "/hangfiredashboard/jobs/enqueued" responded 200 in 16.3351 ms
+[Information] 26-06 01:08:18 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 3.5042 ms
+[Information] 26-06 01:08:20 || HTTP "GET" "/hangfiredashboard/recurring" responded 200 in 41.0315 ms
+[Information] 26-06 01:08:22 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.2667 ms
+[Information] 26-06 01:08:24 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 3.2994 ms
+[Information] 26-06 01:08:25 || HTTP "GET" "/hangfiredashboard/jobs/enqueued" responded 200 in 4.2640 ms
+[Information] 26-06 01:08:27 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 3.3651 ms
+[Information] 26-06 01:08:27 || HTTP "GET" "/hangfiredashboard/jobs/succeeded" responded 200 in 28.9353 ms
+[Information] 26-06 01:08:29 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.7139 ms
+[Information] 26-06 01:08:31 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 1.9498 ms
+[Information] 26-06 01:08:33 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.9337 ms
+[Information] 26-06 01:08:35 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.6753 ms
+[Information] 26-06 01:08:37 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 3.0063 ms
+[Information] 26-06 01:08:39 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.4165 ms
+[Information] 26-06 01:08:41 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.9233 ms
+[Information] 26-06 01:08:43 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 16.3879 ms
+[Information] 26-06 01:08:46 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 13.9513 ms
+[Information] 26-06 01:08:48 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 16.1607 ms
+[Information] 26-06 01:08:50 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 3.0922 ms
+[Information] 26-06 01:08:52 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.3931 ms
+[Information] 26-06 01:08:54 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.5428 ms
+[Information] 26-06 01:08:56 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.7228 ms
+[Information] 26-06 01:08:59 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 1.9776 ms
+[Information] 26-06 01:09:01 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.8598 ms
+[Information] 26-06 01:09:03 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.0443 ms
+[Information] 26-06 01:09:05 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.1809 ms
+[Information] 26-06 01:09:07 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 1.9354 ms
+[Information] 26-06 01:09:09 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.9857 ms
+[Information] 26-06 01:09:11 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 3.1565 ms
+[Information] 26-06 01:09:14 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.4859 ms
+[Information] 26-06 01:09:14 || Executed DbCommand ("3"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:10:14 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:11:15 || Executed DbCommand ("5"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:12:00 || Executed DbCommand ("5"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:13:00 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:14:00 || Executed DbCommand ("6"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:15:00 || Executed DbCommand ("6"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:16:00 || Executed DbCommand ("5"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:17:00 || Executed DbCommand ("3"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:18:00 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:19:00 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:20:00 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:21:00 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:22:01 || Executed DbCommand ("5"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:23:01 || Executed DbCommand ("6"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:24:01 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:25:01 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:26:01 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:27:01 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:28:01 || Executed DbCommand ("5"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:29:01 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:30:01 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:31:01 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:32:01 || Executed DbCommand ("5"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:33:02 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:34:02 || Executed DbCommand ("7"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:35:02 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:36:02 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:37:02 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:38:02 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:39:02 || Executed DbCommand ("6"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:40:02 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 26-06 01:41:02 || Executed DbCommand ("4"ms) [Parameters=["@__today_0='06/26/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Warning] 26-06 01:41:31 || Stopping the server due to DomainUnload or ProcessExit event...
+[Information] 26-06 01:41:31 || Server ahmedfawzi_msi:19788:2fb8ad75 caught stopping signal...
+[Information] 26-06 01:41:31 || Server ahmedfawzi_msi:19788:2fb8ad75 caught stopped signal...
+[Warning] 26-06 01:41:31 || Server ahmedfawzi_msi:19788:2fb8ad75 caught shutdown signal...
+[Warning] 26-06 01:41:31 || Server ahmedfawzi_msi:19788:2fb8ad75 stopped non-gracefully due to ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+[Information] 26-06 01:41:31 || Server ahmedfawzi_msi:19788:2fb8ad75 successfully reported itself as stopped in 21.5877 ms
+[Information] 26-06 01:41:31 || Server ahmedfawzi_msi:19788:2fb8ad75 has been stopped in total 25.6409 ms
+[Warning] 26-06 02:42:19 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 26-06 02:42:19 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 26-06 02:42:19 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 26-06 02:42:19 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 26-06 02:42:19 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 26-06 02:42:19 || Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 26-06 02:42:19 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 26-06 02:42:19 || Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 26-06 02:42:19 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 26-06 02:42:19 || Start installing Hangfire SQL objects...
+[Information] 26-06 02:42:19 || Hangfire SQL objects installed.
+[Information] 26-06 02:42:20 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 26-06 02:42:20 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 26-06 02:42:20 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 26-06 02:42:20 || Server ahmedfawzi_msi:23372:dadeba37 successfully announced in 23.2644 ms
+[Information] 26-06 02:42:20 || Server ahmedfawzi_msi:23372:dadeba37 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 26-06 02:42:20 || Server ahmedfawzi_msi:23372:dadeba37 all the dispatchers started
+[Warning] 26-06 02:43:09 || Failed to determine the https port for redirect.
+[Information] 26-06 02:43:09 || HTTP "GET" "/hangfiredashboard" responded 200 in 230.6660 ms
+[Information] 26-06 02:43:09 || HTTP "GET" "/hangfiredashboard/css-dark1814050956907" responded 200 in 7.2702 ms
+[Information] 26-06 02:43:09 || HTTP "GET" "/hangfiredashboard/js181401229745487" responded 200 in 21.4497 ms
+[Information] 26-06 02:43:09 || HTTP "GET" "/hangfiredashboard/css1814068243538" responded 200 in 25.3333 ms
+[Information] 26-06 02:43:11 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 94.7227 ms
+[Information] 26-06 02:43:13 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 64.2501 ms
+[Information] 26-06 02:43:15 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 64.7652 ms
+[Information] 26-06 02:43:17 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 10.8014 ms
+[Information] 26-06 02:43:18 || HTTP "GET" "/hangfiredashboard/jobs/enqueued" responded 200 in 17.6666 ms
+[Information] 26-06 02:43:20 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 3.0707 ms
+[Information] 26-06 02:43:22 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.6922 ms
+[Information] 26-06 02:43:24 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.1199 ms
+[Information] 26-06 02:43:26 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.1862 ms
+[Information] 26-06 02:43:28 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.6847 ms
+[Information] 26-06 02:43:29 || HTTP "GET" "/hangfiredashboard/jobs/scheduled" responded 200 in 24.8857 ms
+[Information] 26-06 02:43:30 || HTTP "GET" "/hangfiredashboard/jobs/processing" responded 200 in 52.5756 ms
+[Information] 26-06 02:43:31 || HTTP "GET" "/hangfiredashboard/jobs/succeeded" responded 200 in 45.8305 ms
+[Information] 26-06 02:43:33 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 9.6161 ms
+[Information] 26-06 02:43:33 || HTTP "GET" "/hangfiredashboard/jobs/enqueued" responded 200 in 2.9211 ms
+[Information] 26-06 02:43:34 || HTTP "GET" "/hangfiredashboard/recurring" responded 200 in 31.4698 ms
+[Information] 26-06 02:43:35 || HTTP "GET" "/hangfiredashboard/servers" responded 200 in 14.8621 ms
+[Information] 26-06 02:43:37 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.8627 ms
+[Information] 26-06 02:43:42 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.4638 ms
+[Information] 26-06 02:43:44 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 2.5959 ms
+[Information] 26-06 02:43:49 || HTTP "POST" "/hangfiredashboard/stats" responded 200 in 10.1377 ms
+[Warning] 26-06 02:49:34 || Stopping the server due to DomainUnload or ProcessExit event...
+[Information] 26-06 02:49:34 || Server ahmedfawzi_msi:23372:dadeba37 caught stopping signal...
+[Information] 26-06 02:49:34 || Server ahmedfawzi_msi:23372:dadeba37 caught stopped signal...
+[Warning] 26-06 02:49:34 || Server ahmedfawzi_msi:23372:dadeba37 caught shutdown signal...
+[Warning] 26-06 02:49:34 || Server ahmedfawzi_msi:23372:dadeba37 stopped non-gracefully due to ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+[Information] 26-06 02:49:34 || Server ahmedfawzi_msi:23372:dadeba37 successfully reported itself as stopped in 20.3018 ms
+[Information] 26-06 02:49:34 || Server ahmedfawzi_msi:23372:dadeba37 has been stopped in total 23.3086 ms

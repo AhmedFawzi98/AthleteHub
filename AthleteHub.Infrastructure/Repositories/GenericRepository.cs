@@ -8,6 +8,23 @@ namespace AthleteHub.Infrastructure.Repositories;
 
 internal class GenericRepository<T>(AthleteHubDbContext _context) : IGenericRepository<T> where T : class
 {
+    public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> searchCritrea = null, IEnumerable<string> includes = null)
+    {
+        IQueryable<T> query = _context.Set<T>();
+        if (includes != null && includes.Count() > 0)
+        {
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+        }
+        if (searchCritrea != null)
+            query = query.Where(searchCritrea);
+
+        return await query.ToListAsync();
+    }
+
+
     public async Task<(IEnumerable<T>, int)> GetAllAsync(int pageSize, int pageNumber, SortingDirection sortingDirection,
         Expression<Func<T, object>> sortingCritrea = null, IEnumerable<Expression<Func<T, bool>>> filtersCritrea = null
        , Expression<Func<T, bool>> searchCritrea = null, Dictionary<Expression<Func<T, object>>, KeyValuePair<Expression<Func<object, object>>, Expression<Func<object, object>>>> includes=null)
@@ -88,5 +105,6 @@ internal class GenericRepository<T>(AthleteHubDbContext _context) : IGenericRepo
     public void Update(T entity)
     {
         _context.Set<T>().Update(entity);
-    } 
+    }
+
 }

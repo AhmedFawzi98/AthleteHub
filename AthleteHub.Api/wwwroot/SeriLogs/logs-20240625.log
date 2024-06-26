@@ -2181,3 +2181,68 @@ END"
         FROM [Features] AS [f]) THEN CAST(1 AS bit)
     ELSE CAST(0 AS bit)
 END"
+[Warning] 25-06 15:47:56 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 25-06 15:47:56 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 25-06 15:47:56 || Executed DbCommand ("17"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 25-06 15:47:56 || Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 25-06 15:47:56 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 25-06 15:47:56 || Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 25-06 15:47:56 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 25-06 15:47:56 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 25-06 15:47:56 || Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Warning] 25-06 15:48:12 || Failed to determine the https port for redirect.
+[Information] 25-06 15:48:12 || Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Subscribtions] AS [s]"
+[Warning] 25-06 15:48:12 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Warning] 25-06 15:48:12 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Information] 25-06 15:48:12 || Executed DbCommand ("26"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [Subscribtions] AS [s]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY"
+[Information] 25-06 15:48:13 || HTTP "GET" "/api/subscribtions" responded 200 in 847.2638 ms
+[Information] 25-06 15:48:19 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Subscribtions] AS [s]"
+[Warning] 25-06 15:48:19 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Warning] 25-06 15:48:19 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Information] 25-06 15:48:19 || Executed DbCommand ("10"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[CoachId], [t].[DurationInMonths], [t].[Name], [t].[price], [t0].[SubscribtionId], [t0].[FeatureId], [t0].[Id], [t0].[Description], [t0].[Name]
+FROM (
+    SELECT [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+    FROM [Subscribtions] AS [s]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN (
+    SELECT [s0].[SubscribtionId], [s0].[FeatureId], [f].[Id], [f].[Description], [f].[Name]
+    FROM [SubscribtionFeatures] AS [s0]
+    INNER JOIN [Features] AS [f] ON [s0].[FeatureId] = [f].[Id]
+) AS [t0] ON [t].[Id] = [t0].[SubscribtionId]
+ORDER BY [t].[Id], [t0].[SubscribtionId], [t0].[FeatureId]"
+[Information] 25-06 15:48:19 || HTTP "GET" "/api/subscribtions" responded 200 in 273.4092 ms

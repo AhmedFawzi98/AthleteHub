@@ -17,11 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AthleteHub.Infrastructure\AthleteHub.Infrastructure.csproj" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <ProjectReference Include="..\AthleteHub.Infrastructure\AthleteHub.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

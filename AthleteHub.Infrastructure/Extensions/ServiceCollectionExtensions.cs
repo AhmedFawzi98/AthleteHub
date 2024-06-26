@@ -1,18 +1,22 @@
 ﻿using AthleteHub.Application.Services;
 using AthleteHub.Domain.Entities;
 using AthleteHub.Domain.Interfaces.Repositories;
+using AthleteHub.Domain.Interfaces.Services;
 using AthleteHub.Infrastructure.Authorization.Services;
 using AthleteHub.Infrastructure.Configurations;
 using AthleteHub.Infrastructure.Constants;
 using AthleteHub.Infrastructure.Persistance;
 using AthleteHub.Infrastructure.Repositories;
 using AthleteHub.Infrastructure.Seeders;
+using Hangfire;
+using Hangfire.SqlServer;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Text;
 
 namespace AthleteHub.Application.Extensions;
@@ -21,7 +25,7 @@ public static class ServiceCollectionExtensions
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        string AthleteHubDbConnectionString = configuration.GetConnectionString(AppSettingsConstants.AthleteHub)!;
+        string AthleteHubDbConnectionString = configuration.GetConnectionString(ConfigurationConstants.AthleteHub)!;
 
         services.AddDbContext<AthleteHubDbContext>(options =>
         {
@@ -75,14 +79,39 @@ public static class ServiceCollectionExtensions
                 ClockSkew = TimeSpan.Zero
             };    
         });
-    
+
 
         #endregion
 
+
         services.AddScoped<ISeeder, Seeder>();
-
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-
         services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<ISubscribtionService, SubscribtionService>();
+
+        #region hangfire
+        services.AddHangfire(config =>
+            config.UseSqlServerStorage(configuration.GetConnectionString(ConfigurationConstants.AthleteHub),
+            new SqlServerStorageOptions
+            {
+                CommandBatchMaxTimeout = TimeSpan.FromMinutes(15),
+                SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                UseRecommendedIsolationLevel = true,
+                QueuePollInterval = TimeSpan.FromHours(8)
+            }));
+
+        services.AddHangfireServer();
+
+        var serviceProvider = services.BuildServiceProvider();
+        var recurringJobManager = serviceProvider.GetRequiredService<IRecurringJobManager>();
+
+        recurringJobManager.AddOrUpdate(HangFireTasksConstants.CheckSubscriptionExpirations,
+            () => serviceProvider.GetRequiredService<ISubscribtionService>().CheckSubscriptionExpirations(),
+            Cron.Daily()
+        );
+
+        #endregion
+
+
     }
 }
