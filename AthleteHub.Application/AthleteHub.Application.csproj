@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Athletes\Queries\" />
-    <Folder Include="Coaches\" />
+    <Folder Include="Services\ContentTypeService\" />
   </ItemGroup>
 
   <ItemGroup>
