@@ -1,9 +1,17 @@
-﻿using AthleteHub.Application.Services;
-using AthleteHub.Application.Services.BlobStorageService;
+
+﻿using AthleteHub.Application.Users;
+using AthleteHub.Application.Services;
 using AthleteHub.Domain.Entities;
 using AthleteHub.Domain.Interfaces.Repositories;
 using AthleteHub.Infrastructure.Authorization.Services;
+using AthleteHub.Infrastructure.Authorization.Services.Payment;
+using AthleteHub.Infrastructure.Authorization.Services;
+
+
+using AthleteHub.Application.Services.BlobStorageService;
+
 using AthleteHub.Infrastructure.BlobStorage;
+
 using AthleteHub.Infrastructure.Configurations;
 using AthleteHub.Infrastructure.Constants;
 using AthleteHub.Infrastructure.Persistance;
@@ -84,6 +92,10 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ISeeder, Seeder>();
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IUserContext, UserContext>();
+        services.AddScoped<IPaymentService, PaymentService>();
+        services.AddMemoryCache();
+
 
         services.AddScoped<ITokenService, TokenService>();
         services.Configure<BlobStorageSettings>(configuration.GetSection(BlobStorageSettings.BlobStorage));

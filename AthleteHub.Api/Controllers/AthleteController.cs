@@ -1,6 +1,10 @@
 ﻿using AthleteHub.Application.Athletes.Commands.AddToFavourite;
 using AthleteHub.Application.Athletes.Commands.CalCalculatecalory;
+using AthleteHub.Application.Athletes.Commands.CreateMeasurement;
+using AthleteHub.Application.Athletes.Commands.DeleteMeasurement;
 using AthleteHub.Application.Athletes.Commands.Subscribe;
+using AthleteHub.Application.Athletes.Dtos;
+using AthleteHub.Application.Athletes.Queries.FindMeasurement;
 using AthleteHub.Domain.Constants;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -39,5 +43,38 @@ namespace AthleteHub.Api.Controllers
             var tdee = await _mediator.Send(calCalculatecaloryCommand);
             return Ok(tdee);
         }
+
+
+        [HttpPost("Athlete/{AthleteId:int}/Measurement")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MeasurementDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        public async Task<IActionResult> AddMeasurement(int AthleteId, CreateMeasurementCommand createMeasurementCommand)
+        {
+            createMeasurementCommand.SetAthleteId(AthleteId);
+            var addedMeasurement = await _mediator.Send(createMeasurementCommand);
+            return Ok(addedMeasurement);
+        }
+
+        [HttpDelete("Athlete/Measurement")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [Authorize(Roles = RolesConstants.Athlete)]
+
+        public async Task<IActionResult> DeleteMeasurement([FromQuery] DateTime date)
+        {
+            await _mediator.Send(new DeleteMeasurementCommand {Date = DateOnly.FromDateTime(date) });
+            return NoContent();
+        }
+        [HttpGet("Athlete/{AthleteId:int}/Measurement")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MeasurementDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [Authorize(Roles = RolesConstants.Athlete)]
+        public async Task<IActionResult> GetMeasurementByAthleteId(int AthleteId, [FromQuery] DateTime date)
+        {
+
+            var resturantsDto = await _mediator.Send(new FindMeasurementQuery { AthleteId = AthleteId, Date = DateOnly.FromDateTime(date) });
+            return Ok(resturantsDto);
+        }
+
     }
 }

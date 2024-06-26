@@ -68,6 +68,29 @@ internal class GenericRepository<T>(AthleteHubDbContext _context) : IGenericRepo
         }
         return await query.FirstOrDefaultAsync(criteria);
     }
+    public async Task<T> FindAsync(
+    Expression<Func<T, bool>> criteria,
+    SortingDirection sortingDirection = SortingDirection.Ascending,
+    Expression<Func<T, object>> sortingCritrea = null,
+    string[] includes = null)
+    {
+        IQueryable<T> query = _context.Set<T>();
+
+        if (includes != null && includes.Length > 0)
+        {
+            foreach (string include in includes)
+                query = query.Include(include);
+        }
+
+        if (sortingCritrea != null)
+        {
+            query = sortingDirection == SortingDirection.Ascending
+                ? query.OrderBy(sortingCritrea)
+                : query.OrderByDescending(sortingCritrea);
+        }
+
+        return await query.FirstOrDefaultAsync(criteria);
+    }
 
     public async Task AddAsync(T entity)
     {

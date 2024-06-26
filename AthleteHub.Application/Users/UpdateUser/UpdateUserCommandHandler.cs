@@ -5,7 +5,6 @@ using AthleteHub.Domain.Interfaces.Repositories;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Resturants.Application.Users;
 
 namespace AthleteHub.Application.Users.UpdateUser;
 

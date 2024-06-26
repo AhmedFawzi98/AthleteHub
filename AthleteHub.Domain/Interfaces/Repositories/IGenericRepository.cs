@@ -11,6 +11,7 @@ public interface IGenericRepository<T> where T : class
    
     Task<T> FindAsync(Expression<Func<T,bool>> criteria, Dictionary<Expression<Func<T, object>>, KeyValuePair<Expression<Func<object, object>>, Expression<Func<object, object>>>> includes = null);
     
+
     Task AddAsync(T entity);
    
     void Delete(T entity);
