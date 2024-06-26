@@ -148,6 +148,9 @@ namespace AthleteHub.Infrastructure.Migrations
                     b.Property<int>("SubscribtionId")
                         .HasColumnType("int");
 
+                    b.Property<string>("PaymentIntentId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateOnly?>("SubscribtionEndDate")
                         .HasColumnType("date");
 

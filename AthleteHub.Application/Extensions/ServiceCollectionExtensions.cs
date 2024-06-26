@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Resturants.Application.Users;
 using AthleteHub.Application.Services;
 using AthleteHub.Domain.Interfaces.Services;
+
 namespace AthleteHub.Application.Extensions;
 
 public static class ServiceCollectionExtensions

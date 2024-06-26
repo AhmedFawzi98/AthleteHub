@@ -15,7 +15,7 @@ namespace AthleteHub.Application.Subscribtions.Dtos
         public string Name { get; set; }
         public decimal price { get; set; }
         public int DurationInMonths { get; set; }
-        public ICollection<SubscribtionFeatureDto> SubscribtionFeatures { get; set; } = new List<SubscribtionFeatureDto>();
+        public List<SubscribtionFeatureDto> SubscribtionsFeatures { get; set; } = new List<SubscribtionFeatureDto>();
 
         //public ICollection<AthleteActiveSubscribtionDto> AthleteActiveSubscribtions { get; set; } = new List<AthleteActiveSubscribtionDto>();
 

@@ -8,7 +8,7 @@ using AthleteHub.Application.Subscribtions.Queries.FindSubscribtion;
 using AthleteHub.Application.Subscribtions.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using AthleteHub.Domain.Constants;
-using AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtions;
+using AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtionsByCoachId;
 using AthleteHub.Application.Subscribtions.Commands.DeleteSubscribtion;
 using AthleteHub.Application.Subscribtions.Commands.UpdateSubscribtion;
 
@@ -24,11 +24,12 @@ namespace AthleteHub.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("subscribtions")]
+        [HttpGet("coaches/{id:int}/subscribtions")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<SubscribtionDto>))]
-        public async Task<IActionResult> GetAllSubscribtions([FromQuery] GetAllSubscribtionsQuery getAllSubscribtionsQuery)
+        public async Task<IActionResult> GetAllSubscribtionsByCoachId(int id, [FromQuery] GetAllSubscribtionsQueryByCoachId getAllSubscribtionsQueryByCoachId)
         {
-            var subscribtionsDtos = await _mediator.Send(getAllSubscribtionsQuery);
+            getAllSubscribtionsQueryByCoachId.SetCoachId(id);
+            var subscribtionsDtos = await _mediator.Send(getAllSubscribtionsQueryByCoachId);
             return Ok(subscribtionsDtos);
         }
 
@@ -44,7 +45,7 @@ namespace AthleteHub.Api.Controllers
 
         [HttpPost("subscribtions")]
         [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(SubscribtionDto))]
-        //[Authorize(Roles = RolesConstants.Coach)]
+        [Authorize(Roles = RolesConstants.Coach)]
         public async Task<IActionResult> AddSubscribtion(CreateSubscribtionCommand createSubscribtionCommand)
         {
             var addedSubscribtion = await _mediator.Send(createSubscribtionCommand);
@@ -63,6 +64,7 @@ namespace AthleteHub.Api.Controllers
         [HttpPatch("subscribtions/{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SubscribtionDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+        [Authorize(Roles = RolesConstants.Coach)]
         public async Task<IActionResult> UpdateSubscribtion(int id, UpdateSubscribtionCommand updateSubscribtionCommand)
         {
             updateSubscribtionCommand.SetId(id);

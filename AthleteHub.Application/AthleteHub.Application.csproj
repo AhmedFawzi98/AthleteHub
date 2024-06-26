@@ -7,12 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AthleteHub.Domain\AthleteHub.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Athletes\Queries\" />
-    <Folder Include="Coaches\" />
+    <Folder Include="Services\ContentTypeService\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +17,10 @@
     <PackageReference Include="MediatR" Version="12.3.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AthleteHub.Domain\AthleteHub.Domain.csproj" />
   </ItemGroup>
 
 </Project>
