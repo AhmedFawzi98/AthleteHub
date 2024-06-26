@@ -5,14 +5,14 @@
 namespace AthleteHub.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class addingPaymentIntentToAthleteActiveSubscribtion : Migration
+    public partial class addingPayemntIntentIdInHistory : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
                 name: "PaymentIntentId",
-                table: "AthleteActiveSubscribtions",
+                table: "AthletesSubscribtionsHistory",
                 type: "nvarchar(max)",
                 nullable: true);
         }
@@ -22,7 +22,7 @@ namespace AthleteHub.Infrastructure.Migrations
         {
             migrationBuilder.DropColumn(
                 name: "PaymentIntentId",
-                table: "AthleteActiveSubscribtions");
+                table: "AthletesSubscribtionsHistory");
         }
     }
 }

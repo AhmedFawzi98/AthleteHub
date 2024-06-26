@@ -32,7 +32,8 @@ namespace AthleteHub.Application.Services
                 AthleteId = athleteActivesubscribtion.AthleteId,
                 SubscribtionId = athleteActivesubscribtion.SubscribtionId,
                 SubscribtionStartDate = athleteActivesubscribtion.SubscribtionStartDate,
-                SubscribtionEndDate = athleteActivesubscribtion.SubscribtionEndDate
+                SubscribtionEndDate = athleteActivesubscribtion.SubscribtionEndDate,
+                PaymentIntentId = athleteActivesubscribtion.PaymentIntentId
             });
 
             _unitOfWork.AthleteActiveSubscribtions.Delete(athleteActivesubscribtion);

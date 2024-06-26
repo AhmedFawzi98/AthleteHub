@@ -6,8 +6,6 @@ using AthleteHub.Domain.Interfaces.Repositories;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Resturants.Application.Users;
-using System.Linq.Expressions;
 using System.Linq.Expressions;
 
 namespace AthleteHub.Application.Users.ActivateAndDeactivateUser;
@@ -63,7 +61,7 @@ public class ActivateOrDeactivateUserCommandHandler(IMapper _mapper, UserManager
             }
             else
             {
-                throw new BadRequestException(new[] { new ValidationError { Field = "IsActive", Message = "Account can't be deactivated while having active subscriptions." } });
+                throw new BadRequestException(new[] { new BadRequestException.ValidationError { Field = "IsActive", Message = "Account can't be deactivated while having active subscriptions." } });
             }
         }
 
