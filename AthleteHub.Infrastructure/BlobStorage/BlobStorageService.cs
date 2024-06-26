@@ -53,7 +53,7 @@ namespace AthleteHub.Infrastructure.BlobStorage
                 }
             };
 
-            await blobClient.UploadAsync(file);
+            await blobClient.UploadAsync(file, uploadOptions);
             var blobUrl = blobClient.Uri.ToString();
 
             return blobUrl;

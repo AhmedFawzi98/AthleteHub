@@ -7,6 +7,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Resturants.Application.Users;
+using System.Linq.Expressions;
 using static AthleteHub.Domain.Exceptions.BadRequestException;
 
 namespace AthleteHub.Application.Users.ActivateAndDeactivateUser;
@@ -40,7 +41,14 @@ public class ActivateOrDeactivateUserCommandHandler(IMapper _mapper, UserManager
 
     private async Task<bool> HandleCoachActivationAsync(ActivateOrDeactivateUserCommand request, ApplicationUser user, string currentUserId)
     {
-        var coach = await _unitOfWork.Coaches.FindAsync(c => c.ApplicationUserId == currentUserId, [nameof(Coach.AthleteCoaches)]);
+        Dictionary<Expression<Func<Coach, object>>, KeyValuePair<Expression<Func<object, object>>, Expression<Func<object, object>>>> includes = new()
+        {
+            {c => c.AthleteCoaches, new(null,null)}
+        };
+
+        var coach = await _unitOfWork.Coaches.FindAsync(c => c.ApplicationUserId == currentUserId, includes);
+        if (coach == null)
+            return false;
         if (coach == null)
             return false;
 
