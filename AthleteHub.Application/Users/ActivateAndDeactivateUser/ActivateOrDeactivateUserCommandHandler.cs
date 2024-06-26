@@ -6,11 +6,9 @@ using AthleteHub.Domain.Interfaces.Repositories;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-
-
+using Resturants.Application.Users;
 using System.Linq.Expressions;
-
-using static AthleteHub.Domain.Exceptions.BadRequestException;
+using System.Linq.Expressions;
 
 namespace AthleteHub.Application.Users.ActivateAndDeactivateUser;
 
@@ -51,8 +49,7 @@ public class ActivateOrDeactivateUserCommandHandler(IMapper _mapper, UserManager
         var coach = await _unitOfWork.Coaches.FindAsync(c => c.ApplicationUserId == currentUserId, includes);
         if (coach == null)
             return false;
-        if (coach == null)
-            return false;
+
 
         if (!request.IsDeactivating)
         {

@@ -1,6 +1,7 @@
 using AthleteHub.Api.Extensions;
 using AthleteHub.Application.Extensions;
 using AthleteHub.Infrastructure.Seeders;
+using Hangfire;
 using Serilog;
 using Serilog.Events;
 
@@ -44,6 +45,8 @@ app.UseCors(CorsPoliciesConstants.AllowAll);
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseHangfireDashboard("/hangfireDashboard");
 
 app.MapControllers();
 

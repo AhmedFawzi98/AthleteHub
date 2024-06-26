@@ -6,6 +6,9 @@ using AthleteHub.Application.Users;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
+using Resturants.Application.Users;
+using AthleteHub.Application.Services;
+using AthleteHub.Domain.Interfaces.Services;
 
 namespace AthleteHub.Application.Extensions;
 
@@ -30,6 +33,6 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IFilterService, FilterService>();
         services.AddScoped<ISearchService, SearchService>();
         services.AddScoped<ISortService, SortService>();
-
+ 
     }
 }
