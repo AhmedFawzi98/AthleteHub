@@ -1,17 +1,18 @@
 ﻿using AthleteHub.Api.Dtos;
 using AthleteHub.Application.Users.ActivateAndDeactivateUser;
+using AthleteHub.Application.Users.Authenticaion.ConfirmEmail;
 using AthleteHub.Application.Users.Authenticaion.LoginUser;
 using AthleteHub.Application.Users.Authenticaion.RefreshUserToken;
 using AthleteHub.Application.Users.Authenticaion.RegisterUser;
 using AthleteHub.Application.Users.Authenticaion.RevokeUserToken;
+using AthleteHub.Application.Users.ChangeEmail.InitiateChangeEmail;
 using AthleteHub.Application.Users.ChangePassword;
 using AthleteHub.Application.Users.Dtos;
+using AthleteHub.Application.Users.GetUser;
 using AthleteHub.Application.Users.UpdateUser;
-using AthleteHub.Domain.Constants;
-using AthleteHub.Domain.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AthleteHub.Api.Controllers;
@@ -21,11 +22,31 @@ namespace AthleteHub.Api.Controllers;
 public class IdentityController(IMediator _mediator) : ControllerBase
 {
     [HttpPost("register")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmailConfirmationResponseDto))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorDto))]
     public async Task<IActionResult> Register([FromBody] RegisterUserCommand registerUserCommand)
     {
-        var userDto = await _mediator.Send(registerUserCommand);
+        var registerResponseDto = await _mediator.Send(registerUserCommand);
+        return Ok(registerResponseDto);
+    }
+
+    [HttpPost("confirmEmail")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+    [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorDto))]
+    public async Task<IActionResult> ConfirmEmail([FromQuery] ConfirmEmailCommand confirmEmailCommand)
+    {
+        await _mediator.Send(confirmEmailCommand);
+        return NoContent();
+    }
+
+    [HttpGet("getUserById/{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+    public async Task<IActionResult> GetUserById([FromRoute] string id)
+    {
+        var command = new GetUserCommand() { ApplicationUserId = id};
+        var userDto = await _mediator.Send(command);
         return Ok(userDto);
     }
 
@@ -40,6 +61,8 @@ public class IdentityController(IMediator _mediator) : ControllerBase
         return Ok(updatedUserDto);
     }
 
+
+
     [HttpPatch("activateOrDeactivateUser")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
@@ -51,16 +74,40 @@ public class IdentityController(IMediator _mediator) : ControllerBase
         return NoContent();
     }
 
-    [HttpPatch("changeUserPasswordById")]
+    [HttpPatch("changePassword")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(string))]
     [Authorize]
-    public async Task<IActionResult> ChangeUserPasswordById([FromBody] ChangePasswordCommand changePasswordCommand)
+    public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordCommand changePasswordCommand)
     {
         await _mediator.Send(changePasswordCommand);
         return NoContent();
     }
+
+    [HttpPatch("changeEmail")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(string))]
+    [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+    [Authorize]
+    public async Task<IActionResult> ChangeEmail([FromBody] ChangeEmailCommand changeEmailCommand)
+    {
+        await _mediator.Send(changeEmailCommand);
+        return NoContent();
+    }
+
+    [HttpPatch("confirmChangeEmail")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+    [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+    [Authorize]
+    public async Task<IActionResult> ConfirmChangeEmail([FromBody] ChangeEmailCommand changeEmailCommand)
+    {
+        await _mediator.Send(changeEmailCommand);
+        return NoContent();
+    }
+
 
     [HttpPost("login")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserLoginResponseDto))]
@@ -85,10 +132,12 @@ public class IdentityController(IMediator _mediator) : ControllerBase
     [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RevokeTokenResponseDto))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(string))]
-    public async Task<IActionResult> Login()
+    public async Task<IActionResult> RevokeToken()
     {
         var revokeTokenCommand = new RevokeTokenCommand();
         var revokeTokenResponseDto = await _mediator.Send(revokeTokenCommand);
         return Ok(revokeTokenResponseDto);
     }
+
+
 }

@@ -6,7 +6,7 @@ namespace AthleteHub.Application.Services;
 public interface ITokenService
 {
     RefreshToken GenerateRefreshToken();
-    Task<(string, DateTime)> GetJwtAccessTokenAsync(ApplicationUser user, List<string> rolesNames);
+    Task<(string, DateTime)> GetJwtAccessTokenAsync(ApplicationUser user, List<string> rolesNames, int entityId);
     void SaveRefreshTokenInCookie(string refreshToken, DateTime expires);
     string GetRefreshTokenFromCookie();
     void RevokeToken(RefreshToken refreshToken);
