@@ -24,7 +24,7 @@ public class IdentityController(IMediator _mediator) : ControllerBase
     [HttpPost("register")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmailConfirmationResponseDto))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorDto))]
-    public async Task<IActionResult> Register([FromBody] RegisterUserCommand registerUserCommand)
+    public async Task<IActionResult> Register([FromForm] RegisterUserCommand registerUserCommand)
     {
         var registerResponseDto = await _mediator.Send(registerUserCommand);
         return Ok(registerResponseDto);
@@ -138,6 +138,4 @@ public class IdentityController(IMediator _mediator) : ControllerBase
         var revokeTokenResponseDto = await _mediator.Send(revokeTokenCommand);
         return Ok(revokeTokenResponseDto);
     }
-
-
 }
