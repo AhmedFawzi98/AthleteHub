@@ -26,8 +26,8 @@ public class IdentityController(IMediator _mediator) : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorDto))]
     public async Task<IActionResult> Register([FromForm] RegisterUserCommand registerUserCommand)
     {
-        var registerResponseDto = await _mediator.Send(registerUserCommand);
-        return Ok(registerResponseDto);
+        var ResponseDto = await _mediator.Send(registerUserCommand);
+        return Ok(ResponseDto);
     }
 
     [HttpPost("confirmEmail")]
