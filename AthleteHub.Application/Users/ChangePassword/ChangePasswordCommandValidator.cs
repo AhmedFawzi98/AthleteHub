@@ -21,7 +21,7 @@ public class ChangePasswordCommandValidator : AbstractValidator<ChangePasswordCo
 
         RuleFor(dto => dto.ConfirmNewPassword)
            .Must((dto, confirmPassword) => confirmPassword == dto.NewPassword)
-           .WithMessage("Password and Confirm Password must match");
+           .WithMessage("new password and new Password confirm fields must match");
 
     }
 }

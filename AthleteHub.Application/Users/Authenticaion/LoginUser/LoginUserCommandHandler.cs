@@ -50,8 +50,10 @@ public class LoginUserCommanHandler(UserManager<ApplicationUser> _userManager, S
             userLoginResponseDto.IsApproved = false;
             return userLoginResponseDto;
         }
+        
+        var entityId = await GetUserEntityIdAsync(user, rolesNames);
 
-        await SetAccessTokenAsync(user, userLoginResponseDto, rolesNames);
+        await SetAccessTokenAsync(user, userLoginResponseDto, rolesNames, entityId);
         await SetRefreshTokenAsync(user, userLoginResponseDto);
 
         return userLoginResponseDto;
@@ -84,9 +86,18 @@ public class LoginUserCommanHandler(UserManager<ApplicationUser> _userManager, S
         }
         return false;
     }
-    private async Task SetAccessTokenAsync(ApplicationUser user, UserLoginResponseDto userLoginResponseDto, List<string> rolesNames)
+    private async Task<int> GetUserEntityIdAsync(ApplicationUser user, List<string> rolesNames)
     {
-        var (jwtAccessToken, validTo) = await _tokenService.GetJwtAccessTokenAsync(user, rolesNames);
+        if(rolesNames.Contains(RolesConstants.Coach))
+        {
+            return await _unitOfWork.Coaches.FindAsync(c => c.ApplicationUserId == user.Id, c => c.Id);
+        }
+        return await _unitOfWork.Athletes.FindAsync(a => a.ApplicationUserId == user.Id, a => a.Id);
+    }
+
+    private async Task SetAccessTokenAsync(ApplicationUser user, UserLoginResponseDto userLoginResponseDto, List<string> rolesNames, int entityId)
+    {
+        var (jwtAccessToken, validTo) = await _tokenService.GetJwtAccessTokenAsync(user, rolesNames, entityId);
         userLoginResponseDto.AccessToken = jwtAccessToken;
         userLoginResponseDto.AccessTokenExpiration = validTo;
     }

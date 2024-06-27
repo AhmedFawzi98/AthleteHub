@@ -1,0 +1,718 @@
+[Warning] 27-06 02:52:51 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 27-06 02:52:51 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 27-06 02:52:51 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 02:52:51 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 27-06 02:52:51 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 27-06 02:52:51 || Executed DbCommand ("22"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 02:52:52 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 02:52:52 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 02:52:52 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 02:52:52 || Start installing Hangfire SQL objects...
+[Information] 27-06 02:52:52 || Hangfire SQL objects installed.
+[Information] 27-06 02:52:53 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 27-06 02:52:53 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 27-06 02:52:53 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 27-06 02:52:53 || Server ahmedfawzi_msi:11696:0a1e0fc4 successfully announced in 22.909 ms
+[Information] 27-06 02:52:53 || Server ahmedfawzi_msi:11696:0a1e0fc4 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 27-06 02:52:53 || Server ahmedfawzi_msi:11696:0a1e0fc4 all the dispatchers started
+[Warning] 27-06 02:53:31 || Failed to determine the https port for redirect.
+[Information] 27-06 02:53:32 || Executed DbCommand ("16"ms) [Parameters=["@__p_0='fefwfewfewf332' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[Id] = @__p_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 27-06 02:53:32 || HTTP "GET" "/api/Identity/getUserById/fefwfewfewf332" responded 500 in 536.0969 ms
+AthleteHub.Domain.Exceptions.NotFoundException: ApplicationUser [fefwfewfewf332] doesn't exist
+   at AthleteHub.Application.Users.GetUserCommandHandler.Handle(GetUserCommand request, CancellationToken cancellationToken) in C:\Users\ahmed\source\repos\AthleteHub\AthleteHub.Application\Users\GetUser\GetUserCommandHandler.cs:line 15
+   at AthleteHub.Api.Controllers.IdentityController.GetUserById(String id) in C:\Users\ahmed\source\repos\AthleteHub\AthleteHub.Api\Controllers\IdentityController.cs:line 37
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[Error] 27-06 02:53:32 || An unhandled exception has occurred while executing the request.
+AthleteHub.Domain.Exceptions.NotFoundException: ApplicationUser [fefwfewfewf332] doesn't exist
+   at AthleteHub.Application.Users.GetUserCommandHandler.Handle(GetUserCommand request, CancellationToken cancellationToken) in C:\Users\ahmed\source\repos\AthleteHub\AthleteHub.Application\Users\GetUser\GetUserCommandHandler.cs:line 15
+   at AthleteHub.Api.Controllers.IdentityController.GetUserById(String id) in C:\Users\ahmed\source\repos\AthleteHub\AthleteHub.Api\Controllers\IdentityController.cs:line 37
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+[Error] 27-06 02:53:32 || ApplicationUser [fefwfewfewf332] doesn't exist
+AthleteHub.Domain.Exceptions.NotFoundException: ApplicationUser [fefwfewfewf332] doesn't exist
+   at AthleteHub.Application.Users.GetUserCommandHandler.Handle(GetUserCommand request, CancellationToken cancellationToken) in C:\Users\ahmed\source\repos\AthleteHub\AthleteHub.Application\Users\GetUser\GetUserCommandHandler.cs:line 15
+   at AthleteHub.Api.Controllers.IdentityController.GetUserById(String id) in C:\Users\ahmed\source\repos\AthleteHub\AthleteHub.Api\Controllers\IdentityController.cs:line 37
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+[Information] 27-06 02:53:35 || Executed DbCommand ("2"ms) [Parameters=["@__p_0='c540caed-274e-4ea7-91fd-1ae596f1e491' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[Id] = @__p_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 27-06 02:53:35 || HTTP "GET" "/api/Identity/getUserById/c540caed-274e-4ea7-91fd-1ae596f1e491" responded 200 in 191.5626 ms
+[Information] 27-06 02:53:58 || Executed DbCommand ("1"ms) [Parameters=["@__p_0='6e32e7ee-ac37-4e13-8938-761bee56860b' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[Id] = @__p_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 27-06 02:53:58 || HTTP "GET" "/api/Identity/getUserById/6e32e7ee-ac37-4e13-8938-761bee56860b" responded 200 in 16.2085 ms
+[Information] 27-06 02:54:08 || Executed DbCommand ("1"ms) [Parameters=["@__p_0='c540caed-274e-4ea7-91fd-1ae596f1e491' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[Id] = @__p_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 27-06 02:54:08 || HTTP "GET" "/api/Identity/getUserById/c540caed-274e-4ea7-91fd-1ae596f1e491" responded 200 in 3.4626 ms
+[Warning] 27-06 02:57:31 || Stopping the server due to DomainUnload or ProcessExit event...
+[Information] 27-06 02:57:31 || Server ahmedfawzi_msi:11696:0a1e0fc4 caught stopping signal...
+[Information] 27-06 02:57:31 || Server ahmedfawzi_msi:11696:0a1e0fc4 caught stopped signal...
+[Warning] 27-06 02:57:31 || Server ahmedfawzi_msi:11696:0a1e0fc4 caught shutdown signal...
+[Warning] 27-06 02:57:31 || Server ahmedfawzi_msi:11696:0a1e0fc4 stopped non-gracefully due to ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+[Information] 27-06 02:57:31 || Server ahmedfawzi_msi:11696:0a1e0fc4 successfully reported itself as stopped in 10.0157 ms
+[Information] 27-06 02:57:31 || Server ahmedfawzi_msi:11696:0a1e0fc4 has been stopped in total 14.5074 ms
+[Warning] 27-06 02:59:57 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 27-06 02:59:57 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 27-06 02:59:57 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 02:59:57 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 27-06 02:59:57 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 27-06 02:59:57 || Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 02:59:57 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 02:59:58 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 02:59:58 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 02:59:58 || Start installing Hangfire SQL objects...
+[Information] 27-06 02:59:58 || Hangfire SQL objects installed.
+[Information] 27-06 02:59:58 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 27-06 02:59:58 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 27-06 02:59:58 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 27-06 02:59:58 || Server ahmedfawzi_msi:10600:5687d68e successfully announced in 17.4822 ms
+[Information] 27-06 02:59:58 || Server ahmedfawzi_msi:10600:5687d68e is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 27-06 02:59:58 || Server ahmedfawzi_msi:10600:5687d68e all the dispatchers started
+[Warning] 27-06 03:00:11 || Failed to determine the https port for redirect.
+[Information] 27-06 03:00:11 || Executed DbCommand ("11"ms) [Parameters=["@__p_0='6e32e7ee-ac37-4e13-8938-761bee56860b' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[Id] = @__p_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 27-06 03:00:11 || Executed DbCommand ("5"ms) [Parameters=["@__userId_0='6e32e7ee-ac37-4e13-8938-761bee56860b' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0"
+[Information] 27-06 03:00:11 || HTTP "GET" "/api/Identity/getUserById/6e32e7ee-ac37-4e13-8938-761bee56860b" responded 200 in 564.9495 ms
+[Information] 27-06 03:00:13 || Executed DbCommand ("6"ms) [Parameters=["@__today_0='06/27/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[PaymentIntentId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Warning] 27-06 03:32:35 || Stopping the server due to DomainUnload or ProcessExit event...
+[Information] 27-06 03:32:35 || Server ahmedfawzi_msi:10600:5687d68e caught stopping signal...
+[Information] 27-06 03:32:35 || Server ahmedfawzi_msi:10600:5687d68e caught stopped signal...
+[Warning] 27-06 03:32:35 || Server ahmedfawzi_msi:10600:5687d68e caught shutdown signal...
+[Warning] 27-06 03:32:35 || Server ahmedfawzi_msi:10600:5687d68e stopped non-gracefully due to ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+[Information] 27-06 03:32:35 || Server ahmedfawzi_msi:10600:5687d68e successfully reported itself as stopped in 9.5571 ms
+[Information] 27-06 03:32:35 || Server ahmedfawzi_msi:10600:5687d68e has been stopped in total 15.8816 ms
+[Warning] 27-06 03:55:07 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 27-06 03:55:07 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 27-06 03:55:07 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 03:55:07 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 27-06 03:55:07 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 27-06 03:55:07 || Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 03:55:08 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 03:55:08 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 03:55:08 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 03:55:08 || Start installing Hangfire SQL objects...
+[Information] 27-06 03:55:08 || Hangfire SQL objects installed.
+[Information] 27-06 03:55:08 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 27-06 03:55:08 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 27-06 03:55:08 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 27-06 03:55:08 || Server ahmedfawzi_msi:3168:855cb2c9 successfully announced in 14.2737 ms
+[Information] 27-06 03:55:08 || Server ahmedfawzi_msi:3168:855cb2c9 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 27-06 03:55:08 || Server ahmedfawzi_msi:3168:855cb2c9 all the dispatchers started
+[Warning] 27-06 03:55:28 || Failed to determine the https port for redirect.
+[Information] 27-06 03:55:29 || Executed DbCommand ("13"ms) [Parameters=["@__p_0='6e32e7ee-ac37-4e13-8938-761bee56860b' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[Id] = @__p_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 27-06 03:55:29 || Executed DbCommand ("4"ms) [Parameters=["@__userId_0='6e32e7ee-ac37-4e13-8938-761bee56860b' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0"
+[Information] 27-06 03:55:29 || HTTP "GET" "/api/Identity/getUserById/6e32e7ee-ac37-4e13-8938-761bee56860b" responded 200 in 670.4657 ms
+[Information] 27-06 03:55:56 || Executed DbCommand ("6"ms) [Parameters=["@__normalizedEmail_0='COACH1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 27-06 03:55:56 || Executed DbCommand ("11"ms) [Parameters=["@__normalizedUserName_0='COACH1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 27-06 03:55:56 || Executed DbCommand ("5"ms) [Parameters=["@__userId_0='ab36581f-7c4b-49a2-afbf-45807633494f' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0"
+[Information] 27-06 03:55:56 || Executed DbCommand ("6"ms) [Parameters=["@__user_Id_0='ab36581f-7c4b-49a2-afbf-45807633494f' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+FROM [Coaches] AS [c]
+WHERE [c].[ApplicationUserId] = @__user_Id_0"
+[Information] 27-06 03:55:56 || Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='ab36581f-7c4b-49a2-afbf-45807633494f' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id]
+FROM [Coaches] AS [c]
+WHERE [c].[ApplicationUserId] = @__user_Id_0"
+[Information] 27-06 03:55:56 || Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='ab36581f-7c4b-49a2-afbf-45807633494f' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0"
+[Information] 27-06 03:55:56 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='COACH1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 27-06 03:55:56 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='COACH1@ATHLETEHUB.COM' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 27-06 03:55:56 || Executed DbCommand ("10"ms) [Parameters=["@p22='ab36581f-7c4b-49a2-afbf-45807633494f' (Nullable = false) (Size = 450), @p0='0', @p1=NULL (Size = 4000), @p2='32681769-96e2-41ff-a244-12b5502ebf91' (Size = 4000), @p23='fd824edd-13c4-4db7-956d-0dbbd3e942c3' (Size = 4000), @p3='2024-06-22T19:59:35.4183818', @p4='02/02/2000' (DbType = Date), @p5='coach1@athletehub.com' (Size = 256), @p6='True', @p7='coach' (Nullable = false) (Size = 100), @p8='0', @p9='True', @p10='coach' (Nullable = false) (Size = 100), @p11='True', @p12='2024-06-24T17:56:51.8529521+00:00' (Nullable = true), @p13='COACH1@ATHLETEHUB.COM' (Size = 256), @p14='COACH1' (Size = 256), @p15='AQAAAAIAAYagAAAAEFHGV+dj5S4Jjqk277ecXQWuOCDiS1oRax+LrVRHvxguFKdC6ws3hMFrFULUyBGcWA==' (Size = 4000), @p16='' (Nullable = false) (Size = 15), @p17='False', @p18=NULL (Size = 4000), @p19='EAPE3EG76K37AP6IY6HUDL5LUZL3TPLN' (Size = 4000), @p20='False', @p21='coach1' (Size = 256), @p24='ab36581f-7c4b-49a2-afbf-45807633494f' (Nullable = false) (Size = 450), @p25='2024-06-27T00:55:56.7478837Z', @p26='2024-06-28T00:55:56.7479287Z', @p27=NULL (DbType = DateTime2), @p28='yVahvh0QbPiPFB5K8HCf9Gt%2BjFlKA5SEw5RAeFrbc6k%3D' (Nullable = false) (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [Bio] = @p1, [ConcurrencyStamp] = @p2, [CreatedAt] = @p3, [DateOfBirth] = @p4, [Email] = @p5, [EmailConfirmed] = @p6, [FirstName] = @p7, [Gender] = @p8, [IsActive] = @p9, [LastName] = @p10, [LockoutEnabled] = @p11, [LockoutEnd] = @p12, [NormalizedEmail] = @p13, [NormalizedUserName] = @p14, [PasswordHash] = @p15, [PhoneNumber] = @p16, [PhoneNumberConfirmed] = @p17, [ProfilePicture] = @p18, [SecurityStamp] = @p19, [TwoFactorEnabled] = @p20, [UserName] = @p21
+OUTPUT 1
+WHERE [Id] = @p22 AND [ConcurrencyStamp] = @p23;
+INSERT INTO [RefreshToken] ([ApplicationUserId], [CreatedOn], [ExpiresOn], [RevokedOn], [Token])
+OUTPUT INSERTED.[Id]
+VALUES (@p24, @p25, @p26, @p27, @p28);"
+[Information] 27-06 03:55:56 || HTTP "POST" "/api/Identity/login" responded 200 in 789.8983 ms
+[Information] 27-06 03:57:25 || Executed DbCommand ("4"ms) [Parameters=["@__normalizedEmail_0='UPDATEDUSERNAME' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 27-06 03:57:25 || Executed DbCommand ("5"ms) [Parameters=["@__normalizedUserName_0='UPDATEDUSERNAME' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 27-06 03:57:25 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='UPDATEDUSERNAME' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 27-06 03:57:25 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='TESTEMAIL@GMAIL.COM' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 27-06 03:57:25 || Executed DbCommand ("6"ms) [Parameters=["@p22='6e32e7ee-ac37-4e13-8938-761bee56860b' (Nullable = false) (Size = 450), @p0='0', @p1='some updated very new bio' (Size = 4000), @p2='6e655202-5248-400a-8d19-7ab4d2f5b60f' (Size = 4000), @p23='06b87a76-da47-49a4-b84c-6edf69cdcd14' (Size = 4000), @p3='2024-06-23T18:27:42.7228840', @p4='01/24/1997' (DbType = Date), @p5='testemail@gmail.com' (Size = 256), @p6='False', @p7='updatedfirstname' (Nullable = false) (Size = 100), @p8='0', @p9='True', @p10='updatedlastname' (Nullable = false) (Size = 100), @p11='True', @p12=NULL (DbType = DateTimeOffset), @p13='TESTEMAIL@GMAIL.COM' (Size = 256), @p14='UPDATEDUSERNAME' (Size = 256), @p15='AQAAAAIAAYagAAAAEGVrdMhhtNoZhYjlHLKpcmo5jvtntLe4r9SWEBY7MKn5R3yEmPXPWNS3S/hQqROvRA==' (Size = 4000), @p16='01099999999' (Nullable = false) (Size = 15), @p17='False', @p18=NULL (Size = 4000), @p19='XEIW5YKLUBPR4TNZ3BVTNINSPDNG2V4W' (Size = 4000), @p20='False', @p21='updatedusername' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [Bio] = @p1, [ConcurrencyStamp] = @p2, [CreatedAt] = @p3, [DateOfBirth] = @p4, [Email] = @p5, [EmailConfirmed] = @p6, [FirstName] = @p7, [Gender] = @p8, [IsActive] = @p9, [LastName] = @p10, [LockoutEnabled] = @p11, [LockoutEnd] = @p12, [NormalizedEmail] = @p13, [NormalizedUserName] = @p14, [PasswordHash] = @p15, [PhoneNumber] = @p16, [PhoneNumberConfirmed] = @p17, [ProfilePicture] = @p18, [SecurityStamp] = @p19, [TwoFactorEnabled] = @p20, [UserName] = @p21
+OUTPUT 1
+WHERE [Id] = @p22 AND [ConcurrencyStamp] = @p23;"
+[Information] 27-06 03:57:25 || Executed DbCommand ("3"ms) [Parameters=["@__userId_0='6e32e7ee-ac37-4e13-8938-761bee56860b' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0"
+[Information] 27-06 03:57:25 || Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='6e32e7ee-ac37-4e13-8938-761bee56860b' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+FROM [Coaches] AS [c]
+WHERE [c].[ApplicationUserId] = @__user_Id_0"
+[Information] 27-06 03:57:25 || HTTP "POST" "/api/Identity/login" responded 200 in 146.8100 ms
+[Information] 27-06 03:58:01 || Executed DbCommand ("7"ms) [Parameters=["@__normalizedEmail_0='UPDATEDUSERNAME' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 27-06 03:58:01 || Executed DbCommand ("3"ms) [Parameters=["@__normalizedUserName_0='UPDATEDUSERNAME' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 27-06 03:58:02 || Executed DbCommand ("3"ms) [Parameters=["@__userId_0='6e32e7ee-ac37-4e13-8938-761bee56860b' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0"
+[Information] 27-06 03:58:02 || Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='6e32e7ee-ac37-4e13-8938-761bee56860b' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+FROM [Coaches] AS [c]
+WHERE [c].[ApplicationUserId] = @__user_Id_0"
+[Information] 27-06 03:58:02 || Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='6e32e7ee-ac37-4e13-8938-761bee56860b' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id]
+FROM [Coaches] AS [c]
+WHERE [c].[ApplicationUserId] = @__user_Id_0"
+[Information] 27-06 03:58:02 || Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='6e32e7ee-ac37-4e13-8938-761bee56860b' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0"
+[Information] 27-06 03:58:02 || Executed DbCommand ("0"ms) [Parameters=["@__normalizedUserName_0='UPDATEDUSERNAME' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 27-06 03:58:02 || Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='TESTEMAIL@GMAIL.COM' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 27-06 03:58:02 || Executed DbCommand ("6"ms) [Parameters=["@p22='6e32e7ee-ac37-4e13-8938-761bee56860b' (Nullable = false) (Size = 450), @p0='0', @p1='some updated very new bio' (Size = 4000), @p2='05428ef3-6c9a-4666-80e1-ec6b59bbe046' (Size = 4000), @p23='6e655202-5248-400a-8d19-7ab4d2f5b60f' (Size = 4000), @p3='2024-06-23T18:27:42.7228840', @p4='01/24/1997' (DbType = Date), @p5='testemail@gmail.com' (Size = 256), @p6='False', @p7='updatedfirstname' (Nullable = false) (Size = 100), @p8='0', @p9='True', @p10='updatedlastname' (Nullable = false) (Size = 100), @p11='True', @p12=NULL (DbType = DateTimeOffset), @p13='TESTEMAIL@GMAIL.COM' (Size = 256), @p14='UPDATEDUSERNAME' (Size = 256), @p15='AQAAAAIAAYagAAAAEGVrdMhhtNoZhYjlHLKpcmo5jvtntLe4r9SWEBY7MKn5R3yEmPXPWNS3S/hQqROvRA==' (Size = 4000), @p16='01099999999' (Nullable = false) (Size = 15), @p17='False', @p18=NULL (Size = 4000), @p19='XEIW5YKLUBPR4TNZ3BVTNINSPDNG2V4W' (Size = 4000), @p20='False', @p21='updatedusername' (Size = 256), @p24='6e32e7ee-ac37-4e13-8938-761bee56860b' (Nullable = false) (Size = 450), @p25='2024-06-27T00:58:02.0398807Z', @p26='2024-06-28T00:58:02.0398808Z', @p27=NULL (DbType = DateTime2), @p28='VT4QYaEMta7UHFcZFST%2BG8LCDjVYM2UsXyYmPSp4p0E%3D' (Nullable = false) (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [Bio] = @p1, [ConcurrencyStamp] = @p2, [CreatedAt] = @p3, [DateOfBirth] = @p4, [Email] = @p5, [EmailConfirmed] = @p6, [FirstName] = @p7, [Gender] = @p8, [IsActive] = @p9, [LastName] = @p10, [LockoutEnabled] = @p11, [LockoutEnd] = @p12, [NormalizedEmail] = @p13, [NormalizedUserName] = @p14, [PasswordHash] = @p15, [PhoneNumber] = @p16, [PhoneNumberConfirmed] = @p17, [ProfilePicture] = @p18, [SecurityStamp] = @p19, [TwoFactorEnabled] = @p20, [UserName] = @p21
+OUTPUT 1
+WHERE [Id] = @p22 AND [ConcurrencyStamp] = @p23;
+INSERT INTO [RefreshToken] ([ApplicationUserId], [CreatedOn], [ExpiresOn], [RevokedOn], [Token])
+OUTPUT INSERTED.[Id]
+VALUES (@p24, @p25, @p26, @p27, @p28);"
+[Information] 27-06 03:58:02 || HTTP "POST" "/api/Identity/login" responded 200 in 163.1598 ms
+[Warning] 27-06 04:05:25 || Stopping the server due to DomainUnload or ProcessExit event...
+[Information] 27-06 04:05:25 || Server ahmedfawzi_msi:3168:855cb2c9 caught stopping signal...
+[Information] 27-06 04:05:25 || Server ahmedfawzi_msi:3168:855cb2c9 caught stopped signal...
+[Warning] 27-06 04:05:25 || Server ahmedfawzi_msi:3168:855cb2c9 caught shutdown signal...
+[Warning] 27-06 04:05:25 || Server ahmedfawzi_msi:3168:855cb2c9 stopped non-gracefully due to ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+[Information] 27-06 04:05:25 || Server ahmedfawzi_msi:3168:855cb2c9 successfully reported itself as stopped in 10.3879 ms
+[Information] 27-06 04:05:25 || Server ahmedfawzi_msi:3168:855cb2c9 has been stopped in total 13.3895 ms
+[Warning] 27-06 08:21:31 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 27-06 08:21:31 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 27-06 08:21:32 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 08:21:32 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 27-06 08:21:32 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 27-06 08:21:32 || Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 08:21:32 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 08:21:32 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 08:21:32 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 08:21:32 || Start installing Hangfire SQL objects...
+[Information] 27-06 08:21:32 || Hangfire SQL objects installed.
+[Information] 27-06 08:21:32 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 27-06 08:21:32 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 27-06 08:21:32 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 27-06 08:21:32 || Server ahmedfawzi_msi:34976:9d73710b successfully announced in 14.1781 ms
+[Information] 27-06 08:21:32 || Server ahmedfawzi_msi:34976:9d73710b is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 27-06 08:21:32 || Server ahmedfawzi_msi:34976:9d73710b all the dispatchers started
+[Warning] 27-06 08:23:47 || Failed to determine the https port for redirect.
+[Error] 27-06 08:23:47 || HTTP "POST" "/api/Utility/sendEmail" responded 400 in 151.0637 ms
+[Error] 27-06 08:24:24 || HTTP "POST" "/api/Utility/sendEmail" responded 400 in 7.2845 ms
+[Error] 27-06 08:26:51 || HTTP "POST" "/api/Utility/sendEmail" responded 400 in 5.3443 ms
+[Error] 27-06 08:27:19 || HTTP "POST" "/api/Utility/sendEmail" responded 400 in 1.5236 ms
+[Error] 27-06 08:27:34 || HTTP "POST" "/api/Utility/sendEmail" responded 400 in 1.1119 ms
+[Error] 27-06 08:27:38 || HTTP "POST" "/api/Utility/sendEmail" responded 400 in 1.0735 ms
+[Warning] 27-06 08:28:23 || Stopping the server due to DomainUnload or ProcessExit event...
+[Information] 27-06 08:28:23 || Server ahmedfawzi_msi:34976:9d73710b caught stopping signal...
+[Information] 27-06 08:28:23 || Server ahmedfawzi_msi:34976:9d73710b caught stopped signal...
+[Warning] 27-06 08:28:23 || Server ahmedfawzi_msi:34976:9d73710b caught shutdown signal...
+[Warning] 27-06 08:28:23 || Server ahmedfawzi_msi:34976:9d73710b stopped non-gracefully due to ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+[Information] 27-06 08:28:23 || Server ahmedfawzi_msi:34976:9d73710b successfully reported itself as stopped in 7.2241 ms
+[Information] 27-06 08:28:23 || Server ahmedfawzi_msi:34976:9d73710b has been stopped in total 9.7637 ms
+[Warning] 27-06 08:30:34 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 27-06 08:30:34 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 27-06 08:30:34 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 08:30:34 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 27-06 08:30:34 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 27-06 08:30:34 || Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 08:30:34 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 08:30:34 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 08:30:34 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 08:30:34 || Start installing Hangfire SQL objects...
+[Information] 27-06 08:30:34 || Hangfire SQL objects installed.
+[Information] 27-06 08:30:34 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 27-06 08:30:34 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 27-06 08:30:34 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 27-06 08:30:34 || Server ahmedfawzi_msi:29440:60d4fed8 successfully announced in 17.454 ms
+[Information] 27-06 08:30:34 || Server ahmedfawzi_msi:29440:60d4fed8 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 27-06 08:30:34 || Server ahmedfawzi_msi:29440:60d4fed8 all the dispatchers started
+[Warning] 27-06 08:43:46 || Stopping the server due to DomainUnload or ProcessExit event...
+[Information] 27-06 08:43:46 || Server ahmedfawzi_msi:29440:60d4fed8 caught stopping signal...
+[Information] 27-06 08:43:46 || Server ahmedfawzi_msi:29440:60d4fed8 caught stopped signal...
+[Warning] 27-06 08:43:46 || Server ahmedfawzi_msi:29440:60d4fed8 caught shutdown signal...
+[Warning] 27-06 08:43:46 || Server ahmedfawzi_msi:29440:60d4fed8 stopped non-gracefully due to ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+[Information] 27-06 08:43:46 || Server ahmedfawzi_msi:29440:60d4fed8 successfully reported itself as stopped in 7.8853 ms
+[Information] 27-06 08:43:46 || Server ahmedfawzi_msi:29440:60d4fed8 has been stopped in total 12.6252 ms
+[Warning] 27-06 08:55:24 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 27-06 08:55:25 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 27-06 08:55:25 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 08:55:25 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 27-06 08:55:25 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 27-06 08:55:25 || Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 08:55:25 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 08:55:25 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 08:55:25 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 08:55:25 || Start installing Hangfire SQL objects...
+[Information] 27-06 08:55:25 || Hangfire SQL objects installed.
+[Information] 27-06 08:55:25 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 27-06 08:55:25 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 27-06 08:55:25 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 27-06 08:55:25 || Server ahmedfawzi_msi:1432:1ed8a7d0 successfully announced in 16.0989 ms
+[Information] 27-06 08:55:25 || Server ahmedfawzi_msi:1432:1ed8a7d0 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 27-06 08:55:25 || Server ahmedfawzi_msi:1432:1ed8a7d0 all the dispatchers started
+[Warning] 27-06 08:56:54 || Failed to determine the https port for redirect.
+[Information] 27-06 08:56:57 || HTTP "POST" "/api/Utility/sendEmail" responded 204 in 3033.4052 ms
+[Information] 27-06 08:57:45 || HTTP "POST" "/api/Utility/sendEmail" responded 204 in 1762.9234 ms
+[Information] 27-06 08:58:58 || HTTP "POST" "/api/Utility/sendEmail" responded 204 in 1802.4638 ms
+[Warning] 27-06 09:00:29 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 27-06 09:00:29 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 27-06 09:00:29 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 09:00:29 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 27-06 09:00:29 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 27-06 09:00:29 || Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 09:00:29 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 09:00:29 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 09:00:30 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 09:00:30 || Start installing Hangfire SQL objects...
+[Information] 27-06 09:00:30 || Hangfire SQL objects installed.
+[Information] 27-06 09:00:30 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 27-06 09:00:30 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 27-06 09:00:30 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 27-06 09:00:30 || Server ahmedfawzi_msi:31476:e3cdf765 successfully announced in 15.9633 ms
+[Information] 27-06 09:00:30 || Server ahmedfawzi_msi:31476:e3cdf765 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 27-06 09:00:30 || Server ahmedfawzi_msi:31476:e3cdf765 all the dispatchers started
+[Warning] 27-06 09:01:22 || Failed to determine the https port for redirect.
+[Information] 27-06 09:01:24 || HTTP "POST" "/api/Utility/sendEmail" responded 204 in 2019.9536 ms
+[Warning] 27-06 09:02:31 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 27-06 09:02:31 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 27-06 09:02:31 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 09:02:31 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 27-06 09:02:31 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 27-06 09:02:31 || Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 09:02:31 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 09:02:31 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 09:02:31 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 09:02:31 || Start installing Hangfire SQL objects...
+[Information] 27-06 09:02:31 || Hangfire SQL objects installed.
+[Information] 27-06 09:02:32 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 27-06 09:02:32 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 27-06 09:02:32 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 27-06 09:02:32 || Server ahmedfawzi_msi:37320:66a87f4d successfully announced in 15.9477 ms
+[Information] 27-06 09:02:32 || Server ahmedfawzi_msi:37320:66a87f4d is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 27-06 09:02:32 || Server ahmedfawzi_msi:37320:66a87f4d all the dispatchers started
+[Warning] 27-06 09:03:29 || Failed to determine the https port for redirect.
+[Information] 27-06 09:03:46 || HTTP "POST" "/api/Utility/sendEmail" responded 204 in 17505.8015 ms
+[Information] 27-06 09:04:41 || HTTP "POST" "/api/Utility/sendEmail" responded 204 in 2543.2549 ms

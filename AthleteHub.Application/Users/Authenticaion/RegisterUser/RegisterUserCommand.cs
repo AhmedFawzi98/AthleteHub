@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace AthleteHub.Application.Users.Authenticaion.RegisterUser;
 
-public class RegisterUserCommand : IRequest<UserDto>
+public class RegisterUserCommand : IRequest<EmailConfirmationResponseDto>
 {
     public string Email { get; set; }
     public string ConfirmEmail { get; set; }
@@ -21,4 +21,5 @@ public class RegisterUserCommand : IRequest<UserDto>
     public string? Bio { get; set; }
     public bool IsCoach { get; set; }
     public IFormFile? Certificate { get; set; }
+    public string ClientEmailConfirmationUrl {  get; set; }
 }
