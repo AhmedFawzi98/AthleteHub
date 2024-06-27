@@ -42,18 +42,14 @@ namespace AthleteHub.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
         [Authorize(Roles = RolesConstants.Coach)]
-        public async Task<IActionResult> UploadCertificate(int id, IFormFile file)
+        public async Task<IActionResult> UploadCertificate(int id, [FromForm] UploadCertificateCommand uploadCertificateCommand)
         {
-            if (file == null || file.Length == 0)
+            if (uploadCertificateCommand.File == null || uploadCertificateCommand.File.Length == 0)
                 return BadRequest("File not selected");
 
-            var command = new UploadCertificateCommand()
-            {
-                CoachId = id,
-                File = file
-            };
+            uploadCertificateCommand.SetId(id);
 
-            var sasUrlDto = await _mediator.Send(command);
+            var sasUrlDto = await _mediator.Send(uploadCertificateCommand);
 
             return Ok(sasUrlDto);
         }
@@ -62,20 +58,14 @@ namespace AthleteHub.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
         [Authorize(Roles = RolesConstants.Coach)]
-        public async Task<IActionResult> AddContent(List<IFormFile> files)
+        public async Task<IActionResult> AddContent([FromForm] AddContentCommand addContentCommand)
         {
-            if (files == null || files.Count == 0)
+            if (addContentCommand.Files == null || addContentCommand.Files.Count() == 0)
                 return BadRequest("No File Selected");
 
-            var command = new AddContentCommand()
-            {
-                Files = files
-            };
-
-            var addedContentResponseDto = await _mediator.Send(command);
+            var addedContentResponseDto = await _mediator.Send(addContentCommand);
 
             return Ok(addedContentResponseDto);
         }
-
     }
 }

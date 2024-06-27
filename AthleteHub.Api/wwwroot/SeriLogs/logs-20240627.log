@@ -716,3 +716,295 @@ END"
 [Warning] 27-06 09:03:29 || Failed to determine the https port for redirect.
 [Information] 27-06 09:03:46 || HTTP "POST" "/api/Utility/sendEmail" responded 204 in 17505.8015 ms
 [Information] 27-06 09:04:41 || HTTP "POST" "/api/Utility/sendEmail" responded 204 in 2543.2549 ms
+[Warning] 27-06 12:28:23 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 27-06 12:28:23 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 27-06 12:28:24 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 12:28:24 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 27-06 12:28:24 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 27-06 12:28:24 || Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 12:28:24 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 12:28:24 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 12:28:24 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 12:28:24 || Start installing Hangfire SQL objects...
+[Information] 27-06 12:28:24 || Hangfire SQL objects installed.
+[Information] 27-06 12:28:25 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 27-06 12:28:25 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 27-06 12:28:25 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 27-06 12:28:25 || Server ahmedfawzi_msi:760:0deaa87c successfully announced in 19.9177 ms
+[Information] 27-06 12:28:25 || Server ahmedfawzi_msi:760:0deaa87c is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 27-06 12:28:25 || 3 servers were removed due to timeout
+[Information] 27-06 12:28:25 || Server ahmedfawzi_msi:760:0deaa87c all the dispatchers started
+[Warning] 27-06 12:29:11 || Stopping the server due to DomainUnload or ProcessExit event...
+[Information] 27-06 12:29:11 || Server ahmedfawzi_msi:760:0deaa87c caught stopping signal...
+[Information] 27-06 12:29:11 || Server ahmedfawzi_msi:760:0deaa87c caught stopped signal...
+[Warning] 27-06 12:29:11 || Server ahmedfawzi_msi:760:0deaa87c caught shutdown signal...
+[Warning] 27-06 12:29:11 || Server ahmedfawzi_msi:760:0deaa87c stopped non-gracefully due to Worker. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+[Information] 27-06 12:29:11 || Server ahmedfawzi_msi:760:0deaa87c successfully reported itself as stopped in 13.9354 ms
+[Information] 27-06 12:29:11 || Server ahmedfawzi_msi:760:0deaa87c has been stopped in total 21.8779 ms
+[Warning] 27-06 12:32:34 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 27-06 12:32:34 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 27-06 12:32:35 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 12:32:35 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 27-06 12:32:35 || Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 27-06 12:32:35 || Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 12:32:35 || Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 12:32:35 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 12:32:35 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 12:32:35 || Start installing Hangfire SQL objects...
+[Information] 27-06 12:32:35 || Hangfire SQL objects installed.
+[Information] 27-06 12:32:35 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 27-06 12:32:35 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 27-06 12:32:35 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 27-06 12:32:35 || Server ahmedfawzi_msi:23924:759493e5 successfully announced in 14.9509 ms
+[Information] 27-06 12:32:35 || Server ahmedfawzi_msi:23924:759493e5 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 27-06 12:32:35 || Server ahmedfawzi_msi:23924:759493e5 all the dispatchers started
+[Warning] 27-06 12:32:38 || Stopping the server due to DomainUnload or ProcessExit event...
+[Information] 27-06 12:32:38 || Server ahmedfawzi_msi:23924:759493e5 caught stopping signal...
+[Information] 27-06 12:32:38 || Server ahmedfawzi_msi:23924:759493e5 caught stopped signal...
+[Warning] 27-06 12:32:38 || Server ahmedfawzi_msi:23924:759493e5 caught shutdown signal...
+[Warning] 27-06 12:32:38 || Server ahmedfawzi_msi:23924:759493e5 stopped non-gracefully due to ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+[Information] 27-06 12:32:38 || Server ahmedfawzi_msi:23924:759493e5 successfully reported itself as stopped in 11.3254 ms
+[Information] 27-06 12:32:38 || Server ahmedfawzi_msi:23924:759493e5 has been stopped in total 14.7695 ms
+[Warning] 27-06 21:29:11 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 27-06 21:29:11 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 27-06 21:29:11 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 21:29:11 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 27-06 21:29:11 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 27-06 21:29:11 || Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 21:29:11 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 21:29:11 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 21:29:11 || Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 21:29:11 || Start installing Hangfire SQL objects...
+[Information] 27-06 21:29:11 || Hangfire SQL objects installed.
+[Information] 27-06 21:29:12 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 27-06 21:29:12 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 27-06 21:29:12 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 27-06 21:29:12 || Server ahmedfawzi_msi:1272:53cd7523 successfully announced in 17.9475 ms
+[Information] 27-06 21:29:12 || Server ahmedfawzi_msi:1272:53cd7523 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 27-06 21:29:12 || Server ahmedfawzi_msi:1272:53cd7523 all the dispatchers started
+[Warning] 27-06 21:29:56 || Stopping the server due to DomainUnload or ProcessExit event...
+[Information] 27-06 21:29:56 || Server ahmedfawzi_msi:1272:53cd7523 caught stopping signal...
+[Information] 27-06 21:29:56 || Server ahmedfawzi_msi:1272:53cd7523 caught stopped signal...
+[Warning] 27-06 21:29:56 || Server ahmedfawzi_msi:1272:53cd7523 caught shutdown signal...
+[Warning] 27-06 21:29:56 || Server ahmedfawzi_msi:1272:53cd7523 stopped non-gracefully due to Worker. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+[Information] 27-06 21:29:56 || Server ahmedfawzi_msi:1272:53cd7523 successfully reported itself as stopped in 13.4984 ms
+[Information] 27-06 21:29:56 || Server ahmedfawzi_msi:1272:53cd7523 has been stopped in total 19.5535 ms
+[Warning] 27-06 21:30:10 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 27-06 21:30:10 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 27-06 21:30:11 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 21:30:11 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 27-06 21:30:11 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 27-06 21:30:11 || Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 21:30:11 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 21:30:11 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 21:30:11 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 21:30:11 || Start installing Hangfire SQL objects...
+[Information] 27-06 21:30:11 || Hangfire SQL objects installed.
+[Information] 27-06 21:30:11 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 27-06 21:30:11 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 27-06 21:30:11 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 27-06 21:30:11 || Server ahmedfawzi_msi:15268:fddc7db2 successfully announced in 14.9945 ms
+[Information] 27-06 21:30:11 || Server ahmedfawzi_msi:15268:fddc7db2 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 27-06 21:30:11 || Server ahmedfawzi_msi:15268:fddc7db2 all the dispatchers started
+[Warning] 27-06 21:33:41 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 27-06 21:33:41 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 27-06 21:33:42 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 21:33:42 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 27-06 21:33:42 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 27-06 21:33:42 || Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 21:33:42 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 21:33:42 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 21:33:42 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 21:33:42 || Start installing Hangfire SQL objects...
+[Information] 27-06 21:33:42 || Hangfire SQL objects installed.
+[Information] 27-06 21:33:42 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 27-06 21:33:42 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 27-06 21:33:42 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 27-06 21:33:42 || Server ahmedfawzi_msi:25688:c1df78b1 successfully announced in 16.2437 ms
+[Information] 27-06 21:33:42 || Server ahmedfawzi_msi:25688:c1df78b1 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 27-06 21:33:42 || Server ahmedfawzi_msi:25688:c1df78b1 all the dispatchers started
+[Warning] 27-06 21:36:33 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 27-06 21:36:33 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 27-06 21:36:33 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 21:36:33 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 27-06 21:36:33 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 27-06 21:36:33 || Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 27-06 21:36:33 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 21:36:33 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 21:36:33 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 27-06 21:36:33 || Start installing Hangfire SQL objects...
+[Information] 27-06 21:36:33 || Hangfire SQL objects installed.
+[Information] 27-06 21:36:34 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 27-06 21:36:34 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 27-06 21:36:34 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 27-06 21:36:34 || Server ahmedfawzi_msi:1864:18bfde2c successfully announced in 26.1842 ms
+[Information] 27-06 21:36:34 || Server ahmedfawzi_msi:1864:18bfde2c is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 27-06 21:36:34 || Server ahmedfawzi_msi:1864:18bfde2c all the dispatchers started

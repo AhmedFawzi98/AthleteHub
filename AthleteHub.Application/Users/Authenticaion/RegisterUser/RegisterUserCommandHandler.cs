@@ -93,7 +93,6 @@ public class RegisterUserCommandHandler(IMapper _mapper, UserManager<Application
         };
 
         string confirmationLink = QueryHelpers.AddQueryString(clientEmailConfirmationUrl, queryParams);
-
         return confirmationLink;
     }
 }
