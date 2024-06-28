@@ -79,7 +79,8 @@ internal class TokenService(UserManager<ApplicationUser> _userManager, IOptions<
         {
             Expires = expires,
             HttpOnly = true,
-            SameSite = SameSiteMode.None
+            SameSite = SameSiteMode.None,
+            Secure = true
         };
         _httpContextAccessor?.HttpContext?.Response.Cookies.Append(TokenConstants.RefreshToken, refreshToken, options);
     }
