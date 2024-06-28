@@ -78,7 +78,8 @@ internal class TokenService(UserManager<ApplicationUser> _userManager, IOptions<
         CookieOptions options = new CookieOptions
         {
             Expires = expires,
-            HttpOnly = true
+            HttpOnly = true,
+            SameSite = SameSiteMode.None
         };
         _httpContextAccessor?.HttpContext?.Response.Cookies.Append(TokenConstants.RefreshToken, refreshToken, options);
     }

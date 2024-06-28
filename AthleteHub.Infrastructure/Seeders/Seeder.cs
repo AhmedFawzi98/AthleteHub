@@ -21,7 +21,8 @@ internal class Seeder(AthleteHubDbContext _context, UserManager<ApplicationUser>
         FirstName = "admin",
         LastName = "admin",
         Gender = Gender.Male,
-        DateOfBirth = new DateOnly(2000, 2, 2)
+        DateOfBirth = new DateOnly(2000, 2, 2),
+        PhoneNumber = "01011111111"
     };
     private ApplicationUser coach = new ApplicationUser()
     {
@@ -35,7 +36,8 @@ internal class Seeder(AthleteHubDbContext _context, UserManager<ApplicationUser>
         FirstName = "coach",
         LastName = "coach",
         Gender = Gender.Male,
-        DateOfBirth = new DateOnly(2000, 2, 2)
+        DateOfBirth = new DateOnly(2000, 2, 2),
+        PhoneNumber = "01022222222"
     };
     private ApplicationUser athlete = new ApplicationUser()
     {
@@ -49,7 +51,8 @@ internal class Seeder(AthleteHubDbContext _context, UserManager<ApplicationUser>
         FirstName = "athlete",
         LastName = "athlete",
         Gender = Gender.Male,
-        DateOfBirth = new DateOnly(2000, 2, 2)
+        DateOfBirth = new DateOnly(2000, 2, 2),
+        PhoneNumber = "01033333333"
     };
     public async Task SeedAsync()
     {

@@ -30,7 +30,7 @@ public class IdentityController(IMediator _mediator) : ControllerBase
         return Ok(ResponseDto);
     }
 
-    [HttpPost("confirmEmail")]
+    [HttpGet("confirmEmail")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorDto))]

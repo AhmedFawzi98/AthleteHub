@@ -41,7 +41,6 @@ namespace AthleteHub.Api.Controllers
         [HttpPost("coaches/{id:int}/certificate")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
-        [Authorize(Roles = RolesConstants.Coach)]
         public async Task<IActionResult> UploadCertificate(int id, [FromForm] UploadCertificateCommand uploadCertificateCommand)
         {
             if (uploadCertificateCommand.File == null || uploadCertificateCommand.File.Length == 0)
