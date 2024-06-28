@@ -23,7 +23,6 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using AthleteHub.Application.Services.EmailService;
 using AthleteHub.Infrastructure.EmailService;
-using MvcLab6_Trainees.Services.Email;
 
 namespace AthleteHub.Application.Extensions;
 
@@ -59,10 +58,16 @@ public static class ServiceCollectionExtensions
        .AddTokenProvider<EmailConfirmationTokenProvider<ApplicationUser>>(ConfigurationConstants.EmailConfirmationTokenProvider)
        .AddRoles<IdentityRole>();
 
-        services.Configure<EmailConfirmationTokenProviderOptions>(options =>
+        services.Configure<DataProtectionTokenProviderOptions>(options =>
+        {
+            options.TokenLifespan = TimeSpan.FromHours(3);
+        });
+
+        services.Configure<EmailConfirmationTokenProviderOptions>(ConfigurationConstants.EmailConfirmationTokenProvider, options =>
         {
             options.TokenLifespan = TimeSpan.FromDays(7);
         });
+
 
         services.AddAuthentication(options =>
         {
