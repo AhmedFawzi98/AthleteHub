@@ -88,7 +88,7 @@ public class IdentityController(IMediator _mediator) : ControllerBase
         return NoContent();
     }
 
-    [HttpPatch("changeEmail")]
+    [HttpGet("changeEmail")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmailConfirmationResponseDto))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(string))]
@@ -100,7 +100,7 @@ public class IdentityController(IMediator _mediator) : ControllerBase
         return Ok(response);
     }
 
-    [HttpPatch("confirmChangeEmail")]
+    [HttpGet("confirmChangeEmail")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
@@ -112,7 +112,7 @@ public class IdentityController(IMediator _mediator) : ControllerBase
     }
 
 
-    [HttpPatch("resetPassword")]
+    [HttpGet("resetPassword")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResetPasswordResponseDto))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
     public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordCommand resetPasswordCommand)
@@ -121,7 +121,7 @@ public class IdentityController(IMediator _mediator) : ControllerBase
         return NoContent();
     }
 
-    [HttpPatch("confirmresetPassword")]
+    [HttpGet("confirmresetPassword")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
