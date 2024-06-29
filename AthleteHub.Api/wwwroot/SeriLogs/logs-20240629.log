@@ -1,0 +1,147 @@
+[Warning] 29-06 03:10:55 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 29-06 03:10:55 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 29-06 03:10:55 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 29-06 03:10:55 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 29-06 03:10:55 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 29-06 03:10:55 || Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 29-06 03:10:55 || Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 03:10:55 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 03:10:55 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 03:10:55 || Start installing Hangfire SQL objects...
+[Information] 29-06 03:10:55 || Hangfire SQL objects installed.
+[Information] 29-06 03:10:55 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 29-06 03:10:55 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 29-06 03:10:55 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 29-06 03:10:55 || Server ahmedfawzi_msi:24448:26042bf7 successfully announced in 19.6024 ms
+[Information] 29-06 03:10:55 || Server ahmedfawzi_msi:24448:26042bf7 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 29-06 03:10:56 || 1 servers were removed due to timeout
+[Information] 29-06 03:10:56 || Server ahmedfawzi_msi:24448:26042bf7 all the dispatchers started
+[Information] 29-06 03:10:56 || Executed DbCommand ("17"ms) [Parameters=["@__today_0='06/29/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[PaymentIntentId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Information] 29-06 03:11:28 || Executed DbCommand ("7"ms) [Parameters=["@__normalizedEmail_0='COACH1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:11:28 || Executed DbCommand ("6"ms) [Parameters=["@__normalizedUserName_0='COACH1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:11:28 || Executed DbCommand ("7"ms) [Parameters=["@__userId_0='ab36581f-7c4b-49a2-afbf-45807633494f' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0"
+[Information] 29-06 03:11:28 || Executed DbCommand ("5"ms) [Parameters=["@__user_Id_0='ab36581f-7c4b-49a2-afbf-45807633494f' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+FROM [Coaches] AS [c]
+WHERE [c].[ApplicationUserId] = @__user_Id_0"
+[Information] 29-06 03:11:28 || Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='ab36581f-7c4b-49a2-afbf-45807633494f' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id]
+FROM [Coaches] AS [c]
+WHERE [c].[ApplicationUserId] = @__user_Id_0"
+[Information] 29-06 03:11:28 || Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='ab36581f-7c4b-49a2-afbf-45807633494f' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0"
+[Information] 29-06 03:11:28 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='COACH1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:11:28 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='COACH1@ATHLETEHUB.COM' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:11:28 || Executed DbCommand ("9"ms) [Parameters=["@p22='ab36581f-7c4b-49a2-afbf-45807633494f' (Nullable = false) (Size = 450), @p0='0', @p1='yoooo' (Size = 4000), @p2='85ba12c3-6264-420a-97c7-0d67e1a97451' (Size = 4000), @p23='e01fac75-fbcb-4179-af9f-7a80d910050b' (Size = 4000), @p3='2024-06-22T19:59:35.4183818', @p4='06/28/1998' (DbType = Date), @p5='coach1@athletehub.com' (Size = 256), @p6='True', @p7='ahmed' (Nullable = false) (Size = 100), @p8='0', @p9='True', @p10='fawziiiii' (Nullable = false) (Size = 100), @p11='True', @p12='2024-06-24T17:56:51.8529521+00:00' (Nullable = true), @p13='COACH1@ATHLETEHUB.COM' (Size = 256), @p14='COACH1' (Size = 256), @p15='AQAAAAIAAYagAAAAEFHGV+dj5S4Jjqk277ecXQWuOCDiS1oRax+LrVRHvxguFKdC6ws3hMFrFULUyBGcWA==' (Size = 4000), @p16='01023558888' (Nullable = false) (Size = 15), @p17='False', @p18=NULL (Size = 4000), @p19='EAPE3EG76K37AP6IY6HUDL5LUZL3TPLN' (Size = 4000), @p20='False', @p21='coach1' (Size = 256), @p24='ab36581f-7c4b-49a2-afbf-45807633494f' (Nullable = false) (Size = 450), @p25='2024-06-29T00:11:28.7862623Z', @p26='2024-06-30T00:11:28.7863032Z', @p27=NULL (DbType = DateTime2), @p28='tvlh0%2Bg0OVtukhJ3mI0ug4SZAdQ8VTCq06DDMGyn%2FcY%3D' (Nullable = false) (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [Bio] = @p1, [ConcurrencyStamp] = @p2, [CreatedAt] = @p3, [DateOfBirth] = @p4, [Email] = @p5, [EmailConfirmed] = @p6, [FirstName] = @p7, [Gender] = @p8, [IsActive] = @p9, [LastName] = @p10, [LockoutEnabled] = @p11, [LockoutEnd] = @p12, [NormalizedEmail] = @p13, [NormalizedUserName] = @p14, [PasswordHash] = @p15, [PhoneNumber] = @p16, [PhoneNumberConfirmed] = @p17, [ProfilePicture] = @p18, [SecurityStamp] = @p19, [TwoFactorEnabled] = @p20, [UserName] = @p21
+OUTPUT 1
+WHERE [Id] = @p22 AND [ConcurrencyStamp] = @p23;
+INSERT INTO [RefreshToken] ([ApplicationUserId], [CreatedOn], [ExpiresOn], [RevokedOn], [Token])
+OUTPUT INSERTED.[Id]
+VALUES (@p24, @p25, @p26, @p27, @p28);"
+[Information] 29-06 03:11:29 || HTTP "POST" "/api/Identity/login" responded 200 in 955.5591 ms
+[Information] 29-06 03:12:11 || Executed DbCommand ("6"ms) [Parameters=["@__normalizedEmail_0='COACH1@ATHLETEHUB.COM' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:12:11 || Executed DbCommand ("4"ms) [Parameters=["@__normalizedUserName_0='COACH1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:12:11 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='COACH1@ATHLETEHUB.COM' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:12:11 || Executed DbCommand ("8"ms) [Parameters=["@p22='ab36581f-7c4b-49a2-afbf-45807633494f' (Nullable = false) (Size = 450), @p0='0', @p1='yoooo' (Size = 4000), @p2='8d5c4a21-8bb0-47e2-8656-176d3aa06296' (Size = 4000), @p23='85ba12c3-6264-420a-97c7-0d67e1a97451' (Size = 4000), @p3='2024-06-22T19:59:35.4183818', @p4='06/28/1998' (DbType = Date), @p5='coach1@athletehub.com' (Size = 256), @p6='False', @p7='ahmed' (Nullable = false) (Size = 100), @p8='0', @p9='True', @p10='fawziiiii' (Nullable = false) (Size = 100), @p11='True', @p12='2024-06-24T17:56:51.8529521+00:00' (Nullable = true), @p13='COACH1@ATHLETEHUB.COM' (Size = 256), @p14='COACH1' (Size = 256), @p15='AQAAAAIAAYagAAAAEFHGV+dj5S4Jjqk277ecXQWuOCDiS1oRax+LrVRHvxguFKdC6ws3hMFrFULUyBGcWA==' (Size = 4000), @p16='01023558888' (Nullable = false) (Size = 15), @p17='False', @p18=NULL (Size = 4000), @p19='EAPE3EG76K37AP6IY6HUDL5LUZL3TPLN' (Size = 4000), @p20='False', @p21='coach1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [Bio] = @p1, [ConcurrencyStamp] = @p2, [CreatedAt] = @p3, [DateOfBirth] = @p4, [Email] = @p5, [EmailConfirmed] = @p6, [FirstName] = @p7, [Gender] = @p8, [IsActive] = @p9, [LastName] = @p10, [LockoutEnabled] = @p11, [LockoutEnd] = @p12, [NormalizedEmail] = @p13, [NormalizedUserName] = @p14, [PasswordHash] = @p15, [PhoneNumber] = @p16, [PhoneNumberConfirmed] = @p17, [ProfilePicture] = @p18, [SecurityStamp] = @p19, [TwoFactorEnabled] = @p20, [UserName] = @p21
+OUTPUT 1
+WHERE [Id] = @p22 AND [ConcurrencyStamp] = @p23;"
+[Information] 29-06 03:12:11 || HTTP "PATCH" "/api/Identity/changeEmail" responded 200 in 102.4741 ms
