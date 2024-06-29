@@ -5,7 +5,6 @@ using AthleteHub.Application.Coaches.Queries.GetAllCoaches;
 using AthleteHub.Domain.Constants;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AthleteHub.Api.Controllers
@@ -24,36 +23,27 @@ namespace AthleteHub.Api.Controllers
         public async Task<IActionResult> GetAllCoaches([FromQuery] GetAllCoachesQuery getAllCoachesQuery)
         {
             var coachesDtos = await _mediator.Send(getAllCoachesQuery);
-            if(coachesDtos.TotalItemsCount > 0) 
-               return Ok(coachesDtos);
-            return NotFound("There are no coaches with that criteria");
+            return Ok(coachesDtos);
         }
         [HttpGet("coaches/{id:int}")]
 
         public async Task<IActionResult> GetCoachById(int id)
         {
             var coachDto = await _mediator.Send(new FindCoachByIdQuery { Id = id });
-            if(coachDto!=null)
-               return Ok(coachDto);
-            return NotFound("There is no coache with that Id");
+            return Ok(coachDto);
         }
 
         [HttpPost("coaches/{id:int}/certificate")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
-        [Authorize(Roles = RolesConstants.Coach)]
-        public async Task<IActionResult> UploadCertificate(int id, IFormFile file)
+        public async Task<IActionResult> UploadCertificate(int id, [FromForm] UploadCertificateCommand uploadCertificateCommand)
         {
-            if (file == null || file.Length == 0)
+            if (uploadCertificateCommand.File == null || uploadCertificateCommand.File.Length == 0)
                 return BadRequest("File not selected");
 
-            var command = new UploadCertificateCommand()
-            {
-                CoachId = id,
-                File = file
-            };
+            uploadCertificateCommand.SetId(id);
 
-            var sasUrlDto = await _mediator.Send(command);
+            var sasUrlDto = await _mediator.Send(uploadCertificateCommand);
 
             return Ok(sasUrlDto);
         }
@@ -62,20 +52,14 @@ namespace AthleteHub.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
         [Authorize(Roles = RolesConstants.Coach)]
-        public async Task<IActionResult> AddContent(List<IFormFile> files)
+        public async Task<IActionResult> AddContent([FromForm] AddContentCommand addContentCommand)
         {
-            if (files == null || files.Count == 0)
+            if (addContentCommand.Files == null || addContentCommand.Files.Count() == 0)
                 return BadRequest("No File Selected");
 
-            var command = new AddContentCommand()
-            {
-                Files = files
-            };
-
-            var addedContentResponseDto = await _mediator.Send(command);
+            var addedContentResponseDto = await _mediator.Send(addContentCommand);
 
             return Ok(addedContentResponseDto);
         }
-
     }
 }

@@ -33,13 +33,13 @@ public class RegisterUserCommandHandler(IMapper _mapper, UserManager<Application
 
             if (request.IsCoach)
             {
-                await CreateCoachAsync(user.Id);
+                ResponseDto.EntityId = await CreateCoachAsync(user.Id);
                 ResponseDto.Roles = [RolesConstants.Coach];
                 await _userManager.AddToRoleAsync(user, RolesConstants.Coach);
             }
             else
             {
-                await CreateAthleteAsync(user.Id, (decimal)request.Height!);
+                ResponseDto.EntityId = await CreateAthleteAsync(user.Id, (decimal)request.Height!);
                 ResponseDto.Roles = [RolesConstants.Athlete];
                 await _userManager.AddToRoleAsync(user, RolesConstants.Athlete);
             }
@@ -70,17 +70,19 @@ public class RegisterUserCommandHandler(IMapper _mapper, UserManager<Application
             });
         }
     }
-    private async Task CreateCoachAsync(string applicationuserId)
+    private async Task<int> CreateCoachAsync(string applicationuserId)
     {
         var coach = new Coach() { ApplicationUserId = applicationuserId };
         await _unitOfWork.Coaches.AddAsync(coach);
         await _unitOfWork.CommitAsync();
+        return coach.Id;
     }
-    private async Task CreateAthleteAsync(string applicationuserId, decimal height)
+    private async Task<int> CreateAthleteAsync(string applicationuserId, decimal height)
     {
         var athlete = new Athlete() { ApplicationUserId = applicationuserId, HeightInCm = height };
         await _unitOfWork.Athletes.AddAsync(athlete);
         await _unitOfWork.CommitAsync();
+        return athlete.Id;
     }
     private async Task<string> GenerateEmailConfirmationLinkAsync(ApplicationUser user, string clientEmailConfirmationUrl)
     {
@@ -93,7 +95,6 @@ public class RegisterUserCommandHandler(IMapper _mapper, UserManager<Application
         };
 
         string confirmationLink = QueryHelpers.AddQueryString(clientEmailConfirmationUrl, queryParams);
-
         return confirmationLink;
     }
 }

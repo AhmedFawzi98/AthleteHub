@@ -1,72 +1,63 @@
 ﻿using AthleteHub.Application.Athletes.Dtos;
+using AthleteHub.Application.Users;
+using AthleteHub.Domain.Constants;
 using AthleteHub.Domain.Entities;
 using AthleteHub.Domain.Exceptions;
 using AthleteHub.Domain.Interfaces.Repositories;
 using AutoMapper;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Stripe.Checkout;
 
 namespace AthleteHub.Application.Athletes.Commands.Subscribe
 {
-    public class SubscribeCommandHandeler : IRequestHandler<SubscribeCommand, AthleteActiveSubscribtionDto>
+    public class SubscribeCommandHandeler(IUnitOfWork _unitOfWork, IMapper _mapper, IUserContext _userContext) : IRequestHandler<SubscribeCommand, SubscribeResponseDto>
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
-
-        public SubscribeCommandHandeler(IUnitOfWork unitOfWork, IMapper mapper)
+        public async Task<SubscribeResponseDto> Handle(SubscribeCommand request, CancellationToken cancellationToken)
         {
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
+            var currentUser = _userContext.GetCurrentUser();
+            if (currentUser==null || !currentUser.IsInRole(RolesConstants.Athlete))
+                throw new UnAuthorizedException();
+
+            var athlete = await _unitOfWork.Athletes.FindAsync(a => a.ApplicationUserId == currentUser.Id);
+
+            await AddAthleteCoachAsync(athlete.Id, request.CoachId);
+            await AddAthleteActiveSubscribtionAsync(athlete.Id, request.SubscribtionId, request.SubscribtionDurationInMonth,request.SessionId);
+            
+            await _unitOfWork.CommitAsync();
+
+            return new SubscribeResponseDto() { AthleteEmail=currentUser.Email};
         }
-        public async Task<AthleteActiveSubscribtionDto> Handle(SubscribeCommand request, CancellationToken cancellationToken)
+        private async Task AddAthleteCoachAsync(int athleteId,int coachId)
         {
-           
-            var athleteCoach = await _unitOfWork.AthletesCoaches.FindAsync(ac => ac.CoachId == request.CoachId && ac.AthleteId == request.AthleteId);
-            //Edit
-            if (athleteCoach != null && athleteCoach.IsCurrentlySubscribed)
-                return new AthleteActiveSubscribtionDto() { AthleteId = request.AthleteId
-                                                   ,SubscribtionId=request.SubscribtionId, CanSubscribe=false};
+            var athleteCoach = await _unitOfWork.AthletesCoaches.FindAsync(ac => ac.CoachId == coachId && ac.AthleteId == athleteId);
 
-
-            var athleteActiveSubscribtion = await _unitOfWork.AthleteActiveSubscribtions
-                       .FindAsync(a => a.AthleteId == request.AthleteId && a.SubscribtionId == request.SubscribtionId);
-            //Edit
-            if (athleteActiveSubscribtion != null)
-                return new AthleteActiveSubscribtionDto()
-                {
-                    AthleteId = request.AthleteId                          ,
-                    SubscribtionId = request.SubscribtionId,
-                    CanSubscribe = false
-                };
-
-            //Do Payment in someway
-
-            if (athleteCoach != null)
+            if (athleteCoach != null) 
             {
                 athleteCoach.IsCurrentlySubscribed = true;
-                _unitOfWork.AthletesCoaches.Update(athleteCoach);
             }
             else
             {
-                athleteCoach = new AthleteCoach();
-                athleteCoach.AthleteId = request.AthleteId;
-                athleteCoach.CoachId = request.CoachId;
-                athleteCoach.IsCurrentlySubscribed = true;
-                await _unitOfWork.AthletesCoaches.AddAsync(athleteCoach);
+                athleteCoach =new AthleteCoach() { 
+                 AthleteId = athleteId,
+                 CoachId = coachId,
+                 IsCurrentlySubscribed = true,
+                };
+               await _unitOfWork.AthletesCoaches.AddAsync(athleteCoach);
             }
-            athleteActiveSubscribtion = new AthleteActiveSubscribtion();
-            athleteActiveSubscribtion.AthleteId = request.AthleteId;
-            athleteActiveSubscribtion.SubscribtionId = request.SubscribtionId;
-            athleteActiveSubscribtion.SubscribtionEndDate = DateOnly.FromDateTime(DateTime.Now).AddMonths(request.SubscribtionDurationInMonth);
+        }
+
+        private async Task AddAthleteActiveSubscribtionAsync(int athleteId,int subscribtionId,int SubscribtionDurationInMonth,string sessionId)
+        {
+            var session = await new SessionService().GetAsync(sessionId);
+            var athleteActiveSubscribtion = new AthleteActiveSubscribtion()
+            {
+                AthleteId = athleteId,
+                SubscribtionId = subscribtionId,
+                SubscribtionEndDate = DateOnly.FromDateTime(DateTime.Now).AddMonths(SubscribtionDurationInMonth),
+                PaymentIntentId = session.PaymentIntentId
+            };
+           
             await _unitOfWork.AthleteActiveSubscribtions.AddAsync(athleteActiveSubscribtion);
-            await _unitOfWork.CommitAsync();
-            var athleteActiveSubscribtionDto = _mapper.Map<AthleteActiveSubscribtionDto>(athleteActiveSubscribtion);
-            athleteActiveSubscribtionDto.CanSubscribe = true;
-            return athleteActiveSubscribtionDto;
         }
     }
 }

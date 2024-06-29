@@ -7,9 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+
+    <Folder Include="Services\ContentTypeService\" />
+
     <Compile Remove="Services\ContentTypeService\**" />
     <EmbeddedResource Remove="Services\ContentTypeService\**" />
     <None Remove="Services\ContentTypeService\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+
+    <Folder Include="Athletes\Queries\" />
+
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +27,7 @@
     <PackageReference Include="MediatR" Version="12.3.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
+    <PackageReference Include="Stripe.net" Version="45.0.0" />
   </ItemGroup>
 
   <ItemGroup>
