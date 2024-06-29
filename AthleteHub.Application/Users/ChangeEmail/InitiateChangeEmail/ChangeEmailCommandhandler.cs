@@ -29,7 +29,7 @@ public class ChangeEmailCommandHandler(IUserContext _userContext, UserManager<Ap
         var token = await _userManager.GenerateChangeEmailTokenAsync(user, request.NewEmail);
         Dictionary<string, string> queryParams = new()
         {
-            {"email", user.Email},
+            {"email", request.NewEmail},
             {"token", token }
         };
 

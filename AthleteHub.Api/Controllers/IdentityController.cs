@@ -88,7 +88,7 @@ public class IdentityController(IMediator _mediator) : ControllerBase
         return NoContent();
     }
 
-    [HttpGet("changeEmail")]
+    [HttpPatch("changeEmail")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EmailConfirmationResponseDto))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(string))]
@@ -104,7 +104,6 @@ public class IdentityController(IMediator _mediator) : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
-    [Authorize]
     public async Task<IActionResult> ConfirmChangeEmail([FromQuery] ConfirmChangeEmailCommand confirmChangeEmailCommand)
     {
         await _mediator.Send(confirmChangeEmailCommand);
