@@ -134,7 +134,7 @@ public class IdentityController(IMediator _mediator) : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserLoginResponseDto))]
     public async Task<IActionResult> Login([FromBody] LoginUserCommand loginUserCommand)
     {
-        var LogedInUserDto = await _mediator.Send(loginUserCommand);
+        UserLoginResponseDto LogedInUserDto = await _mediator.Send(loginUserCommand);
         return Ok(LogedInUserDto);
     }
 

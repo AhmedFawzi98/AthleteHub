@@ -1,11 +1,7 @@
-﻿using AthleteHub.Application.SubscribtionFeatures.Dtos;
+﻿using AthleteHub.Application.Coaches.Dtoes;
 using AthleteHub.Application.Subscribtions.Dtos;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AthleteHub.Application.Subscribtions.Commands.UpdateSubscribtion
 {

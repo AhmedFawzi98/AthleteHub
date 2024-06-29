@@ -6,6 +6,7 @@ using AthleteHub.Domain.Interfaces.Repositories;
 using AutoMapper;
 using MediatR;
 using Resturants.Application.Common;
+using Resturants.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtionsByCoac
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ISortingService _sortingService;
-        //private readonly IBlobStorageService _blobStorageService;
+        
 
         public GetAllSubscribtionsQueryByCoachIdHandler(IMapper mapper, IUnitOfWork unitOfWork)
         {
@@ -42,15 +43,10 @@ namespace AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtionsByCoac
                     new KeyValuePair<Expression<Func<object, object>>, Expression<Func<object, object>>>(exp1, null));
             }
 
-            Expression<Func<Subscribtion, object>> sortingExpression = null;
-            if (request.SortBy != null)
-                sortingExpression = _sortingService.GetSubscribtionSortingExpression(request.SortBy);
-
-
             Expression<Func<Subscribtion, bool>> criteria = s => s.CoachId == request.CoachId;
             (subscribtions, totalCount) = await _unitOfWork.Subscribtions.GetAllAsync(
-                request.PageSize, request.PageNumber, request.SortingDirection, 
-                sortingExpression, null, criteria, includes);
+                request.PageSize, request.PageNumber, SortingDirection.Ascending, 
+                null, null, criteria, includes);
 
             var subscribtionsDtos = _mapper.Map<IEnumerable<SubscribtionDto>>(subscribtions);
             

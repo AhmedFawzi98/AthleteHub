@@ -1,10 +1,4 @@
-﻿using AthleteHub.Application.SubscribtionFeatures.Dtos;
-using AthleteHub.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AthleteHub.Application.Coaches.Dtoes;
 
 namespace AthleteHub.Application.Subscribtions.Dtos
 {
@@ -16,8 +10,5 @@ namespace AthleteHub.Application.Subscribtions.Dtos
         public decimal price { get; set; }
         public int DurationInMonths { get; set; }
         public List<SubscribtionFeatureDto> SubscribtionsFeatures { get; set; } = new List<SubscribtionFeatureDto>();
-
-        //public ICollection<AthleteActiveSubscribtionDto> AthleteActiveSubscribtions { get; set; } = new List<AthleteActiveSubscribtionDto>();
-
     }
 }

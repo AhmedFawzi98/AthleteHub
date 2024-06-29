@@ -17,7 +17,8 @@ namespace AthleteHub.Application.Subscribtions.Dtos
             CreateMap<UpdateSubscribtionCommand, Subscribtion>();
             CreateMap<CreateSubscribtionCommand, Subscribtion>()
                 .ForMember(dest => dest.SubscribtionsFeatures, opt => opt.Ignore());
-            CreateMap<Subscribtion, SubscribtionDto>();
+            CreateMap<Subscribtion, SubscribtionDto>()
+                 .ForMember(d => d.SubscribtionsFeatures, opt => opt.MapFrom(src => src.SubscribtionsFeatures)); ;
         }
     }
 }

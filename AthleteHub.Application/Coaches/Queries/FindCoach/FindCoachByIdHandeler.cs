@@ -1,5 +1,4 @@
 ﻿using AthleteHub.Application.Coaches.Dtoes;
-using AthleteHub.Application.Coaches.Queries.GetAllCoaches;
 using AthleteHub.Application.Services.BlobStorageService;
 using AthleteHub.Application.Users;
 using AthleteHub.Domain.Constants;
@@ -8,13 +7,8 @@ using AthleteHub.Domain.Exceptions;
 using AthleteHub.Domain.Interfaces.Repositories;
 using AutoMapper;
 using MediatR;
-using Resturants.Application.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AthleteHub.Application.Coaches.Queries.FindCoach
 {
@@ -36,10 +30,8 @@ namespace AthleteHub.Application.Coaches.Queries.FindCoach
         {
             Dictionary<Expression<Func<Coach, object>>, KeyValuePair<Expression<Func<object, object>>, Expression<Func<object, object>>>> includes = new()
             {
-                {c=>c.ApplicationUser ,
-                             new KeyValuePair<Expression<Func<object, object>>, Expression<Func<object, object>>>(null,null) },
-                {c=>c.Subscribtions, new KeyValuePair<Expression<Func<object, object>>,
-                                              Expression<Func<object, object>>>(s=>((Subscribtion)s).SubscribtionsFeatures,null)},
+                {c=>c.ApplicationUser ,new (null,null) },
+                {c=>c.Subscribtions, new((s => ((Subscribtion)s).SubscribtionsFeatures),(sf => ((SubscribtionFeature)sf).Feature))},
                 
             };
             Expression<Func<object, object>> exp1 = (cr => ((CoachRating)cr).Athlete);
@@ -56,9 +48,9 @@ namespace AthleteHub.Application.Coaches.Queries.FindCoach
             }
             Expression<Func<Coach, bool>> critrea = null;
             if (currentAthlete != null)
-                critrea = c => c.Id == request.Id && !c.CoachesBlockedAthletees.Any(cba => cba.AthleteId == currentAthlete.Id);
+                critrea = c => c.Id == request.Id && c.IsSuspended==false && c.IsApproved==true && !c.CoachesBlockedAthletees.Any(cba => cba.AthleteId == currentAthlete.Id);
             else
-                critrea = c => c.Id == request.Id;
+                critrea = c => c.Id == request.Id && c.IsSuspended == false && c.IsApproved == true;
 
             var coach = await _unitOfWork.Coaches.FindAsync(critrea, includes);
             
@@ -66,14 +58,14 @@ namespace AthleteHub.Application.Coaches.Queries.FindCoach
             
 
             var coatchDto = _mapper.Map<CoachDto>(coach);
-            if (!string.IsNullOrEmpty(coatchDto.ProfilePicture))
-            {
-                coatchDto.SasProfilePicture = _blobStorageService.GetBlobSasUrl(coatchDto.ProfilePicture);
-            }
-            if (!string.IsNullOrEmpty(coatchDto.Certificate))
-            {
-                coatchDto.SasCertificate = _blobStorageService.GetBlobSasUrl(coatchDto.Certificate);
-            }
+            //if (!string.IsNullOrEmpty(coatchDto.ProfilePicture))
+            //{
+            //    coatchDto.SasProfilePicture = _blobStorageService.GetBlobSasUrl(coatchDto.ProfilePicture);
+            //}
+            //if (!string.IsNullOrEmpty(coatchDto.Certificate))
+            //{
+            //    coatchDto.SasCertificate = _blobStorageService.GetBlobSasUrl(coatchDto.Certificate);
+            //}
             return coatchDto;
         }
         

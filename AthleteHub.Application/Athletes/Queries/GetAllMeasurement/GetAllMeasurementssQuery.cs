@@ -12,10 +12,9 @@ namespace AthleteHub.Application.Athletes.Queries.GetAllMeasurement
 {
     public class GetAllMeasurementssQuery : IRequest<PageResultsDto<MeasurementDto>>
     {
-        public int AthleteId { get; init; }
+        public int AthleteId { get; set; }
         public int PageSize { get; init; }
         public int PageNumber { get; init; }
-        public string? SortBy { get; init; }
         public SortingDirection SortingDirection { get; init; } = SortingDirection.Ascending;
     }
 }

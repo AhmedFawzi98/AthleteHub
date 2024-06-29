@@ -1,6 +1,8 @@
-﻿namespace AthleteHub.Domain.Entities;
+﻿using AthleteHub.Domain.Interfaces.Services;
 
-public class Coach
+namespace AthleteHub.Domain.Entities;
+
+public class Coach:ISearchFilterEntity
 {
     public int Id { get; set; }
     public string ApplicationUserId { get; set; }
