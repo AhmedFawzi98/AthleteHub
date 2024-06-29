@@ -7,7 +7,15 @@ using AthleteHub.Application.Athletes.Commands.Subscribe;
 using AthleteHub.Application.Athletes.Dtos;
 using AthleteHub.Application.Athletes.Queries.FindAthleteById;
 using AthleteHub.Application.Athletes.Queries.FindMeasurement;
+
+using AthleteHub.Application.Athletes.Queries.GetAllfavoriteCoaches;
+using AthleteHub.Application.Athletes.Queries.GetAllMeasurement;
+using AthleteHub.Application.Athletes.Queries.GetAthleteSubscribtion;
+using AthleteHub.Application.Coaches.Dtoes;
+using AthleteHub.Application.Coaches.Queries.GetAllCoaches;
+
 using AthleteHub.Application.Athletes.Queries.GetAllAthletes;
+
 using AthleteHub.Domain.Constants;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -91,9 +99,41 @@ namespace AthleteHub.Api.Controllers
         public async Task<IActionResult> GetMeasurementByAthleteId(int AthleteId, [FromQuery] DateTime date)
         {
 
-            var resturantsDto = await _mediator.Send(new FindMeasurementQuery { AthleteId = AthleteId, Date = DateOnly.FromDateTime(date) });
-            return Ok(resturantsDto);
+            var MeasurementDto = await _mediator.Send(new FindMeasurementQuery { AthleteId = AthleteId, Date = DateOnly.FromDateTime(date) });
+            return Ok(MeasurementDto);
         }
 
+        [HttpGet("AllMeasurement")]
+       
+        public async Task<IActionResult> GetAllMeasurement([FromQuery] GetAllMeasurementssQuery getAllMeasurementssQuery)
+        {
+            var MeasurementDto = await _mediator.Send(getAllMeasurementssQuery);
+            if (MeasurementDto.TotalItemsCount > 0)
+                return Ok(MeasurementDto);
+            return NotFound("There are no Measurements");
+
+        }
+
+        [HttpGet("FavCoaches")]
+        
+        public async Task<IActionResult> GetFavCoaches([FromQuery] GetAllfavoriteCoachesQuery getAllCoachesQuery)
+        {
+            var favCoachesDtos = await _mediator.Send(getAllCoachesQuery);
+            if (favCoachesDtos.TotalItemsCount > 0)
+                return Ok(favCoachesDtos);
+            return NotFound("There are no coaches in favorite");
+        }
+
+        [HttpGet("AthleteSubscribtion")]
+       
+        public async Task<IActionResult> GetAthleteSubscribtion([FromQuery] GetAthleteSubscribtionQuery getAthleteSubscribtionQueryy)
+        {
+            var AthleteSubscribtionQueryDtos = await _mediator.Send(getAthleteSubscribtionQueryy);
+            if (!AthleteSubscribtionQueryDtos.Any())
+            {
+                return NotFound("No favorite coaches found.");
+            }
+            return Ok(AthleteSubscribtionQueryDtos);
+        }
     }
 }

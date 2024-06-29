@@ -1,4 +1,5 @@
-﻿using AthleteHub.Application.Athletes.Dtos;
+﻿using AthleteHub.Application.Coaches.Dtoes;
+using AthleteHub.Domain.Enums;
 using MediatR;
 using Resturants.Application.Common;
 using Resturants.Domain.Enums;
@@ -8,13 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AthleteHub.Application.Athletes.Queries.GetAllMeasurement
+
+namespace AthleteHub.Application.Athletes.Queries.GetAllfavoriteCoaches
 {
-    public class GetAllMeasurementssQuery : IRequest<PageResultsDto<MeasurementDto>>
+    public class GetAllfavoriteCoachesQuery : IRequest<PageResultsDto< CoachDto>>
     {
         public int AthleteId { get; set; }
+        public SortingDirection SortingDirection { get; init; } = SortingDirection.Ascending;
         public int PageSize { get; init; }
         public int PageNumber { get; init; }
-        public SortingDirection SortingDirection { get; init; } = SortingDirection.Ascending;
     }
 }
