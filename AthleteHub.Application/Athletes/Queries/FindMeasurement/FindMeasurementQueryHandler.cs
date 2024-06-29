@@ -1,4 +1,5 @@
 ﻿using AthleteHub.Application.Athletes.Dtos;
+using AthleteHub.Application.Users;
 using AthleteHub.Domain.Entities;
 using AthleteHub.Domain.Exceptions;
 using AthleteHub.Domain.Interfaces.Repositories;
@@ -12,19 +13,12 @@ using System.Threading.Tasks;
 
 namespace AthleteHub.Application.Athletes.Queries.FindMeasurement
 {
-    internal class FindMeasurementQueryHandler : IRequestHandler<FindMeasurementQuery, MeasurementDto>
+    internal class FindMeasurementQueryHandler(IMapper _mapper, IUnitOfWork _unitOfWork, IUserContext _userContext) : IRequestHandler<FindMeasurementQuery, MeasurementDto>
     {
-        private readonly IMapper _mapper;
-        private readonly IUnitOfWork _unitOfWork;
-
-        public FindMeasurementQueryHandler(IMapper mapper, IUnitOfWork unitOfWork)
-        {
-            _mapper = mapper;
-            _unitOfWork = unitOfWork;
-        }
-
         public async Task<MeasurementDto> Handle(FindMeasurementQuery request, CancellationToken cancellationToken)
         {
+            var currentUser = _userContext.GetCurrentUser() ?? throw new UnAuthorizedException();
+
             var measurement = await _unitOfWork.Measurements.FindAsync(m => m.AthleteId == request.AthleteId && m.Date == request.Date)
                 ?? throw new NotFoundException(nameof(Measurement), request.AthleteId.ToString());
             var measurementDto = _mapper.Map<MeasurementDto>(measurement);

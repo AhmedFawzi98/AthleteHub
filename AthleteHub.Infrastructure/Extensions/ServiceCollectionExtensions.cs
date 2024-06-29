@@ -129,7 +129,6 @@ public static class ServiceCollectionExtensions
         #endregion
         services.AddScoped<IUserContext, UserContext>();
         services.AddScoped<IPaymentService, PaymentService>();
-        services.AddMemoryCache();
         services.Configure<BlobStorageSettings>(configuration.GetSection(BlobStorageSettings.BlobStorage));
         services.AddScoped<IBlobStorageService, BlobStorageService>();
     }

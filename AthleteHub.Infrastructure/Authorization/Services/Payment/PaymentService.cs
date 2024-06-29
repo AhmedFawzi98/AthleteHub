@@ -19,20 +19,19 @@ namespace AthleteHub.Infrastructure.Authorization.Services.Payment
     public class PaymentService : IPaymentService
     {
         private readonly IConfiguration _configuration;
-        private readonly IMemoryCache _memoryCache;
         private readonly IUnitOfWork _unitOfWork;
 
 
-        public PaymentService(IConfiguration configuration, IMemoryCache memoryCache, IUnitOfWork unitOfWork)
+        public PaymentService(IConfiguration configuration, IUnitOfWork unitOfWork)
         {
             _configuration = configuration;
             StripeConfiguration.ApiKey = _configuration["StripeSittings:Secretkey"];
-            _memoryCache = memoryCache;
             _unitOfWork = unitOfWork;
         }
         public async Task<string> CreateCheckoutSessionAsync(decimal price, string subscriptionName, int athleteId, int subscriptionId)
         {
             var successUrl = "http://localhost:5068/api/Payment/Success?sessionId={CHECKOUT_SESSION_ID}";
+
             var cancelUrl = "http://yourtestserver/cancel";
 
             var options = new SessionCreateOptions
@@ -64,11 +63,14 @@ namespace AthleteHub.Infrastructure.Authorization.Services.Payment
             }
             };
             var service = new SessionService();
+            var existingSubscription = _unitOfWork.AthleteActiveSubscribtions.FindAsync(acs => acs.AthleteId == athleteId && acs.SubscribtionId == subscriptionId);
+            if (existingSubscription is not null)
+            {
+                throw new InvalidOperationException("you cannot subscribe to the same bundle twice!!");
+            }
             Session session = await service.CreateAsync(options);
 
-            _memoryCache.Set("SessionId", session.Id);
-            _memoryCache.Set("AthleteId", athleteId);
-            _memoryCache.Set("SubscriptionId", subscriptionId);
+       
 
             return session.Url;
         }
@@ -79,10 +81,8 @@ namespace AthleteHub.Infrastructure.Authorization.Services.Payment
             var athleteId = session.Metadata["AthleteId"];
             var subscriptionId = session.Metadata["SubscriptionId"];
 
-            var existingAthleteSubscribtion = await _unitOfWork.AthleteActiveSubscribtions.FindAsync(m => m.AthleteId == int.Parse(athleteId) && m.SubscribtionId == int.Parse(subscriptionId));
             var paymentIntentId = session.PaymentIntentId;
-            if (existingAthleteSubscribtion is null) 
-            { 
+
             var newAthleteSubscription = new AthleteActiveSubscribtion()
             {
                 AthleteId = int.Parse(athleteId),
@@ -91,21 +91,9 @@ namespace AthleteHub.Infrastructure.Authorization.Services.Payment
                 SubscribtionStartDate = DateOnly.FromDateTime(DateTime.Now),
                 SubscribtionEndDate = DateOnly.FromDateTime(DateTime.Now.AddDays(90))
             };
-               await _unitOfWork.AthleteActiveSubscribtions.AddAsync(newAthleteSubscription);
-                await _unitOfWork.CommitAsync();
-            }
-            else
-            {
-                throw new InvalidOperationException("you cannot subscribe to the same bundle twice!!");
-            }
-
+            await _unitOfWork.AthleteActiveSubscribtions.AddAsync(newAthleteSubscription);
+            await _unitOfWork.CommitAsync();
             return paymentIntentId;
-        }
-
-
-        public Task ProcessWebhookAsync(string json, string stripeSignature)
-        {
-            throw new NotImplementedException();
         }
     }
 }
