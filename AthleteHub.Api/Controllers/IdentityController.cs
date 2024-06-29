@@ -114,10 +114,10 @@ public class IdentityController(IMediator _mediator) : ControllerBase
     [HttpGet("resetPassword")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResetPasswordResponseDto))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
-    public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordCommand resetPasswordCommand)
+    public async Task<IActionResult> ResetPassword([FromQuery] ResetPasswordCommand resetPasswordCommand)
     {
-        var response = await _mediator.Send(resetPasswordCommand);
-        return NoContent();
+        var resetPasswordResponseDto = await _mediator.Send(resetPasswordCommand);
+        return Ok(resetPasswordResponseDto);
     }
 
     [HttpGet("confirmresetPassword")]

@@ -43,7 +43,6 @@ public class ChangeEmailCommandHandler(IUserContext _userContext, UserManager<Ap
         {
             EmailConfirmationLink = emailChangingconfirmationLink,
             UserEmailToConfirm = request.NewEmail,
-            UserOldEmail = request.CurrentEmail
         };
 
         return response;
