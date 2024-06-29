@@ -1,4 +1,3 @@
-
 ﻿using AthleteHub.Application.Users;
 using AthleteHub.Application.Services;
 using AthleteHub.Domain.Entities;
@@ -6,13 +5,8 @@ using AthleteHub.Domain.Interfaces.Repositories;
 using AthleteHub.Domain.Interfaces.Services;
 using AthleteHub.Infrastructure.Authorization.Services;
 using AthleteHub.Infrastructure.Authorization.Services.Payment;
-using AthleteHub.Infrastructure.Authorization.Services;
-
-
 using AthleteHub.Application.Services.BlobStorageService;
-
 using AthleteHub.Infrastructure.BlobStorage;
-
 using AthleteHub.Infrastructure.Configurations;
 using AthleteHub.Infrastructure.Constants;
 using AthleteHub.Infrastructure.Persistance;
@@ -26,8 +20,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using System;
 using System.Text;
+using AthleteHub.Application.Services.EmailService;
+using AthleteHub.Infrastructure.EmailService;
 
 namespace AthleteHub.Application.Extensions;
 
@@ -51,17 +46,28 @@ public static class ServiceCollectionExtensions
             options.User.RequireUniqueEmail = true;
             options.Password.RequireNonAlphanumeric = true;
             options.Password.RequiredLength = 8;
-
-            options.SignIn.RequireConfirmedEmail = false;
-
+            options.SignIn.RequireConfirmedEmail = true;
             options.SignIn.RequireConfirmedPhoneNumber = false;
             options.Lockout.AllowedForNewUsers = true;
             options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(20);
             options.Lockout.MaxFailedAccessAttempts = 5;
+            options.Tokens.EmailConfirmationTokenProvider = ConfigurationConstants.EmailConfirmationTokenProvider;
         })
        .AddEntityFrameworkStores<AthleteHubDbContext>()
        .AddDefaultTokenProviders()
+       .AddTokenProvider<EmailConfirmationTokenProvider<ApplicationUser>>(ConfigurationConstants.EmailConfirmationTokenProvider)
        .AddRoles<IdentityRole>();
+
+        services.Configure<DataProtectionTokenProviderOptions>(options =>
+        {
+            options.TokenLifespan = TimeSpan.FromHours(3);
+        });
+
+        services.Configure<EmailConfirmationTokenProviderOptions>(ConfigurationConstants.EmailConfirmationTokenProvider, options =>
+        {
+            options.TokenLifespan = TimeSpan.FromDays(7);
+        });
+
 
         services.AddAuthentication(options =>
         {
@@ -122,7 +128,10 @@ public static class ServiceCollectionExtensions
 
         #endregion
 
-
+        #region email service
+        services.Configure<EmailSettings>(configuration.GetSection(EmailSettings.EmailService));
+        services.AddTransient<IEmailService, EmailService>();
+        #endregion
         services.AddScoped<IUserContext, UserContext>();
         services.AddScoped<IPaymentService, PaymentService>();
         services.AddMemoryCache();

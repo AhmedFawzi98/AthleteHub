@@ -2,6 +2,7 @@
 using AthleteHub.Application.Services;
 using AthleteHub.Domain.Entities;
 using AthleteHub.Infrastructure.Configurations;
+using AthleteHub.Infrastructure.Constants;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
@@ -18,11 +19,12 @@ internal class TokenService(UserManager<ApplicationUser> _userManager, IOptions<
     , IHttpContextAccessor _httpContextAccessor) : ITokenService
 {
     private readonly JwtSettings _jwtSettings = jwtSettingsOptions.Value;
-    public async Task<(string,DateTime)> GetJwtAccessTokenAsync(ApplicationUser user, List<string> rolesNames)
+    public async Task<(string,DateTime)> GetJwtAccessTokenAsync(ApplicationUser user, List<string> rolesNames, int entityId)
     {
         List<Claim> claims = new List<Claim>
         {
             new Claim(ClaimTypes.NameIdentifier, user.Id),
+            new Claim(AppClaimTypes.EntityId, entityId.ToString()),
             new Claim(ClaimTypes.Name, user.UserName!),
             new Claim(ClaimTypes.Email, user.Email!),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()) 
@@ -76,7 +78,9 @@ internal class TokenService(UserManager<ApplicationUser> _userManager, IOptions<
         CookieOptions options = new CookieOptions
         {
             Expires = expires,
-            HttpOnly = true
+            HttpOnly = true,
+            SameSite = SameSiteMode.None,
+            Secure = true
         };
         _httpContextAccessor?.HttpContext?.Response.Cookies.Append(TokenConstants.RefreshToken, refreshToken, options);
     }

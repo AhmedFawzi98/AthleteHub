@@ -1,5 +1,6 @@
 ﻿using AthleteHub.Application.Services;
 using AthleteHub.Application.Users.Dtos;
+using AthleteHub.Domain.Constants;
 using AthleteHub.Domain.Entities;
 using AthleteHub.Domain.Exceptions;
 using AthleteHub.Domain.Interfaces.Repositories;
@@ -40,14 +41,24 @@ public class RevokeTokenCommandHandler(UserManager<ApplicationUser> _userManager
 
         var rolesNames = currentUser.Roles.ToList();
 
-        await SetAccessTokenAsync(user, refreshTokenResponseDto, rolesNames);
+        var entityId = await GetUserEntityIdAsync(user, rolesNames);
+
+        await SetAccessTokenAsync(user, refreshTokenResponseDto, rolesNames, entityId);
         await SetRefreshTokenAsync(user, refreshTokenResponseDto, oldRefreshToken);
 
         return refreshTokenResponseDto;
     }
-    private async Task SetAccessTokenAsync(ApplicationUser user, RefreshTokenResponseDto refreshTokenResponseDto, List<string> rolesNames)
+    private async Task<int> GetUserEntityIdAsync(ApplicationUser user, List<string> rolesNames)
     {
-        var (jwtAccessToken, validTo) = await _tokenService.GetJwtAccessTokenAsync(user, rolesNames);
+        if (rolesNames.Contains(RolesConstants.Coach))
+        {
+            return await _unitOfWork.Coaches.FindAsync(c => c.ApplicationUserId == user.Id, c => c.Id);
+        }
+        return await _unitOfWork.Athletes.FindAsync(a => a.ApplicationUserId == user.Id, a => a.Id);
+    }
+    private async Task SetAccessTokenAsync(ApplicationUser user, RefreshTokenResponseDto refreshTokenResponseDto, List<string> rolesNames, int entityId)
+    {
+        var (jwtAccessToken, validTo) = await _tokenService.GetJwtAccessTokenAsync(user, rolesNames, entityId);
         refreshTokenResponseDto.AccessToken = jwtAccessToken;
         refreshTokenResponseDto.AccessTokenExpiration = validTo;
     }

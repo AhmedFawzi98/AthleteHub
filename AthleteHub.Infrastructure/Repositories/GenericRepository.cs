@@ -85,6 +85,15 @@ internal class GenericRepository<T>(AthleteHubDbContext _context) : IGenericRepo
         }
         return await query.FirstOrDefaultAsync(criteria);
     }
+    public async Task<TResult> FindAsync<TResult>(Expression<Func<T, bool>> criteria, Expression<Func<T, TResult>> selector)
+    {
+        IQueryable<T> query = _context.Set<T>();
+       
+        query = query.Where(criteria);
+
+        return await query.Select(selector).FirstOrDefaultAsync();
+    }
+
     public async Task<T> FindAsync(
     Expression<Func<T, bool>> criteria,
     SortingDirection sortingDirection = SortingDirection.Ascending,

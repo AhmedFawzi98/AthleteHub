@@ -29,7 +29,7 @@ public class RevokeTokenCommandHandler(UserManager<ApplicationUser> _userManager
             .Where(u => u.Id == currentUser.Id && u.RefreshTokens.Any(t => t.Token == refreshTokenFromCookie))
             .FirstOrDefaultAsync();
 
-        var oldRefreshToken = user?.RefreshTokens.FirstOrDefault();
+        var oldRefreshToken = user?.RefreshTokens.FirstOrDefault(t => t.Token == refreshTokenFromCookie);
         if (user == null || !oldRefreshToken!.IsActive)
         {
             RevokeTokenResponseDto.IsRevoked = false;

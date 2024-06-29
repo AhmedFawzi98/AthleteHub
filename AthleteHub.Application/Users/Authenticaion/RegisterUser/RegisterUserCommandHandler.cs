@@ -1,4 +1,5 @@
-﻿using AthleteHub.Application.Users.Dtos;
+﻿using AthleteHub.Application.Services.EmailService;
+using AthleteHub.Application.Users.Dtos;
 using AthleteHub.Domain.Constants;
 using AthleteHub.Domain.Entities;
 using AthleteHub.Domain.Exceptions;
@@ -6,14 +7,15 @@ using AthleteHub.Domain.Interfaces.Repositories;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.WebUtilities;
 using static AthleteHub.Domain.Exceptions.BadRequestException;
 
 namespace AthleteHub.Application.Users.Authenticaion.RegisterUser;
 
-public class ActivateOrDeactivateUserCommandHandler(IMapper _mapper, UserManager<ApplicationUser> _userManager
-    , IUnitOfWork _unitOfWork) : IRequestHandler<RegisterUserCommand, UserDto>
+public class RegisterUserCommandHandler(IMapper _mapper, UserManager<ApplicationUser> _userManager
+    , IUnitOfWork _unitOfWork, IEmailService _emailService) : IRequestHandler<RegisterUserCommand, EmailConfirmationResponseDto>
 {
-    public async Task<UserDto> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
+    public async Task<EmailConfirmationResponseDto> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
     {
         await EnsureUniqueEmailandUsername(request.Email, request.UserName);
 
@@ -27,26 +29,27 @@ public class ActivateOrDeactivateUserCommandHandler(IMapper _mapper, UserManager
         }
         else
         {
-            var userDto = _mapper.Map<UserDto>(user);
+            var ResponseDto = new EmailConfirmationResponseDto() {UserEmailToConfirm = request.Email };
 
             if (request.IsCoach)
             {
-                var coachId = await CreateCoachAsync(user.Id);
-                userDto.EntityId = coachId;
-                userDto.Roles = [RolesConstants.Coach];
+                ResponseDto.EntityId = await CreateCoachAsync(user.Id);
+                ResponseDto.Roles = [RolesConstants.Coach];
                 await _userManager.AddToRoleAsync(user, RolesConstants.Coach);
             }
             else
             {
-                var athleteId = await CreateAthleteAsync(user.Id, (decimal)request.Height!);
-                userDto.EntityId = athleteId;
-                userDto.Roles = [RolesConstants.Athlete];
+                ResponseDto.EntityId = await CreateAthleteAsync(user.Id, (decimal)request.Height!);
+                ResponseDto.Roles = [RolesConstants.Athlete];
                 await _userManager.AddToRoleAsync(user, RolesConstants.Athlete);
             }
 
-            return userDto;
+            ResponseDto.EmailConfirmationLink = await GenerateEmailConfirmationLinkAsync(user, request.ClientEmailConfirmationUrl);
+
+            return ResponseDto;
         }
     }
+
     private async Task EnsureUniqueEmailandUsername(string email, string username)
     {
         var userWithSameEmail = await _userManager.FindByEmailAsync(email);
@@ -80,5 +83,18 @@ public class ActivateOrDeactivateUserCommandHandler(IMapper _mapper, UserManager
         await _unitOfWork.Athletes.AddAsync(athlete);
         await _unitOfWork.CommitAsync();
         return athlete.Id;
+    }
+    private async Task<string> GenerateEmailConfirmationLinkAsync(ApplicationUser user, string clientEmailConfirmationUrl)
+    {
+        var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+        Dictionary<string, string> queryParams = new()
+        {
+            {"email", user.Email},
+            {"token", token }
+        };
+
+        string confirmationLink = QueryHelpers.AddQueryString(clientEmailConfirmationUrl, queryParams);
+        return confirmationLink;
     }
 }
