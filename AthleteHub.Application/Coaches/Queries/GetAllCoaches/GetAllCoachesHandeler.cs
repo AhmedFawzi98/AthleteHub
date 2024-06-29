@@ -6,7 +6,6 @@ using AthleteHub.Application.Services.SortingService;
 using AthleteHub.Application.Users;
 using AthleteHub.Domain.Constants;
 using AthleteHub.Domain.Entities;
-using AthleteHub.Domain.Exceptions;
 using AthleteHub.Domain.Interfaces.Repositories;
 using AutoMapper;
 using MediatR;
@@ -16,7 +15,7 @@ using System.Linq.Expressions;
 
 namespace AthleteHub.Application.Coaches.Queries.GetAllCoaches
 {
-    public class GetAllCoachesHandeler(IUnitOfWork _unitOfWork, IMapper _mapper, IFilterService _filterService, ISearchService _searchService, ISortService _sortService, IBlobStorageService _blobStorageService, IUserContext _userContext) : IRequestHandler<GetAllCoachesQuery, PageResultsDto<CoachDto>>
+    public class GetAllCoachesHandeler(IUnitOfWork _unitOfWork, IMapper _mapper, IFilterService _filterService, ISearchService _searchService, ISortingService _sortService, IBlobStorageService _blobStorageService, IUserContext _userContext) : IRequestHandler<GetAllCoachesQuery, PageResultsDto<CoachDto>>
     {
         public async Task<PageResultsDto<CoachDto>> Handle(GetAllCoachesQuery request, CancellationToken cancellationToken)
         {
@@ -49,7 +48,8 @@ namespace AthleteHub.Application.Coaches.Queries.GetAllCoaches
             
             
             Expression<Func<Coach, bool>> searchExperssion = _searchService.GetCoachSearchExpression(request.SearchCritrea, currentAthlete?.Id??null);
-            
+
+           
             Expression<Func<Coach, object>> sortExperssion = _sortService.GetCoachSortingExpression(request.SortByCritrea, request.SortingDirection);
             
             (coaches, totalCount) = await _unitOfWork.Coaches.GetAllAsync(request.PageSize, request.PageNumber, 

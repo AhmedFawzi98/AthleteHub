@@ -16,20 +16,24 @@ namespace AthleteHub.Application.Services.SearchService
 
             SearchCritrea = SearchCritrea.Trim().ToLower();
             return c => c.ApplicationUser.FirstName.Contains(SearchCritrea)
-                        || c.ApplicationUser.FirstName.Contains(SearchCritrea)
+                        || c.ApplicationUser.LastName.Contains(SearchCritrea)
                         || c.ApplicationUser.UserName.Contains(SearchCritrea)
                         || c.ApplicationUser.Email.Contains(SearchCritrea) && !(c.CoachesBlockedAthletees.Any(cba => cba.AthleteId == athleteId)
                                                 && c.IsApproved==true&&c.IsSuspended==false);
         }
-        public Expression<Func<Athlete, bool>> GetAthleteSearchExpression(string? SearchCritrea)
+        public Expression<Func<Athlete, bool>> GetAthleteSearchExpression(string? SearchCritrea, int subscriptionId)
         {
-            if (SearchCritrea == null) return null;
+            if (SearchCritrea == null && subscriptionId==0) return null;
+
+            if (SearchCritrea == null)
+                return a => a.AthletesActiveSubscribtions.Any(aas => aas.SubscribtionId == subscriptionId);
 
             SearchCritrea = SearchCritrea.Trim().ToLower();
-            return c => c.ApplicationUser.FirstName.Contains(SearchCritrea)
-                        || c.ApplicationUser.FirstName.Contains(SearchCritrea)
-                        || c.ApplicationUser.UserName.Contains(SearchCritrea)
-                        || c.ApplicationUser.Email.Contains(SearchCritrea);
+
+            return a => (a.ApplicationUser.FirstName.Contains(SearchCritrea)
+                        || a.ApplicationUser.LastName.Contains(SearchCritrea)
+                        || a.ApplicationUser.UserName.Contains(SearchCritrea)
+                        || a.ApplicationUser.Email.Contains(SearchCritrea) && a.AthletesActiveSubscribtions.Any(aas => aas.SubscribtionId == subscriptionId));
         }
 
     }

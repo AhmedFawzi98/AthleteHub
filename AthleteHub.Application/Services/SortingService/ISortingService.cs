@@ -1,16 +1,13 @@
 ﻿using AthleteHub.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using AthleteHub.Domain.Enums;
+using Resturants.Domain.Enums;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AthleteHub.Application.Services.SortingService
 {
     public interface ISortingService
     {
-        Expression<Func<Subscribtion, object>> GetSubscribtionSortingExpression(string sortBy);
-        Expression<Func<SubscribtionFeature, object>> GetSubscribtionFeatureSortingExpression(string sortBy);
+        Expression<Func<Coach, object>> GetCoachSortingExpression(SortBy? sortBy, SortingDirection sortingDirection);
     }
 }

@@ -27,11 +27,7 @@ namespace AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtionsByCoac
                     context.AddFailure("PageSize", $"Page size must be either [{string.Join(",", allowedPageSizes)}]");
             });
 
-            RuleFor(r => r.SortBy).Custom((value, context) =>
-            {
-                if (!allowedSortingByProperties.Contains(value))
-                    context.AddFailure($"Sorting is optional, but if sorting is requested, it must be by one of these properties [{string.Join(",", allowedSortingByProperties)}]");
-            }).When(r => r.SortBy != null);
+          
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using AthleteHub.Domain.Entities;
+using AthleteHub.Domain.Enums;
+using Resturants.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,29 +12,13 @@ namespace AthleteHub.Application.Services.SortingService
 {
     public class SortingService : ISortingService
     {
-        Dictionary<string, Expression<Func<Subscribtion, object>>> subscribtionExpressionsDictionary = new()
+        public Expression<Func<Coach, object>> GetCoachSortingExpression(SortBy? SortByCritrea, SortingDirection sortingDirection)
         {
-            { nameof(Subscribtion.Name).ToLower(), r => r.Name },
-            { nameof(Subscribtion.price), r => r.price }
-        };
-        Dictionary<string, Expression<Func<SubscribtionFeature, object>>> subscribtionFeatureExpressionDictionary = new()
-        {
-            { nameof(SubscribtionFeature.Feature.Name).ToLower(), r => r.Feature.Name
-            },
-            { nameof(SubscribtionFeature.Subscribtion.Name).ToLower(), r => r.Subscribtion.Name
-            },
-            { nameof(SubscribtionFeature.Subscribtion.price), r => r.Subscribtion.price
-            }
-        };
-
-        public Expression<Func<Subscribtion, object>> GetSubscribtionSortingExpression(string sortBy)
-        {
-            return subscribtionExpressionsDictionary[sortBy.ToLower()];
-        }
-
-        public Expression<Func<SubscribtionFeature, object>> GetSubscribtionFeatureSortingExpression(string sortBy)
-        {
-            return subscribtionFeatureExpressionDictionary[sortBy.ToLower()];
+            if (SortByCritrea == null) return null;
+            if (SortByCritrea == SortBy.rate) return c => c.OverallRating;
+            if (sortingDirection == SortingDirection.Ascending)
+                return c => c.Subscribtions.Min(s => s.price);
+            return c => c.Subscribtions.Max(s => s.price);
         }
     }
 }

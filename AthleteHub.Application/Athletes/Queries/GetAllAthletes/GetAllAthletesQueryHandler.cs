@@ -15,7 +15,7 @@ using System.Linq.Expressions;
 
 namespace AthleteHub.Application.Athletes.Queries.GetAllAthletes
 {
-    public class GetAllAthletesQueryHandler(IUnitOfWork _unitOfWork, IMapper _mapper, IFilterService _filterService, ISearchService _searchService, ISortService _sortService, IBlobStorageService _blobStorageService, IUserContext _userContext) : IRequestHandler<GetAllAthletesQuery, PageResultsDto<AthleteDto>>
+    public class GetAllAthletesQueryHandler(IUnitOfWork _unitOfWork, IMapper _mapper, IFilterService _filterService, ISearchService _searchService, ISortingService _sortService, IBlobStorageService _blobStorageService, IUserContext _userContext) : IRequestHandler<GetAllAthletesQuery, PageResultsDto<AthleteDto>>
     {
         public async Task<PageResultsDto<AthleteDto>> Handle(GetAllAthletesQuery request, CancellationToken cancellationToken)
         {
@@ -27,10 +27,12 @@ namespace AthleteHub.Application.Athletes.Queries.GetAllAthletes
                 {a=>a.ApplicationUser , new (null,null) },
             };
 
+            if (request.SubScriptionId != 0)
+                includes.Add(a => a.AthletesActiveSubscribtions, new(null, null));
             IEnumerable<Expression<Func<Athlete, bool>>> filterExpressions = _filterService.GetAthleteFilterExpressions(request.GenderFilterCritrea, request.AgeFilterCritrea);
 
 
-            Expression<Func<Athlete, bool>> searchExperssion = _searchService.GetAthleteSearchExpression(request.SearchCritrea);
+            Expression<Func<Athlete, bool>> searchExperssion = _searchService.GetAthleteSearchExpression(request.SearchCritrea,request.SubScriptionId);
 
 
 
@@ -39,13 +41,13 @@ namespace AthleteHub.Application.Athletes.Queries.GetAllAthletes
             
             var athletesDtos = _mapper.Map<IEnumerable<AthleteDto>>(athletes);
 
-            foreach (var dto in athletesDtos)
-            {
-                if (!string.IsNullOrEmpty(dto.ProfilePicture))
-                {
-                    dto.SasProfilePicture = _blobStorageService.GetBlobSasUrl(dto.ProfilePicture);
-                }
-            }
+            //foreach (var dto in athletesDtos)
+            //{
+            //    if (!string.IsNullOrEmpty(dto.ProfilePicture))
+            //    {
+            //        dto.SasProfilePicture = _blobStorageService.GetBlobSasUrl(dto.ProfilePicture);
+            //    }
+            //}
 
             return new PageResultsDto<AthleteDto>(athletesDtos, totalCount, request.PageNumber, request.PageSize);
         }
