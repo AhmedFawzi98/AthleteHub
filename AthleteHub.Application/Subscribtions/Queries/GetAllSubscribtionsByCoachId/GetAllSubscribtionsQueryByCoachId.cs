@@ -16,9 +16,6 @@ namespace AthleteHub.Application.Subscribtions.Queries.GetAllSubscribtionsByCoac
         public int CoachId { get; private set; }
         public int PageSize { get; init; }
         public int PageNumber { get; init; }
-        public string? SortBy { get; init; }
-        public SortingDirection SortingDirection { get; init; } = SortingDirection.Ascending;
-
         public void SetCoachId(int coachId)
         {
             CoachId = coachId;

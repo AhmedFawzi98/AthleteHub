@@ -17,6 +17,6 @@ public interface IUnitOfWork : IDisposable
     public IGenericRepository<PostContent> PostContents { get; }
     public IGenericRepository<Subscribtion> Subscribtions { get; }
     public IGenericRepository<SubscribtionFeature> SubscribtionFeatures { get; }
-
+    public IGenericRepository<CoachRating> CoachRatings { get; }
     Task<int> CommitAsync();
 }

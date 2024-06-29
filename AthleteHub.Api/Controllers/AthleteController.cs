@@ -3,6 +3,7 @@ using AthleteHub.Application.Athletes.Commands.CalCalculatecalory;
 using AthleteHub.Application.Athletes.Commands.CheckSubscribeAblity;
 using AthleteHub.Application.Athletes.Commands.CreateMeasurement;
 using AthleteHub.Application.Athletes.Commands.DeleteMeasurement;
+using AthleteHub.Application.Athletes.Commands.RateCoach;
 using AthleteHub.Application.Athletes.Commands.Subscribe;
 using AthleteHub.Application.Athletes.Dtos;
 using AthleteHub.Application.Athletes.Queries.FindAthleteById;
@@ -20,6 +21,7 @@ using AthleteHub.Domain.Constants;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 
 namespace AthleteHub.Api.Controllers
 {
@@ -34,6 +36,7 @@ namespace AthleteHub.Api.Controllers
             _mediator = mediator;
         }
         [HttpGet("athletes")]
+        [Authorize(Roles =$"{RolesConstants.Admin},{RolesConstants.Coach}")]
         public async Task<IActionResult> GetAllAthletes([FromQuery]GetAllAthletesQuery getAllAthletesQuery)
         {
             var allAthleteDto = await _mediator.Send(getAllAthletesQuery);
@@ -81,6 +84,13 @@ namespace AthleteHub.Api.Controllers
             createMeasurementCommand.SetAthleteId(AthleteId);
             var addedMeasurement = await _mediator.Send(createMeasurementCommand);
             return Ok(addedMeasurement);
+        }
+
+        [HttpPost("Athlete/RateCoach")]
+        public async Task<IActionResult> RateCoach(RateCoachCommand rateCoachCommand)
+        {
+            var rateCoachResponseDto = await _mediator.Send(rateCoachCommand);
+            return Ok(rateCoachResponseDto);
         }
 
         [HttpDelete("Athlete/Measurement")]
