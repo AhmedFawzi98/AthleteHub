@@ -10,7 +10,7 @@ public class ConfirmChangeEmailCommandHandler(UserManager<ApplicationUser> _user
     public async Task Handle(ConfirmChangeEmailCommand request, CancellationToken cancellationToken)
     {
         var user = await _userManager.FindByEmailAsync(request.UserOldEmail)
-            ?? throw new NotFoundException(nameof(ApplicationUser), request.UserEmailToConfirm);
+            ?? throw new NotFoundException(nameof(ApplicationUser), request.UserOldEmail);
 
         var result = await _userManager.ChangeEmailAsync(user, request.UserEmailToConfirm, request.Token);
         if(!result.Succeeded)

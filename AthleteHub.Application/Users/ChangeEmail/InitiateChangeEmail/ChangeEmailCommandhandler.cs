@@ -8,9 +8,9 @@ using static AthleteHub.Domain.Exceptions.BadRequestException;
 
 namespace AthleteHub.Application.Users.ChangeEmail.InitiateChangeEmail;
 
-public class ChangeEmailCommandHandler(IUserContext _userContext, UserManager<ApplicationUser> _userManager) : IRequestHandler<ChangeEmailCommand, EmailConfirmationResponseDto>
+public class ChangeEmailCommandHandler(IUserContext _userContext, UserManager<ApplicationUser> _userManager) : IRequestHandler<ChangeEmailCommand, ChangeEmailResponseDto>
 {
-    public async Task<EmailConfirmationResponseDto> Handle(ChangeEmailCommand request, CancellationToken cancellationToken)
+    public async Task<ChangeEmailResponseDto> Handle(ChangeEmailCommand request, CancellationToken cancellationToken)
     {
         var currentUser = _userContext.GetCurrentUser()
            ?? throw new UnAuthorizedException();
@@ -38,11 +38,11 @@ public class ChangeEmailCommandHandler(IUserContext _userContext, UserManager<Ap
         user.EmailConfirmed = false;
         await _userManager.UpdateAsync(user);
 
-        var response = new EmailConfirmationResponseDto()
+        var response = new ChangeEmailResponseDto()
         {
             EmailConfirmationLink = emailChangingconfirmationLink,
             UserEmailToConfirm = request.NewEmail,
-            Roles = currentUser.Roles.ToList()
+            UserOldEmail = request.CurrentEmail
         };
 
         return response;
