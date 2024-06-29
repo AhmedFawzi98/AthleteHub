@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+
     <Folder Include="Athletes\Queries\" />
 
   </ItemGroup>

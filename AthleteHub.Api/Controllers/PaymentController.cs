@@ -26,9 +26,9 @@ namespace AthleteHub.Api.Controllers
     }
 
     [HttpGet("Payment/Success")]
-    public async Task<IActionResult> Success([FromQuery] string sessionId)
+    public async Task<IActionResult> Success([FromQuery] string payment_intent_id)
     {
-        var successResult = await _paymentService.Success(sessionId);
+        var successResult = await _paymentService.Success(payment_intent_id);
         return Ok();
     }
     }
