@@ -5,7 +5,6 @@ using AthleteHub.Application.Coaches.Queries.GetAllCoaches;
 using AthleteHub.Domain.Constants;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AthleteHub.Api.Controllers
@@ -24,18 +23,14 @@ namespace AthleteHub.Api.Controllers
         public async Task<IActionResult> GetAllCoaches([FromQuery] GetAllCoachesQuery getAllCoachesQuery)
         {
             var coachesDtos = await _mediator.Send(getAllCoachesQuery);
-            if(coachesDtos.TotalItemsCount > 0) 
-               return Ok(coachesDtos);
-            return NotFound("There are no coaches with that criteria");
+            return Ok(coachesDtos);
         }
         [HttpGet("coaches/{id:int}")]
 
         public async Task<IActionResult> GetCoachById(int id)
         {
             var coachDto = await _mediator.Send(new FindCoachByIdQuery { Id = id });
-            if(coachDto!=null)
-               return Ok(coachDto);
-            return NotFound("There is no coache with that Id");
+            return Ok(coachDto);
         }
 
         [HttpPost("coaches/{id:int}/certificate")]

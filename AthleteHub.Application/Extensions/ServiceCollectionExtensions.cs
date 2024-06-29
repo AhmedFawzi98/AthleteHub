@@ -29,7 +29,7 @@ public static class ServiceCollectionExtensions
       
         services.AddScoped<IUserContext, UserContext>();
 
-        services.AddScoped<IFilterService, FilterService>();
+        services.AddScoped<IFilterService,FilterService>();
         services.AddScoped<ISearchService, SearchService>();
         services.AddScoped<ISortService, SortService>();
  

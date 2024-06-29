@@ -66,7 +66,7 @@ public class IdentityController(IMediator _mediator) : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserLoginResponseDto))]
     public async Task<IActionResult> Login([FromBody] LoginUserCommand loginUserCommand)
     {
-        var LogedInUserDto = await _mediator.Send(loginUserCommand);
+        UserLoginResponseDto LogedInUserDto = await _mediator.Send(loginUserCommand);
         return Ok(LogedInUserDto);
     }
 
@@ -85,7 +85,7 @@ public class IdentityController(IMediator _mediator) : ControllerBase
     [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RevokeTokenResponseDto))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(string))]
-    public async Task<IActionResult> Login()
+    public async Task<IActionResult> revokeToken()
     {
         var revokeTokenCommand = new RevokeTokenCommand();
         var revokeTokenResponseDto = await _mediator.Send(revokeTokenCommand);

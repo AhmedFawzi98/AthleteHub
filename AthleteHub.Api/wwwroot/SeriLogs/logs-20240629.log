@@ -1,0 +1,1578 @@
+[Warning] 29-06 00:37:41 || Stopping the server due to DomainUnload or ProcessExit event...
+[Information] 29-06 00:37:41 || Server laptop-q547jk4h:24608:e5bdbb28 caught stopping signal...
+[Information] 29-06 00:37:41 || Server laptop-q547jk4h:24608:e5bdbb28 caught stopped signal...
+[Warning] 29-06 00:37:41 || Server laptop-q547jk4h:24608:e5bdbb28 caught shutdown signal...
+[Warning] 29-06 00:37:41 || Server laptop-q547jk4h:24608:e5bdbb28 stopped non-gracefully due to ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+[Information] 29-06 00:37:41 || Server laptop-q547jk4h:24608:e5bdbb28 successfully reported itself as stopped in 12.0344 ms
+[Information] 29-06 00:37:41 || Server laptop-q547jk4h:24608:e5bdbb28 has been stopped in total 14.3395 ms
+[Warning] 29-06 03:24:30 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 29-06 03:24:30 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 29-06 03:24:30 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 29-06 03:24:30 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 29-06 03:24:30 || Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 29-06 03:24:30 || Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 29-06 03:24:30 || Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 03:24:30 || Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 03:24:30 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 03:24:30 || Start installing Hangfire SQL objects...
+[Information] 29-06 03:24:30 || Hangfire SQL objects installed.
+[Information] 29-06 03:24:31 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 29-06 03:24:31 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 29-06 03:24:31 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 29-06 03:24:31 || Server laptop-q547jk4h:48964:dc91f45d successfully announced in 14.2461 ms
+[Information] 29-06 03:24:31 || Server laptop-q547jk4h:48964:dc91f45d is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 29-06 03:24:31 || Server laptop-q547jk4h:48964:dc91f45d all the dispatchers started
+[Information] 29-06 03:24:31 || Executed DbCommand ("24"ms) [Parameters=["@__today_0='06/29/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[PaymentIntentId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Warning] 29-06 03:25:24 || Failed to determine the https port for redirect.
+[Information] 29-06 03:25:24 || HTTP "GET" "/api/NotApprovedCoaches/5/1" responded 500 in 136.9807 ms
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at AthleteHub.Application.Admin.Queries.GetAllSuspendedOrNotApprovedCoaches.GetAllSuspendedOrNotApprovedCoachesQueryHandler.Handle(GetAllSuspendedOrNotApprovedCoachesQuery request, CancellationToken cancellationToken) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Application\Admin\Queries\GetAllSuspendedOrNotApprovedCoaches\GetAllSuspendedOrNotApprovedCoachesQueryHandler.cs:line 21
+   at AthleteHub.Api.Controllers.AdminController.GetNotApprovedCoaches(Int32 pageNumber, Int32 pageSize) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Api\Controllers\AdminController.cs:line 17
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[Error] 29-06 03:25:24 || An unhandled exception has occurred while executing the request.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at AthleteHub.Application.Admin.Queries.GetAllSuspendedOrNotApprovedCoaches.GetAllSuspendedOrNotApprovedCoachesQueryHandler.Handle(GetAllSuspendedOrNotApprovedCoachesQuery request, CancellationToken cancellationToken) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Application\Admin\Queries\GetAllSuspendedOrNotApprovedCoaches\GetAllSuspendedOrNotApprovedCoachesQueryHandler.cs:line 21
+   at AthleteHub.Api.Controllers.AdminController.GetNotApprovedCoaches(Int32 pageNumber, Int32 pageSize) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Api\Controllers\AdminController.cs:line 17
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+[Error] 29-06 03:25:24 || Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at AthleteHub.Application.Admin.Queries.GetAllSuspendedOrNotApprovedCoaches.GetAllSuspendedOrNotApprovedCoachesQueryHandler.Handle(GetAllSuspendedOrNotApprovedCoachesQuery request, CancellationToken cancellationToken) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Application\Admin\Queries\GetAllSuspendedOrNotApprovedCoaches\GetAllSuspendedOrNotApprovedCoachesQueryHandler.cs:line 21
+   at AthleteHub.Api.Controllers.AdminController.GetNotApprovedCoaches(Int32 pageNumber, Int32 pageSize) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Api\Controllers\AdminController.cs:line 17
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+[Warning] 29-06 03:26:41 || Stopping the server due to DomainUnload or ProcessExit event...
+[Information] 29-06 03:26:41 || Server laptop-q547jk4h:48964:dc91f45d caught stopping signal...
+[Information] 29-06 03:26:41 || Server laptop-q547jk4h:48964:dc91f45d caught stopped signal...
+[Warning] 29-06 03:26:41 || Server laptop-q547jk4h:48964:dc91f45d caught shutdown signal...
+[Warning] 29-06 03:26:41 || Server laptop-q547jk4h:48964:dc91f45d stopped non-gracefully due to ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+[Information] 29-06 03:26:41 || Server laptop-q547jk4h:48964:dc91f45d successfully reported itself as stopped in 12.6788 ms
+[Information] 29-06 03:26:41 || Server laptop-q547jk4h:48964:dc91f45d has been stopped in total 15.0219 ms
+[Warning] 29-06 03:28:47 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 29-06 03:28:47 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 29-06 03:28:47 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 29-06 03:28:47 || Executed DbCommand ("122"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 29-06 03:28:47 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 29-06 03:28:47 || Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 29-06 03:28:47 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 03:28:47 || Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 03:28:47 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 03:28:47 || Start installing Hangfire SQL objects...
+[Information] 29-06 03:28:47 || Hangfire SQL objects installed.
+[Information] 29-06 03:28:48 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 29-06 03:28:48 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 29-06 03:28:48 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 29-06 03:28:48 || Server laptop-q547jk4h:18556:621f0839 successfully announced in 13.5079 ms
+[Information] 29-06 03:28:48 || Server laptop-q547jk4h:18556:621f0839 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 29-06 03:28:48 || Server laptop-q547jk4h:18556:621f0839 all the dispatchers started
+[Warning] 29-06 03:29:15 || Failed to determine the https port for redirect.
+[Error] 29-06 03:29:15 || HTTP "POST" "/api/Identity/login" responded 400 in 80.5867 ms
+[Information] 29-06 03:29:36 || Executed DbCommand ("37"ms) [Parameters=["@__normalizedEmail_0='ADMIN1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:29:36 || Executed DbCommand ("10"ms) [Parameters=["@__normalizedUserName_0='ADMIN1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:29:36 || Executed DbCommand ("19"ms) [Parameters=["@__userId_0='a4136704-c782-417a-82e4-1693a2b71dad' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0"
+[Information] 29-06 03:29:36 || Executed DbCommand ("5"ms) [Parameters=["@__user_Id_0='a4136704-c782-417a-82e4-1693a2b71dad' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0"
+[Information] 29-06 03:29:36 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='ADMIN1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:29:36 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='ADMIN1@ATHLETEHUB.COM' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:29:36 || Executed DbCommand ("17"ms) [Parameters=["@p22='a4136704-c782-417a-82e4-1693a2b71dad' (Nullable = false) (Size = 450), @p0='0', @p1=NULL (Size = 4000), @p2='41533b4a-411d-4b50-8016-e355f08c731d' (Size = 4000), @p23='be0fdb09-8c35-4b34-96cd-db7cbdb7fe91' (Size = 4000), @p3='2024-06-27T22:30:28.6635609', @p4='02/02/2000' (DbType = Date), @p5='admin1@athletehub.com' (Size = 256), @p6='True', @p7='admin' (Nullable = false) (Size = 100), @p8='0', @p9='True', @p10='admin' (Nullable = false) (Size = 100), @p11='True', @p12=NULL (DbType = DateTimeOffset), @p13='ADMIN1@ATHLETEHUB.COM' (Size = 256), @p14='ADMIN1' (Size = 256), @p15='AQAAAAIAAYagAAAAEOsle83QjCrSfNiEjTmuIXzCS1kmJtTEUK9D3FRm0BMBdFCJyp1HZ8Yeek7eQqVYFQ==' (Size = 4000), @p16='2434544646' (Nullable = false) (Size = 15), @p17='False', @p18=NULL (Size = 4000), @p19='WZKHW2MGEOSGORN57SCXJMRB2SA5TJM6' (Size = 4000), @p20='False', @p21='admin1' (Size = 256), @p24='a4136704-c782-417a-82e4-1693a2b71dad' (Nullable = false) (Size = 450), @p25='2024-06-29T00:29:36.5788390Z', @p26='2024-06-30T00:29:36.5788546Z', @p27=NULL (DbType = DateTime2), @p28='PJmSClAH4OyvFzbw6JQHOx4IZWLs3B8zn5fkuXo3zYc%3D' (Nullable = false) (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [Bio] = @p1, [ConcurrencyStamp] = @p2, [CreatedAt] = @p3, [DateOfBirth] = @p4, [Email] = @p5, [EmailConfirmed] = @p6, [FirstName] = @p7, [Gender] = @p8, [IsActive] = @p9, [LastName] = @p10, [LockoutEnabled] = @p11, [LockoutEnd] = @p12, [NormalizedEmail] = @p13, [NormalizedUserName] = @p14, [PasswordHash] = @p15, [PhoneNumber] = @p16, [PhoneNumberConfirmed] = @p17, [ProfilePicture] = @p18, [SecurityStamp] = @p19, [TwoFactorEnabled] = @p20, [UserName] = @p21
+OUTPUT 1
+WHERE [Id] = @p22 AND [ConcurrencyStamp] = @p23;
+INSERT INTO [RefreshToken] ([ApplicationUserId], [CreatedOn], [ExpiresOn], [RevokedOn], [Token])
+OUTPUT INSERTED.[Id]
+VALUES (@p24, @p25, @p26, @p27, @p28);"
+[Information] 29-06 03:29:36 || HTTP "POST" "/api/Identity/login" responded 200 in 553.1380 ms
+[Information] 29-06 03:30:06 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Coaches] AS [c]
+WHERE [c].[IsApproved] = CAST(0 AS bit)"
+[Warning] 29-06 03:30:06 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Warning] 29-06 03:30:06 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Information] 29-06 03:30:06 || Executed DbCommand ("11"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[Certificate], [t].[IsApproved], [t].[IsSuspended], [t].[OverallRating], [t].[RatingsCount], [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+    FROM [Coaches] AS [c]
+    WHERE [c].[IsApproved] = CAST(0 AS bit)
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [AspNetUsers] AS [a] ON [t].[ApplicationUserId] = [a].[Id]
+LEFT JOIN [RefreshToken] AS [r] ON [a].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [a].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:30:06 || HTTP "GET" "/api/NotApprovedCoaches/1/5" responded 200 in 201.5059 ms
+[Warning] 29-06 03:30:50 || Stopping the server due to DomainUnload or ProcessExit event...
+[Information] 29-06 03:30:50 || Server laptop-q547jk4h:18556:621f0839 caught stopping signal...
+[Information] 29-06 03:30:50 || Server laptop-q547jk4h:18556:621f0839 caught stopped signal...
+[Warning] 29-06 03:30:50 || Server laptop-q547jk4h:18556:621f0839 caught shutdown signal...
+[Warning] 29-06 03:30:50 || Server laptop-q547jk4h:18556:621f0839 stopped non-gracefully due to ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+[Information] 29-06 03:30:50 || Server laptop-q547jk4h:18556:621f0839 successfully reported itself as stopped in 11.1613 ms
+[Information] 29-06 03:30:50 || Server laptop-q547jk4h:18556:621f0839 has been stopped in total 12.5776 ms
+[Warning] 29-06 03:30:58 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 29-06 03:30:58 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 29-06 03:30:58 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 29-06 03:30:58 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 29-06 03:30:58 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 29-06 03:30:58 || Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 29-06 03:30:58 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 03:30:58 || Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 03:30:58 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 03:30:58 || Start installing Hangfire SQL objects...
+[Information] 29-06 03:30:58 || Hangfire SQL objects installed.
+[Information] 29-06 03:30:58 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 29-06 03:30:58 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 29-06 03:30:58 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 29-06 03:30:58 || Server laptop-q547jk4h:46548:ce615c43 successfully announced in 12.3787 ms
+[Information] 29-06 03:30:58 || Server laptop-q547jk4h:46548:ce615c43 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 29-06 03:30:58 || Server laptop-q547jk4h:46548:ce615c43 all the dispatchers started
+[Warning] 29-06 03:31:16 || Failed to determine the https port for redirect.
+[Information] 29-06 03:31:16 || Executed DbCommand ("11"ms) [Parameters=["@__normalizedEmail_0='ADMIN1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:31:16 || Executed DbCommand ("5"ms) [Parameters=["@__normalizedUserName_0='ADMIN1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:31:16 || Executed DbCommand ("6"ms) [Parameters=["@__userId_0='a4136704-c782-417a-82e4-1693a2b71dad' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0"
+[Information] 29-06 03:31:16 || Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='a4136704-c782-417a-82e4-1693a2b71dad' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0"
+[Information] 29-06 03:31:16 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='ADMIN1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:31:16 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='ADMIN1@ATHLETEHUB.COM' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:31:17 || Executed DbCommand ("11"ms) [Parameters=["@p22='a4136704-c782-417a-82e4-1693a2b71dad' (Nullable = false) (Size = 450), @p0='0', @p1=NULL (Size = 4000), @p2='1c9caeeb-34de-4946-b713-9678e7ddb724' (Size = 4000), @p23='41533b4a-411d-4b50-8016-e355f08c731d' (Size = 4000), @p3='2024-06-27T22:30:28.6635609', @p4='02/02/2000' (DbType = Date), @p5='admin1@athletehub.com' (Size = 256), @p6='True', @p7='admin' (Nullable = false) (Size = 100), @p8='0', @p9='True', @p10='admin' (Nullable = false) (Size = 100), @p11='True', @p12=NULL (DbType = DateTimeOffset), @p13='ADMIN1@ATHLETEHUB.COM' (Size = 256), @p14='ADMIN1' (Size = 256), @p15='AQAAAAIAAYagAAAAEOsle83QjCrSfNiEjTmuIXzCS1kmJtTEUK9D3FRm0BMBdFCJyp1HZ8Yeek7eQqVYFQ==' (Size = 4000), @p16='2434544646' (Nullable = false) (Size = 15), @p17='False', @p18=NULL (Size = 4000), @p19='WZKHW2MGEOSGORN57SCXJMRB2SA5TJM6' (Size = 4000), @p20='False', @p21='admin1' (Size = 256), @p24='a4136704-c782-417a-82e4-1693a2b71dad' (Nullable = false) (Size = 450), @p25='2024-06-29T00:31:16.9240689Z', @p26='2024-06-30T00:31:16.9240849Z', @p27=NULL (DbType = DateTime2), @p28='U8TOPCKNsUklDM%2BEhJntZ9fQ%2F8BgXniyJB1X%2BUtvcCU%3D' (Nullable = false) (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [Bio] = @p1, [ConcurrencyStamp] = @p2, [CreatedAt] = @p3, [DateOfBirth] = @p4, [Email] = @p5, [EmailConfirmed] = @p6, [FirstName] = @p7, [Gender] = @p8, [IsActive] = @p9, [LastName] = @p10, [LockoutEnabled] = @p11, [LockoutEnd] = @p12, [NormalizedEmail] = @p13, [NormalizedUserName] = @p14, [PasswordHash] = @p15, [PhoneNumber] = @p16, [PhoneNumberConfirmed] = @p17, [ProfilePicture] = @p18, [SecurityStamp] = @p19, [TwoFactorEnabled] = @p20, [UserName] = @p21
+OUTPUT 1
+WHERE [Id] = @p22 AND [ConcurrencyStamp] = @p23;
+INSERT INTO [RefreshToken] ([ApplicationUserId], [CreatedOn], [ExpiresOn], [RevokedOn], [Token])
+OUTPUT INSERTED.[Id]
+VALUES (@p24, @p25, @p26, @p27, @p28);"
+[Information] 29-06 03:31:17 || HTTP "POST" "/api/Identity/login" responded 200 in 554.3612 ms
+[Information] 29-06 03:31:44 || Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Coaches] AS [c]
+WHERE [c].[IsApproved] = CAST(0 AS bit)"
+[Warning] 29-06 03:31:44 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Warning] 29-06 03:31:44 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Information] 29-06 03:31:44 || Executed DbCommand ("17"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[Certificate], [t].[IsApproved], [t].[IsSuspended], [t].[OverallRating], [t].[RatingsCount], [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+    FROM [Coaches] AS [c]
+    WHERE [c].[IsApproved] = CAST(0 AS bit)
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [AspNetUsers] AS [a] ON [t].[ApplicationUserId] = [a].[Id]
+LEFT JOIN [RefreshToken] AS [r] ON [a].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [a].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:31:44 || HTTP "GET" "/api/NotApprovedCoaches/1/5" responded 500 in 272.2491 ms
+System.UriFormatException: Invalid URI: The format of the URI could not be determined.
+   at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AthleteHub.Infrastructure.BlobStorage.BlobStorageService.GetBlobSasUrl(String blobUrl) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Infrastructure\BlobStorage\BlobStorageService.cs:line 63
+   at AthleteHub.Application.Admin.Queries.GetAllSuspendedOrNotApprovedCoaches.GetAllSuspendedOrNotApprovedCoachesQueryHandler.Handle(GetAllSuspendedOrNotApprovedCoachesQuery request, CancellationToken cancellationToken) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Application\Admin\Queries\GetAllSuspendedOrNotApprovedCoaches\GetAllSuspendedOrNotApprovedCoachesQueryHandler.cs:line 49
+   at AthleteHub.Api.Controllers.AdminController.GetNotApprovedCoaches(Int32 pageNumber, Int32 pageSize) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Api\Controllers\AdminController.cs:line 17
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[Error] 29-06 03:31:44 || An unhandled exception has occurred while executing the request.
+System.UriFormatException: Invalid URI: The format of the URI could not be determined.
+   at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AthleteHub.Infrastructure.BlobStorage.BlobStorageService.GetBlobSasUrl(String blobUrl) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Infrastructure\BlobStorage\BlobStorageService.cs:line 63
+   at AthleteHub.Application.Admin.Queries.GetAllSuspendedOrNotApprovedCoaches.GetAllSuspendedOrNotApprovedCoachesQueryHandler.Handle(GetAllSuspendedOrNotApprovedCoachesQuery request, CancellationToken cancellationToken) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Application\Admin\Queries\GetAllSuspendedOrNotApprovedCoaches\GetAllSuspendedOrNotApprovedCoachesQueryHandler.cs:line 49
+   at AthleteHub.Api.Controllers.AdminController.GetNotApprovedCoaches(Int32 pageNumber, Int32 pageSize) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Api\Controllers\AdminController.cs:line 17
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+[Error] 29-06 03:31:44 || Invalid URI: The format of the URI could not be determined.
+System.UriFormatException: Invalid URI: The format of the URI could not be determined.
+   at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AthleteHub.Infrastructure.BlobStorage.BlobStorageService.GetBlobSasUrl(String blobUrl) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Infrastructure\BlobStorage\BlobStorageService.cs:line 63
+   at AthleteHub.Application.Admin.Queries.GetAllSuspendedOrNotApprovedCoaches.GetAllSuspendedOrNotApprovedCoachesQueryHandler.Handle(GetAllSuspendedOrNotApprovedCoachesQuery request, CancellationToken cancellationToken) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Application\Admin\Queries\GetAllSuspendedOrNotApprovedCoaches\GetAllSuspendedOrNotApprovedCoachesQueryHandler.cs:line 49
+   at AthleteHub.Api.Controllers.AdminController.GetNotApprovedCoaches(Int32 pageNumber, Int32 pageSize) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Api\Controllers\AdminController.cs:line 17
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+[Information] 29-06 03:32:15 || Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Coaches] AS [c]
+WHERE [c].[IsApproved] = CAST(0 AS bit)"
+[Information] 29-06 03:32:15 || Executed DbCommand ("9"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[Certificate], [t].[IsApproved], [t].[IsSuspended], [t].[OverallRating], [t].[RatingsCount], [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+    FROM [Coaches] AS [c]
+    WHERE [c].[IsApproved] = CAST(0 AS bit)
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [AspNetUsers] AS [a] ON [t].[ApplicationUserId] = [a].[Id]
+LEFT JOIN [RefreshToken] AS [r] ON [a].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [a].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:32:15 || HTTP "GET" "/api/NotApprovedCoaches/1/5" responded 500 in 27.3592 ms
+System.UriFormatException: Invalid URI: The format of the URI could not be determined.
+   at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AthleteHub.Infrastructure.BlobStorage.BlobStorageService.GetBlobSasUrl(String blobUrl) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Infrastructure\BlobStorage\BlobStorageService.cs:line 63
+   at AthleteHub.Application.Admin.Queries.GetAllSuspendedOrNotApprovedCoaches.GetAllSuspendedOrNotApprovedCoachesQueryHandler.Handle(GetAllSuspendedOrNotApprovedCoachesQuery request, CancellationToken cancellationToken) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Application\Admin\Queries\GetAllSuspendedOrNotApprovedCoaches\GetAllSuspendedOrNotApprovedCoachesQueryHandler.cs:line 49
+   at AthleteHub.Api.Controllers.AdminController.GetNotApprovedCoaches(Int32 pageNumber, Int32 pageSize) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Api\Controllers\AdminController.cs:line 17
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[Error] 29-06 03:32:15 || An unhandled exception has occurred while executing the request.
+System.UriFormatException: Invalid URI: The format of the URI could not be determined.
+   at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AthleteHub.Infrastructure.BlobStorage.BlobStorageService.GetBlobSasUrl(String blobUrl) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Infrastructure\BlobStorage\BlobStorageService.cs:line 63
+   at AthleteHub.Application.Admin.Queries.GetAllSuspendedOrNotApprovedCoaches.GetAllSuspendedOrNotApprovedCoachesQueryHandler.Handle(GetAllSuspendedOrNotApprovedCoachesQuery request, CancellationToken cancellationToken) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Application\Admin\Queries\GetAllSuspendedOrNotApprovedCoaches\GetAllSuspendedOrNotApprovedCoachesQueryHandler.cs:line 49
+   at AthleteHub.Api.Controllers.AdminController.GetNotApprovedCoaches(Int32 pageNumber, Int32 pageSize) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Api\Controllers\AdminController.cs:line 17
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+[Error] 29-06 03:32:15 || Invalid URI: The format of the URI could not be determined.
+System.UriFormatException: Invalid URI: The format of the URI could not be determined.
+   at System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind, UriCreationOptions& creationOptions)
+   at System.Uri..ctor(String uriString)
+   at AthleteHub.Infrastructure.BlobStorage.BlobStorageService.GetBlobSasUrl(String blobUrl) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Infrastructure\BlobStorage\BlobStorageService.cs:line 63
+   at AthleteHub.Application.Admin.Queries.GetAllSuspendedOrNotApprovedCoaches.GetAllSuspendedOrNotApprovedCoachesQueryHandler.Handle(GetAllSuspendedOrNotApprovedCoachesQuery request, CancellationToken cancellationToken) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Application\Admin\Queries\GetAllSuspendedOrNotApprovedCoaches\GetAllSuspendedOrNotApprovedCoachesQueryHandler.cs:line 49
+   at AthleteHub.Api.Controllers.AdminController.GetNotApprovedCoaches(Int32 pageNumber, Int32 pageSize) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Api\Controllers\AdminController.cs:line 17
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+[Warning] 29-06 03:32:27 || Stopping the server due to DomainUnload or ProcessExit event...
+[Information] 29-06 03:32:27 || Server laptop-q547jk4h:46548:ce615c43 caught stopping signal...
+[Information] 29-06 03:32:27 || Server laptop-q547jk4h:46548:ce615c43 caught stopped signal...
+[Warning] 29-06 03:32:27 || Server laptop-q547jk4h:46548:ce615c43 caught shutdown signal...
+[Warning] 29-06 03:32:27 || Server laptop-q547jk4h:46548:ce615c43 stopped non-gracefully due to ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+[Information] 29-06 03:32:27 || Server laptop-q547jk4h:46548:ce615c43 successfully reported itself as stopped in 14.7417 ms
+[Information] 29-06 03:32:27 || Server laptop-q547jk4h:46548:ce615c43 has been stopped in total 16.415 ms
+[Warning] 29-06 03:32:40 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 29-06 03:32:40 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 29-06 03:32:40 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 29-06 03:32:40 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 29-06 03:32:40 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 29-06 03:32:40 || Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 29-06 03:32:40 || Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 03:32:40 || Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 03:32:40 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 03:32:40 || Start installing Hangfire SQL objects...
+[Information] 29-06 03:32:40 || Hangfire SQL objects installed.
+[Information] 29-06 03:32:40 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 29-06 03:32:40 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 29-06 03:32:40 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 29-06 03:32:40 || Server laptop-q547jk4h:36972:3c808a68 successfully announced in 11.329 ms
+[Information] 29-06 03:32:40 || Server laptop-q547jk4h:36972:3c808a68 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 29-06 03:32:40 || Server laptop-q547jk4h:36972:3c808a68 all the dispatchers started
+[Warning] 29-06 03:32:57 || Failed to determine the https port for redirect.
+[Information] 29-06 03:32:57 || Executed DbCommand ("20"ms) [Parameters=["@__normalizedEmail_0='ADMIN1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:32:57 || Executed DbCommand ("10"ms) [Parameters=["@__normalizedUserName_0='ADMIN1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:32:57 || Executed DbCommand ("6"ms) [Parameters=["@__userId_0='a4136704-c782-417a-82e4-1693a2b71dad' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0"
+[Information] 29-06 03:32:57 || Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='a4136704-c782-417a-82e4-1693a2b71dad' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0"
+[Information] 29-06 03:32:57 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='ADMIN1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:32:57 || Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='ADMIN1@ATHLETEHUB.COM' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:32:57 || Executed DbCommand ("28"ms) [Parameters=["@p22='a4136704-c782-417a-82e4-1693a2b71dad' (Nullable = false) (Size = 450), @p0='0', @p1=NULL (Size = 4000), @p2='5c4d0b9f-d21f-4728-a5ca-bb54f412d246' (Size = 4000), @p23='1c9caeeb-34de-4946-b713-9678e7ddb724' (Size = 4000), @p3='2024-06-27T22:30:28.6635609', @p4='02/02/2000' (DbType = Date), @p5='admin1@athletehub.com' (Size = 256), @p6='True', @p7='admin' (Nullable = false) (Size = 100), @p8='0', @p9='True', @p10='admin' (Nullable = false) (Size = 100), @p11='True', @p12=NULL (DbType = DateTimeOffset), @p13='ADMIN1@ATHLETEHUB.COM' (Size = 256), @p14='ADMIN1' (Size = 256), @p15='AQAAAAIAAYagAAAAEOsle83QjCrSfNiEjTmuIXzCS1kmJtTEUK9D3FRm0BMBdFCJyp1HZ8Yeek7eQqVYFQ==' (Size = 4000), @p16='2434544646' (Nullable = false) (Size = 15), @p17='False', @p18=NULL (Size = 4000), @p19='WZKHW2MGEOSGORN57SCXJMRB2SA5TJM6' (Size = 4000), @p20='False', @p21='admin1' (Size = 256), @p24='a4136704-c782-417a-82e4-1693a2b71dad' (Nullable = false) (Size = 450), @p25='2024-06-29T00:32:57.5343143Z', @p26='2024-06-30T00:32:57.5343327Z', @p27=NULL (DbType = DateTime2), @p28='%2FJJf7VA%2B0EO1UXQcaoqXprrzLuMpsivP9gILHak4X5s%3D' (Nullable = false) (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [Bio] = @p1, [ConcurrencyStamp] = @p2, [CreatedAt] = @p3, [DateOfBirth] = @p4, [Email] = @p5, [EmailConfirmed] = @p6, [FirstName] = @p7, [Gender] = @p8, [IsActive] = @p9, [LastName] = @p10, [LockoutEnabled] = @p11, [LockoutEnd] = @p12, [NormalizedEmail] = @p13, [NormalizedUserName] = @p14, [PasswordHash] = @p15, [PhoneNumber] = @p16, [PhoneNumberConfirmed] = @p17, [ProfilePicture] = @p18, [SecurityStamp] = @p19, [TwoFactorEnabled] = @p20, [UserName] = @p21
+OUTPUT 1
+WHERE [Id] = @p22 AND [ConcurrencyStamp] = @p23;
+INSERT INTO [RefreshToken] ([ApplicationUserId], [CreatedOn], [ExpiresOn], [RevokedOn], [Token])
+OUTPUT INSERTED.[Id]
+VALUES (@p24, @p25, @p26, @p27, @p28);"
+[Information] 29-06 03:32:57 || HTTP "POST" "/api/Identity/login" responded 200 in 631.0590 ms
+[Information] 29-06 03:33:15 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Coaches] AS [c]
+WHERE [c].[IsApproved] = CAST(0 AS bit)"
+[Warning] 29-06 03:33:15 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Warning] 29-06 03:33:15 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Information] 29-06 03:33:15 || Executed DbCommand ("8"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[Certificate], [t].[IsApproved], [t].[IsSuspended], [t].[OverallRating], [t].[RatingsCount], [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+    FROM [Coaches] AS [c]
+    WHERE [c].[IsApproved] = CAST(0 AS bit)
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [AspNetUsers] AS [a] ON [t].[ApplicationUserId] = [a].[Id]
+LEFT JOIN [RefreshToken] AS [r] ON [a].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [a].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:33:15 || HTTP "GET" "/api/NotApprovedCoaches/1/5" responded 200 in 245.6381 ms
+[Information] 29-06 03:33:34 || Executed DbCommand ("7"ms) [Parameters=["@__request_CoachId_0='2'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[Certificate], [t].[IsApproved], [t].[IsSuspended], [t].[OverallRating], [t].[RatingsCount], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount], [a].[Id] AS [Id0], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [Coaches] AS [c]
+    INNER JOIN [AspNetUsers] AS [a] ON [c].[ApplicationUserId] = [a].[Id]
+    WHERE [c].[Id] = @__request_CoachId_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:33:34 || Executed DbCommand ("6"ms) [Parameters=["@p6='2', @p0='e1077751-8799-415f-83f0-b666b907d2f3' (Nullable = false) (Size = 450), @p1='mohmm' (Size = 4000), @p2='True', @p3='False', @p4='6.00' (Nullable = true) (Precision = 18) (Scale = 2), @p5='4' (Nullable = true)"], CommandType='Text', CommandTimeout='30']"
+""SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Coaches] SET [ApplicationUserId] = @p0, [Certificate] = @p1, [IsApproved] = @p2, [IsSuspended] = @p3, [OverallRating] = @p4, [RatingsCount] = @p5
+OUTPUT 1
+WHERE [Id] = @p6;"
+[Information] 29-06 03:33:34 || HTTP "PATCH" "/api/ApproveCoach/2" responded 200 in 46.5755 ms
+[Information] 29-06 03:33:47 || Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Coaches] AS [c]
+WHERE [c].[IsApproved] = CAST(0 AS bit)"
+[Information] 29-06 03:33:47 || Executed DbCommand ("11"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[Certificate], [t].[IsApproved], [t].[IsSuspended], [t].[OverallRating], [t].[RatingsCount], [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+    FROM [Coaches] AS [c]
+    WHERE [c].[IsApproved] = CAST(0 AS bit)
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [AspNetUsers] AS [a] ON [t].[ApplicationUserId] = [a].[Id]
+LEFT JOIN [RefreshToken] AS [r] ON [a].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [a].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:33:47 || HTTP "GET" "/api/NotApprovedCoaches/1/5" responded 200 in 21.0537 ms
+[Information] 29-06 03:34:21 || Executed DbCommand ("8"ms) [Parameters=["@__request_CoachId_0='2'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[Certificate], [t].[IsApproved], [t].[IsSuspended], [t].[OverallRating], [t].[RatingsCount], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount], [a].[Id] AS [Id0], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [Coaches] AS [c]
+    INNER JOIN [AspNetUsers] AS [a] ON [c].[ApplicationUserId] = [a].[Id]
+    WHERE [c].[Id] = @__request_CoachId_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:34:21 || Executed DbCommand ("3"ms) [Parameters=["@p6='2', @p0='e1077751-8799-415f-83f0-b666b907d2f3' (Nullable = false) (Size = 450), @p1='mohmm' (Size = 4000), @p2='True', @p3='True', @p4='6.00' (Nullable = true) (Precision = 18) (Scale = 2), @p5='4' (Nullable = true)"], CommandType='Text', CommandTimeout='30']"
+""SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Coaches] SET [ApplicationUserId] = @p0, [Certificate] = @p1, [IsApproved] = @p2, [IsSuspended] = @p3, [OverallRating] = @p4, [RatingsCount] = @p5
+OUTPUT 1
+WHERE [Id] = @p6;"
+[Information] 29-06 03:34:21 || HTTP "PATCH" "/api/CoachStatus" responded 200 in 23.0942 ms
+[Information] 29-06 03:36:42 || Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Coaches] AS [c]
+WHERE [c].[IsSuspended] = CAST(1 AS bit)"
+[Warning] 29-06 03:36:42 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Warning] 29-06 03:36:42 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Information] 29-06 03:36:42 || Executed DbCommand ("10"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[Certificate], [t].[IsApproved], [t].[IsSuspended], [t].[OverallRating], [t].[RatingsCount], [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+    FROM [Coaches] AS [c]
+    WHERE [c].[IsSuspended] = CAST(1 AS bit)
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [AspNetUsers] AS [a] ON [t].[ApplicationUserId] = [a].[Id]
+LEFT JOIN [RefreshToken] AS [r] ON [a].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [a].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:36:42 || HTTP "GET" "/api/SuspendedCoaches/1/5" responded 200 in 32.9815 ms
+[Information] 29-06 03:37:03 || Executed DbCommand ("21"ms) [Parameters=["@__request_CoachId_0='2'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[Certificate], [t].[IsApproved], [t].[IsSuspended], [t].[OverallRating], [t].[RatingsCount], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount], [a].[Id] AS [Id0], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [Coaches] AS [c]
+    INNER JOIN [AspNetUsers] AS [a] ON [c].[ApplicationUserId] = [a].[Id]
+    WHERE [c].[Id] = @__request_CoachId_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:37:03 || Executed DbCommand ("7"ms) [Parameters=["@p6='2', @p0='e1077751-8799-415f-83f0-b666b907d2f3' (Nullable = false) (Size = 450), @p1='mohmm' (Size = 4000), @p2='True', @p3='False', @p4='6.00' (Nullable = true) (Precision = 18) (Scale = 2), @p5='4' (Nullable = true)"], CommandType='Text', CommandTimeout='30']"
+""SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Coaches] SET [ApplicationUserId] = @p0, [Certificate] = @p1, [IsApproved] = @p2, [IsSuspended] = @p3, [OverallRating] = @p4, [RatingsCount] = @p5
+OUTPUT 1
+WHERE [Id] = @p6;"
+[Information] 29-06 03:37:03 || HTTP "PATCH" "/api/CoachStatus" responded 200 in 32.0275 ms
+[Information] 29-06 03:37:10 || Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Coaches] AS [c]
+WHERE [c].[IsSuspended] = CAST(1 AS bit)"
+[Information] 29-06 03:37:10 || Executed DbCommand ("10"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[Certificate], [t].[IsApproved], [t].[IsSuspended], [t].[OverallRating], [t].[RatingsCount], [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+    FROM [Coaches] AS [c]
+    WHERE [c].[IsSuspended] = CAST(1 AS bit)
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [AspNetUsers] AS [a] ON [t].[ApplicationUserId] = [a].[Id]
+LEFT JOIN [RefreshToken] AS [r] ON [a].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [a].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:37:10 || HTTP "GET" "/api/SuspendedCoaches/1/5" responded 200 in 21.1826 ms
+[Information] 29-06 03:37:41 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Athletes] AS [a]"
+[Warning] 29-06 03:37:41 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Warning] 29-06 03:37:41 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Information] 29-06 03:37:41 || Executed DbCommand ("13"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [a0].[Id], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm]
+    FROM [Athletes] AS [a]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [AspNetUsers] AS [a0] ON [t].[ApplicationUserId] = [a0].[Id]
+LEFT JOIN [RefreshToken] AS [r] ON [a0].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [a0].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:37:41 || HTTP "GET" "/api/athletes" responded 200 in 68.4994 ms
+[Information] 29-06 03:37:52 || Executed DbCommand ("14"ms) [Parameters=["@__SearchCritrea_0_contains='%wwwww%' (Size = 100), @__SearchCritrea_0_contains_1='%wwwww%' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Athletes] AS [a]
+INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+WHERE [a0].[FirstName] LIKE @__SearchCritrea_0_contains ESCAPE N'\' OR [a0].[FirstName] LIKE @__SearchCritrea_0_contains ESCAPE N'\' OR [a0].[UserName] LIKE @__SearchCritrea_0_contains_1 ESCAPE N'\' OR [a0].[Email] LIKE @__SearchCritrea_0_contains_1 ESCAPE N'\'"
+[Warning] 29-06 03:37:52 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Warning] 29-06 03:37:52 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Information] 29-06 03:37:52 || Executed DbCommand ("10"ms) [Parameters=["@__SearchCritrea_0_contains='%wwwww%' (Size = 100), @__SearchCritrea_0_contains_1='%wwwww%' (Size = 256), @__p_1='0', @__p_2='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm], [a0].[Id] AS [Id0], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+    FROM [Athletes] AS [a]
+    INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+    WHERE [a0].[FirstName] LIKE @__SearchCritrea_0_contains ESCAPE N'\' OR [a0].[FirstName] LIKE @__SearchCritrea_0_contains ESCAPE N'\' OR [a0].[UserName] LIKE @__SearchCritrea_0_contains_1 ESCAPE N'\' OR [a0].[Email] LIKE @__SearchCritrea_0_contains_1 ESCAPE N'\'
+    ORDER BY (SELECT 1)
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:37:52 || HTTP "GET" "/api/athletes" responded 200 in 41.4645 ms
+[Information] 29-06 03:38:00 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Athletes] AS [a]"
+[Information] 29-06 03:38:00 || Executed DbCommand ("15"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [a0].[Id], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm]
+    FROM [Athletes] AS [a]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [AspNetUsers] AS [a0] ON [t].[ApplicationUserId] = [a0].[Id]
+LEFT JOIN [RefreshToken] AS [r] ON [a0].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [a0].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:38:00 || HTTP "GET" "/api/athletes" responded 200 in 21.7389 ms
+[Information] 29-06 03:38:03 || Executed DbCommand ("6"ms) [Parameters=["@__SearchCritrea_0_contains='%c%' (Size = 100), @__SearchCritrea_0_contains_1='%c%' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Athletes] AS [a]
+INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+WHERE [a0].[FirstName] LIKE @__SearchCritrea_0_contains ESCAPE N'\' OR [a0].[FirstName] LIKE @__SearchCritrea_0_contains ESCAPE N'\' OR [a0].[UserName] LIKE @__SearchCritrea_0_contains_1 ESCAPE N'\' OR [a0].[Email] LIKE @__SearchCritrea_0_contains_1 ESCAPE N'\'"
+[Information] 29-06 03:38:03 || Executed DbCommand ("9"ms) [Parameters=["@__SearchCritrea_0_contains='%c%' (Size = 100), @__SearchCritrea_0_contains_1='%c%' (Size = 256), @__p_1='0', @__p_2='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm], [a0].[Id] AS [Id0], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+    FROM [Athletes] AS [a]
+    INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+    WHERE [a0].[FirstName] LIKE @__SearchCritrea_0_contains ESCAPE N'\' OR [a0].[FirstName] LIKE @__SearchCritrea_0_contains ESCAPE N'\' OR [a0].[UserName] LIKE @__SearchCritrea_0_contains_1 ESCAPE N'\' OR [a0].[Email] LIKE @__SearchCritrea_0_contains_1 ESCAPE N'\'
+    ORDER BY (SELECT 1)
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:38:03 || HTTP "GET" "/api/athletes" responded 200 in 18.9973 ms
+[Information] 29-06 03:38:16 || Executed DbCommand ("6"ms) [Parameters=["@__SearchCritrea_0_contains='%a%' (Size = 100), @__SearchCritrea_0_contains_1='%a%' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Athletes] AS [a]
+INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+WHERE [a0].[FirstName] LIKE @__SearchCritrea_0_contains ESCAPE N'\' OR [a0].[FirstName] LIKE @__SearchCritrea_0_contains ESCAPE N'\' OR [a0].[UserName] LIKE @__SearchCritrea_0_contains_1 ESCAPE N'\' OR [a0].[Email] LIKE @__SearchCritrea_0_contains_1 ESCAPE N'\'"
+[Information] 29-06 03:38:16 || Executed DbCommand ("10"ms) [Parameters=["@__SearchCritrea_0_contains='%a%' (Size = 100), @__SearchCritrea_0_contains_1='%a%' (Size = 256), @__p_1='0', @__p_2='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm], [a0].[Id] AS [Id0], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+    FROM [Athletes] AS [a]
+    INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+    WHERE [a0].[FirstName] LIKE @__SearchCritrea_0_contains ESCAPE N'\' OR [a0].[FirstName] LIKE @__SearchCritrea_0_contains ESCAPE N'\' OR [a0].[UserName] LIKE @__SearchCritrea_0_contains_1 ESCAPE N'\' OR [a0].[Email] LIKE @__SearchCritrea_0_contains_1 ESCAPE N'\'
+    ORDER BY (SELECT 1)
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:38:16 || HTTP "GET" "/api/athletes" responded 200 in 20.5622 ms
+[Information] 29-06 03:38:24 || Executed DbCommand ("1"ms) [Parameters=["@__SearchCritrea_0_contains='%awwwwww%' (Size = 100), @__SearchCritrea_0_contains_1='%awwwwww%' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Athletes] AS [a]
+INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+WHERE [a0].[FirstName] LIKE @__SearchCritrea_0_contains ESCAPE N'\' OR [a0].[FirstName] LIKE @__SearchCritrea_0_contains ESCAPE N'\' OR [a0].[UserName] LIKE @__SearchCritrea_0_contains_1 ESCAPE N'\' OR [a0].[Email] LIKE @__SearchCritrea_0_contains_1 ESCAPE N'\'"
+[Information] 29-06 03:38:24 || Executed DbCommand ("0"ms) [Parameters=["@__SearchCritrea_0_contains='%awwwwww%' (Size = 100), @__SearchCritrea_0_contains_1='%awwwwww%' (Size = 256), @__p_1='0', @__p_2='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm], [a0].[Id] AS [Id0], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+    FROM [Athletes] AS [a]
+    INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+    WHERE [a0].[FirstName] LIKE @__SearchCritrea_0_contains ESCAPE N'\' OR [a0].[FirstName] LIKE @__SearchCritrea_0_contains ESCAPE N'\' OR [a0].[UserName] LIKE @__SearchCritrea_0_contains_1 ESCAPE N'\' OR [a0].[Email] LIKE @__SearchCritrea_0_contains_1 ESCAPE N'\'
+    ORDER BY (SELECT 1)
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:38:24 || HTTP "GET" "/api/athletes" responded 200 in 3.5060 ms
+[Information] 29-06 03:38:32 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Athletes] AS [a]
+INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+WHERE [a0].[Gender] = 0"
+[Warning] 29-06 03:38:32 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Warning] 29-06 03:38:32 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Information] 29-06 03:38:32 || Executed DbCommand ("8"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm], [a0].[Id] AS [Id0], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+    FROM [Athletes] AS [a]
+    INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+    WHERE [a0].[Gender] = 0
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:38:32 || HTTP "GET" "/api/athletes" responded 200 in 30.7835 ms
+[Information] 29-06 03:38:48 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Athletes] AS [a]
+INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+WHERE [a0].[Gender] = 0"
+[Information] 29-06 03:38:48 || Executed DbCommand ("1"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm], [a0].[Id] AS [Id0], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+    FROM [Athletes] AS [a]
+    INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+    WHERE [a0].[Gender] = 0
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:38:48 || HTTP "GET" "/api/athletes" responded 200 in 3.9388 ms
+[Information] 29-06 03:38:56 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Athletes] AS [a]
+INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+WHERE [a0].[Gender] = 0"
+[Information] 29-06 03:38:56 || Executed DbCommand ("1"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm], [a0].[Id] AS [Id0], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+    FROM [Athletes] AS [a]
+    INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+    WHERE [a0].[Gender] = 0
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:38:56 || HTTP "GET" "/api/athletes" responded 200 in 4.0028 ms
+[Warning] 29-06 03:41:33 || Stopping the server due to DomainUnload or ProcessExit event...
+[Information] 29-06 03:41:33 || Server laptop-q547jk4h:36972:3c808a68 caught stopping signal...
+[Information] 29-06 03:41:33 || Server laptop-q547jk4h:36972:3c808a68 caught stopped signal...
+[Warning] 29-06 03:41:33 || Server laptop-q547jk4h:36972:3c808a68 caught shutdown signal...
+[Warning] 29-06 03:41:33 || Server laptop-q547jk4h:36972:3c808a68 stopped non-gracefully due to ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+[Information] 29-06 03:41:33 || Server laptop-q547jk4h:36972:3c808a68 successfully reported itself as stopped in 11.683 ms
+[Information] 29-06 03:41:33 || Server laptop-q547jk4h:36972:3c808a68 has been stopped in total 13.8656 ms
+[Warning] 29-06 03:41:38 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 29-06 03:41:38 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 29-06 03:41:38 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 29-06 03:41:38 || Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 29-06 03:41:38 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 29-06 03:41:38 || Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 29-06 03:41:38 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 03:41:38 || Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 03:41:38 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 03:41:38 || Start installing Hangfire SQL objects...
+[Information] 29-06 03:41:38 || Hangfire SQL objects installed.
+[Information] 29-06 03:41:38 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 29-06 03:41:38 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 29-06 03:41:38 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 29-06 03:41:38 || Server laptop-q547jk4h:21920:7022356a successfully announced in 12.3422 ms
+[Information] 29-06 03:41:38 || Server laptop-q547jk4h:21920:7022356a is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 29-06 03:41:38 || Server laptop-q547jk4h:21920:7022356a all the dispatchers started
+[Warning] 29-06 03:41:57 || Failed to determine the https port for redirect.
+[Information] 29-06 03:41:57 || Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Athletes] AS [a]"
+[Warning] 29-06 03:41:57 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Warning] 29-06 03:41:57 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Information] 29-06 03:41:57 || Executed DbCommand ("20"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [a0].[Id], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm]
+    FROM [Athletes] AS [a]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [AspNetUsers] AS [a0] ON [t].[ApplicationUserId] = [a0].[Id]
+LEFT JOIN [RefreshToken] AS [r] ON [a0].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [a0].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:41:57 || HTTP "GET" "/api/athletes" responded 200 in 414.2640 ms
+[Information] 29-06 03:42:05 || Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Athletes] AS [a]
+INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+WHERE [a0].[Gender] = 1"
+[Warning] 29-06 03:42:05 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Warning] 29-06 03:42:05 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Information] 29-06 03:42:05 || Executed DbCommand ("11"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm], [a0].[Id] AS [Id0], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+    FROM [Athletes] AS [a]
+    INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+    WHERE [a0].[Gender] = 1
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:42:05 || HTTP "GET" "/api/athletes" responded 200 in 96.8324 ms
+[Information] 29-06 03:42:11 || Executed DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Athletes] AS [a]
+INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+WHERE [a0].[Gender] = 1 AND DATEPART(year, GETDATE()) - DATEPART(year, [a0].[DateOfBirth]) >= 30"
+[Warning] 29-06 03:42:11 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Warning] 29-06 03:42:11 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Information] 29-06 03:42:11 || Executed DbCommand ("11"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm], [a0].[Id] AS [Id0], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+    FROM [Athletes] AS [a]
+    INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+    WHERE [a0].[Gender] = 1 AND DATEPART(year, GETDATE()) - DATEPART(year, [a0].[DateOfBirth]) >= 30
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:42:11 || HTTP "GET" "/api/athletes" responded 200 in 48.4598 ms
+[Information] 29-06 03:42:15 || Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Athletes] AS [a]
+INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+WHERE [a0].[Gender] = 0 AND DATEPART(year, GETDATE()) - DATEPART(year, [a0].[DateOfBirth]) >= 30"
+[Warning] 29-06 03:42:15 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Warning] 29-06 03:42:15 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Information] 29-06 03:42:15 || Executed DbCommand ("12"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm], [a0].[Id] AS [Id0], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+    FROM [Athletes] AS [a]
+    INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+    WHERE [a0].[Gender] = 0 AND DATEPART(year, GETDATE()) - DATEPART(year, [a0].[DateOfBirth]) >= 30
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:42:15 || HTTP "GET" "/api/athletes" responded 200 in 38.9826 ms
+[Information] 29-06 03:42:19 || Executed DbCommand ("17"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Athletes] AS [a]
+INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+WHERE [a0].[Gender] = 0 AND DATEPART(year, GETDATE()) - DATEPART(year, [a0].[DateOfBirth]) >= 25 AND DATEPART(year, GETDATE()) - DATEPART(year, [a0].[DateOfBirth]) <= 30"
+[Warning] 29-06 03:42:19 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Warning] 29-06 03:42:19 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Information] 29-06 03:42:19 || Executed DbCommand ("11"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm], [a0].[Id] AS [Id0], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+    FROM [Athletes] AS [a]
+    INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+    WHERE [a0].[Gender] = 0 AND DATEPART(year, GETDATE()) - DATEPART(year, [a0].[DateOfBirth]) >= 25 AND DATEPART(year, GETDATE()) - DATEPART(year, [a0].[DateOfBirth]) <= 30
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:42:19 || HTTP "GET" "/api/athletes" responded 200 in 40.8327 ms
+[Information] 29-06 03:42:23 || Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Athletes] AS [a]
+INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+WHERE [a0].[Gender] = 0 AND DATEPART(year, GETDATE()) - DATEPART(year, [a0].[DateOfBirth]) >= 20 AND DATEPART(year, GETDATE()) - DATEPART(year, [a0].[DateOfBirth]) <= 25"
+[Warning] 29-06 03:42:23 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Warning] 29-06 03:42:23 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Information] 29-06 03:42:23 || Executed DbCommand ("16"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm], [a0].[Id] AS [Id0], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+    FROM [Athletes] AS [a]
+    INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+    WHERE [a0].[Gender] = 0 AND DATEPART(year, GETDATE()) - DATEPART(year, [a0].[DateOfBirth]) >= 20 AND DATEPART(year, GETDATE()) - DATEPART(year, [a0].[DateOfBirth]) <= 25
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:42:23 || HTTP "GET" "/api/athletes" responded 200 in 41.8758 ms
+[Information] 29-06 03:42:29 || Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Athletes] AS [a]
+INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+WHERE [a0].[Gender] = 0 AND DATEPART(year, GETDATE()) - DATEPART(year, [a0].[DateOfBirth]) <= 20"
+[Warning] 29-06 03:42:29 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Warning] 29-06 03:42:29 || The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+[Information] 29-06 03:42:29 || Executed DbCommand ("10"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm], [a0].[Id] AS [Id0], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+    FROM [Athletes] AS [a]
+    INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+    WHERE [a0].[Gender] = 0 AND DATEPART(year, GETDATE()) - DATEPART(year, [a0].[DateOfBirth]) <= 20
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:42:29 || HTTP "GET" "/api/athletes" responded 200 in 39.5515 ms
+[Information] 29-06 03:42:34 || Executed DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Athletes] AS [a]
+INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+WHERE [a0].[Gender] = 0 AND DATEPART(year, GETDATE()) - DATEPART(year, [a0].[DateOfBirth]) >= 20 AND DATEPART(year, GETDATE()) - DATEPART(year, [a0].[DateOfBirth]) <= 25"
+[Information] 29-06 03:42:34 || Executed DbCommand ("14"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm], [a0].[Id] AS [Id0], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+    FROM [Athletes] AS [a]
+    INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+    WHERE [a0].[Gender] = 0 AND DATEPART(year, GETDATE()) - DATEPART(year, [a0].[DateOfBirth]) >= 20 AND DATEPART(year, GETDATE()) - DATEPART(year, [a0].[DateOfBirth]) <= 25
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:42:34 || HTTP "GET" "/api/athletes" responded 200 in 33.8491 ms
+[Information] 29-06 03:42:44 || Executed DbCommand ("8"ms) [Parameters=["@__request_Id_0='1'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm], [a0].[Id] AS [Id0], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+    FROM [Athletes] AS [a]
+    INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+    WHERE [a].[Id] = @__request_Id_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:42:44 || HTTP "GET" "/api/athletes/1" responded 500 in 25.9422 ms
+AthleteHub.Domain.Exceptions.NotFoundException: Athlete [1] doesn't exist
+   at AthleteHub.Application.Athletes.Queries.FindAthleteById.FindAthleteByIdHandeler.Handle(FindAthleteByIDQuery request, CancellationToken cancellationToken) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Application\Athletes\Queries\FindAthleteById\FindAthleteByIDQueryHandler.cs:line 25
+   at AthleteHub.Api.Controllers.AthleteController.GetAthleteById(Int32 id) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Api\Controllers\AthleteController.cs:line 37
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[Error] 29-06 03:42:44 || An unhandled exception has occurred while executing the request.
+AthleteHub.Domain.Exceptions.NotFoundException: Athlete [1] doesn't exist
+   at AthleteHub.Application.Athletes.Queries.FindAthleteById.FindAthleteByIdHandeler.Handle(FindAthleteByIDQuery request, CancellationToken cancellationToken) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Application\Athletes\Queries\FindAthleteById\FindAthleteByIDQueryHandler.cs:line 25
+   at AthleteHub.Api.Controllers.AthleteController.GetAthleteById(Int32 id) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Api\Controllers\AthleteController.cs:line 37
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+[Error] 29-06 03:42:44 || Athlete [1] doesn't exist
+AthleteHub.Domain.Exceptions.NotFoundException: Athlete [1] doesn't exist
+   at AthleteHub.Application.Athletes.Queries.FindAthleteById.FindAthleteByIdHandeler.Handle(FindAthleteByIDQuery request, CancellationToken cancellationToken) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Application\Athletes\Queries\FindAthleteById\FindAthleteByIDQueryHandler.cs:line 25
+   at AthleteHub.Api.Controllers.AthleteController.GetAthleteById(Int32 id) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Api\Controllers\AthleteController.cs:line 37
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+[Information] 29-06 03:42:49 || Executed DbCommand ("11"ms) [Parameters=["@__request_Id_0='2'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[HeightInCm], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm], [a0].[Id] AS [Id0], [a0].[AccessFailedCount], [a0].[Bio], [a0].[ConcurrencyStamp], [a0].[CreatedAt], [a0].[DateOfBirth], [a0].[Email], [a0].[EmailConfirmed], [a0].[FirstName], [a0].[Gender], [a0].[IsActive], [a0].[LastName], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[ProfilePicture], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName]
+    FROM [Athletes] AS [a]
+    INNER JOIN [AspNetUsers] AS [a0] ON [a].[ApplicationUserId] = [a0].[Id]
+    WHERE [a].[Id] = @__request_Id_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId]"
+[Information] 29-06 03:42:49 || HTTP "GET" "/api/athletes/2" responded 200 in 16.4106 ms
+[Information] 29-06 03:43:18 || HTTP "GET" "/api/CheckSubscribeAblity" responded 500 in 14.0605 ms
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at AthleteHub.Application.Athletes.Commands.CheckSubscribeAblity.CheckSubscribeAblityCommandHandler.Handle(CheckSubscribeAblityCommand request, CancellationToken cancellationToken) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Application\Athletes\Commands\CheckSubscribeAblity\CheckSubscribeAblityCommandHandler.cs:line 22
+   at AthleteHub.Api.Controllers.AthleteController.CheckSubscribeAblity(CheckSubscribeAblityCommand checkSubscribeAblityCommand) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Api\Controllers\AthleteController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+[Error] 29-06 03:43:18 || An unhandled exception has occurred while executing the request.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at AthleteHub.Application.Athletes.Commands.CheckSubscribeAblity.CheckSubscribeAblityCommandHandler.Handle(CheckSubscribeAblityCommand request, CancellationToken cancellationToken) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Application\Athletes\Commands\CheckSubscribeAblity\CheckSubscribeAblityCommandHandler.cs:line 22
+   at AthleteHub.Api.Controllers.AthleteController.CheckSubscribeAblity(CheckSubscribeAblityCommand checkSubscribeAblityCommand) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Api\Controllers\AthleteController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+[Error] 29-06 03:43:18 || Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at AthleteHub.Application.Athletes.Commands.CheckSubscribeAblity.CheckSubscribeAblityCommandHandler.Handle(CheckSubscribeAblityCommand request, CancellationToken cancellationToken) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Application\Athletes\Commands\CheckSubscribeAblity\CheckSubscribeAblityCommandHandler.cs:line 22
+   at AthleteHub.Api.Controllers.AthleteController.CheckSubscribeAblity(CheckSubscribeAblityCommand checkSubscribeAblityCommand) in C:\Users\mostafa\Desktop\WORK\ITI\GP(AthleteHub)\AthleteHub.Api\Controllers\AthleteController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+[Information] 29-06 03:44:14 || Executed DbCommand ("7"ms) [Parameters=["@__normalizedEmail_0='ATHLETE1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:44:14 || Executed DbCommand ("5"ms) [Parameters=["@__normalizedUserName_0='ATHLETE1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:44:14 || Executed DbCommand ("6"ms) [Parameters=["@__userId_0='6f357177-2ae0-4aa8-92fd-38cbceabe926' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0"
+[Information] 29-06 03:44:14 || Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='6f357177-2ae0-4aa8-92fd-38cbceabe926' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0"
+[Information] 29-06 03:44:14 || Executed DbCommand ("4"ms) [Parameters=["@__normalizedUserName_0='ATHLETE1' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:44:14 || Executed DbCommand ("5"ms) [Parameters=["@__normalizedEmail_0='ATHLETE1@ATHLETEHUB.COM' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token]
+FROM (
+    SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id] = [r].[ApplicationUserId]
+ORDER BY [t].[Id], [r].[ApplicationUserId]"
+[Information] 29-06 03:44:15 || Executed DbCommand ("11"ms) [Parameters=["@p22='6f357177-2ae0-4aa8-92fd-38cbceabe926' (Nullable = false) (Size = 450), @p0='0', @p1=NULL (Size = 4000), @p2='3e90dab4-ef25-4a9e-9af9-6250d9251097' (Size = 4000), @p23='aa0c48c6-72ef-4216-b339-1bae03d16234' (Size = 4000), @p3='2024-06-27T22:30:28.6639400', @p4='02/02/2000' (DbType = Date), @p5='athlete1@athletehub.com' (Size = 256), @p6='True', @p7='athlete' (Nullable = false) (Size = 100), @p8='0', @p9='True', @p10='athlete' (Nullable = false) (Size = 100), @p11='True', @p12=NULL (DbType = DateTimeOffset), @p13='ATHLETE1@ATHLETEHUB.COM' (Size = 256), @p14='ATHLETE1' (Size = 256), @p15='AQAAAAIAAYagAAAAEPbWdBIG1/XC5pjBI659mk2jJX0j6XoTEtK33g4zp7weoVIwP7M4lybm8sDTm2TF+A==' (Size = 4000), @p16='2434544646' (Nullable = false) (Size = 15), @p17='False', @p18=NULL (Size = 4000), @p19='MSQHNHX37HLHLHAFI5OQ7EH63HCHFYV2' (Size = 4000), @p20='False', @p21='athlete1' (Size = 256), @p24='6f357177-2ae0-4aa8-92fd-38cbceabe926' (Nullable = false) (Size = 450), @p25='2024-06-29T00:44:14.9243806Z', @p26='2024-06-30T00:44:14.9243939Z', @p27=NULL (DbType = DateTime2), @p28='f0rb69IRKUV%2B9yXHDCnhUKTc8vc02zm9rj0KndbOFm4%3D' (Nullable = false) (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [Bio] = @p1, [ConcurrencyStamp] = @p2, [CreatedAt] = @p3, [DateOfBirth] = @p4, [Email] = @p5, [EmailConfirmed] = @p6, [FirstName] = @p7, [Gender] = @p8, [IsActive] = @p9, [LastName] = @p10, [LockoutEnabled] = @p11, [LockoutEnd] = @p12, [NormalizedEmail] = @p13, [NormalizedUserName] = @p14, [PasswordHash] = @p15, [PhoneNumber] = @p16, [PhoneNumberConfirmed] = @p17, [ProfilePicture] = @p18, [SecurityStamp] = @p19, [TwoFactorEnabled] = @p20, [UserName] = @p21
+OUTPUT 1
+WHERE [Id] = @p22 AND [ConcurrencyStamp] = @p23;
+INSERT INTO [RefreshToken] ([ApplicationUserId], [CreatedOn], [ExpiresOn], [RevokedOn], [Token])
+OUTPUT INSERTED.[Id]
+VALUES (@p24, @p25, @p26, @p27, @p28);"
+[Information] 29-06 03:44:15 || HTTP "POST" "/api/Identity/login" responded 200 in 289.6286 ms
+[Information] 29-06 03:44:40 || Executed DbCommand ("4"ms) [Parameters=["@__currentUser_Id_0='6f357177-2ae0-4aa8-92fd-38cbceabe926' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm]
+FROM [Athletes] AS [a]
+WHERE [a].[ApplicationUserId] = @__currentUser_Id_0"
+[Information] 29-06 03:44:40 || Executed DbCommand ("8"ms) [Parameters=["@__request_CoachId_0='2', @__athlete_Id_1='2'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[AthleteId], [a].[CoachId], [a].[IsCurrentlySubscribed], [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+FROM [AthletesCoaches] AS [a]
+INNER JOIN [Coaches] AS [c] ON [a].[CoachId] = [c].[Id]
+WHERE [a].[CoachId] = @__request_CoachId_0 AND [a].[AthleteId] = @__athlete_Id_1"
+[Information] 29-06 03:44:40 || HTTP "GET" "/api/CheckSubscribeAblity" responded 200 in 41.3370 ms
+[Information] 29-06 03:45:08 || Executed DbCommand ("3"ms) [Parameters=["@__request_AthleteId_0='2'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm]
+FROM [Athletes] AS [a]
+WHERE [a].[Id] = @__request_AthleteId_0"
+[Information] 29-06 03:45:08 || Executed DbCommand ("3"ms) [Parameters=["@__request_CoachId_0='2'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+FROM [Coaches] AS [c]
+WHERE [c].[Id] = @__request_CoachId_0"
+[Information] 29-06 03:45:08 || Executed DbCommand ("5"ms) [Parameters=["@__request_AthleteId_0='2', @__request_CoachId_1='2'"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[AthleteId], [a].[CoachId]
+FROM [AthletesFavouriteCoaches] AS [a]
+WHERE [a].[AthleteId] = @__request_AthleteId_0 AND [a].[CoachId] = @__request_CoachId_1"
+[Information] 29-06 03:45:08 || Executed DbCommand ("4"ms) [Parameters=["@p0='2', @p1='2'"], CommandType='Text', CommandTimeout='30']"
+""SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AthletesFavouriteCoaches] ([AthleteId], [CoachId])
+VALUES (@p0, @p1);"
+[Information] 29-06 03:45:08 || HTTP "POST" "/api/AddToFavorite" responded 200 in 74.8068 ms
+[Information] 29-06 03:46:01 || Executed DbCommand ("3"ms) [Parameters=["@__currentUser_Id_0='6f357177-2ae0-4aa8-92fd-38cbceabe926' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm]
+FROM [Athletes] AS [a]
+WHERE [a].[ApplicationUserId] = @__currentUser_Id_0"
+[Information] 29-06 03:46:01 || Executed DbCommand ("8"ms) [Parameters=["@__athleteId_0='2' (Nullable = true)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Coaches] AS [c]
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM [CoachesBlockedAthletees] AS [c0]
+    WHERE [c].[Id] = [c0].[CoachId] AND [c0].[AthleteId] = @__athleteId_0)"
+[Warning] 29-06 03:46:01 || Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[Information] 29-06 03:46:01 || Executed DbCommand ("29"ms) [Parameters=["@__athleteId_0='2' (Nullable = true), @__p_1='0', @__p_2='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[Certificate], [t].[IsApproved], [t].[IsSuspended], [t].[OverallRating], [t].[RatingsCount], [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token], [t0].[Id], [t0].[CoachId], [t0].[DurationInMonths], [t0].[Name], [t0].[price], [t0].[SubscribtionId], [t0].[FeatureId]
+FROM (
+    SELECT [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+    FROM [Coaches] AS [c]
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM [CoachesBlockedAthletees] AS [c0]
+        WHERE [c].[Id] = [c0].[CoachId] AND [c0].[AthleteId] = @__athleteId_0)
+    ORDER BY [c].[OverallRating]
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+INNER JOIN [AspNetUsers] AS [a] ON [t].[ApplicationUserId] = [a].[Id]
+LEFT JOIN [RefreshToken] AS [r] ON [a].[Id] = [r].[ApplicationUserId]
+LEFT JOIN (
+    SELECT [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price], [s0].[SubscribtionId], [s0].[FeatureId]
+    FROM [Subscribtions] AS [s]
+    LEFT JOIN [SubscribtionFeatures] AS [s0] ON [s].[Id] = [s0].[SubscribtionId]
+) AS [t0] ON [t].[Id] = [t0].[CoachId]
+ORDER BY [t].[OverallRating], [t].[Id], [a].[Id], [r].[ApplicationUserId], [r].[Id], [t0].[Id], [t0].[SubscribtionId]"
+[Information] 29-06 03:46:01 || HTTP "GET" "/api/coaches" responded 200 in 102.7004 ms
+[Information] 29-06 03:46:38 || Executed DbCommand ("2"ms) [Parameters=["@__currentUser_Id_0='6f357177-2ae0-4aa8-92fd-38cbceabe926' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm]
+FROM [Athletes] AS [a]
+WHERE [a].[ApplicationUserId] = @__currentUser_Id_0"
+[Information] 29-06 03:46:38 || Executed DbCommand ("11"ms) [Parameters=["@__athleteId_0='2' (Nullable = true)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Coaches] AS [c]
+INNER JOIN [AspNetUsers] AS [a] ON [c].[ApplicationUserId] = [a].[Id]
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM [CoachesBlockedAthletees] AS [c0]
+    WHERE [c].[Id] = [c0].[CoachId] AND [c0].[AthleteId] = @__athleteId_0) AND [a].[Gender] = 1"
+[Warning] 29-06 03:46:38 || Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[Information] 29-06 03:46:38 || Executed DbCommand ("21"ms) [Parameters=["@__athleteId_0='2' (Nullable = true), @__p_1='0', @__p_2='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[Certificate], [t].[IsApproved], [t].[IsSuspended], [t].[OverallRating], [t].[RatingsCount], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token], [t0].[Id], [t0].[CoachId], [t0].[DurationInMonths], [t0].[Name], [t0].[price], [t0].[SubscribtionId], [t0].[FeatureId]
+FROM (
+    SELECT [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount], [a].[Id] AS [Id0], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [Coaches] AS [c]
+    INNER JOIN [AspNetUsers] AS [a] ON [c].[ApplicationUserId] = [a].[Id]
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM [CoachesBlockedAthletees] AS [c0]
+        WHERE [c].[Id] = [c0].[CoachId] AND [c0].[AthleteId] = @__athleteId_0) AND [a].[Gender] = 1
+    ORDER BY [c].[OverallRating]
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+LEFT JOIN (
+    SELECT [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price], [s0].[SubscribtionId], [s0].[FeatureId]
+    FROM [Subscribtions] AS [s]
+    LEFT JOIN [SubscribtionFeatures] AS [s0] ON [s].[Id] = [s0].[SubscribtionId]
+) AS [t0] ON [t].[Id] = [t0].[CoachId]
+ORDER BY [t].[OverallRating], [t].[Id], [t].[Id0], [r].[ApplicationUserId], [r].[Id], [t0].[Id], [t0].[SubscribtionId]"
+[Information] 29-06 03:46:38 || HTTP "GET" "/api/coaches" responded 200 in 51.7377 ms
+[Information] 29-06 03:46:49 || Executed DbCommand ("1"ms) [Parameters=["@__currentUser_Id_0='6f357177-2ae0-4aa8-92fd-38cbceabe926' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm]
+FROM [Athletes] AS [a]
+WHERE [a].[ApplicationUserId] = @__currentUser_Id_0"
+[Information] 29-06 03:46:49 || Executed DbCommand ("4"ms) [Parameters=["@__athleteId_0='2' (Nullable = true)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Coaches] AS [c]
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM [CoachesBlockedAthletees] AS [c0]
+    WHERE [c].[Id] = [c0].[CoachId] AND [c0].[AthleteId] = @__athleteId_0) AND [c].[OverallRating] > 4.0"
+[Warning] 29-06 03:46:49 || Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[Information] 29-06 03:46:49 || Executed DbCommand ("14"ms) [Parameters=["@__athleteId_0='2' (Nullable = true), @__p_1='0', @__p_2='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[Certificate], [t].[IsApproved], [t].[IsSuspended], [t].[OverallRating], [t].[RatingsCount], [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token], [t0].[Id], [t0].[CoachId], [t0].[DurationInMonths], [t0].[Name], [t0].[price], [t0].[SubscribtionId], [t0].[FeatureId]
+FROM (
+    SELECT [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+    FROM [Coaches] AS [c]
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM [CoachesBlockedAthletees] AS [c0]
+        WHERE [c].[Id] = [c0].[CoachId] AND [c0].[AthleteId] = @__athleteId_0) AND [c].[OverallRating] > 4.0
+    ORDER BY [c].[OverallRating]
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+INNER JOIN [AspNetUsers] AS [a] ON [t].[ApplicationUserId] = [a].[Id]
+LEFT JOIN [RefreshToken] AS [r] ON [a].[Id] = [r].[ApplicationUserId]
+LEFT JOIN (
+    SELECT [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price], [s0].[SubscribtionId], [s0].[FeatureId]
+    FROM [Subscribtions] AS [s]
+    LEFT JOIN [SubscribtionFeatures] AS [s0] ON [s].[Id] = [s0].[SubscribtionId]
+) AS [t0] ON [t].[Id] = [t0].[CoachId]
+ORDER BY [t].[OverallRating], [t].[Id], [a].[Id], [r].[ApplicationUserId], [r].[Id], [t0].[Id], [t0].[SubscribtionId]"
+[Information] 29-06 03:46:49 || HTTP "GET" "/api/coaches" responded 200 in 48.7331 ms
+[Information] 29-06 03:47:18 || Executed DbCommand ("9"ms) [Parameters=["@__currentUser_Id_0='6f357177-2ae0-4aa8-92fd-38cbceabe926' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ApplicationUserId], [a].[HeightInCm]
+FROM [Athletes] AS [a]
+WHERE [a].[ApplicationUserId] = @__currentUser_Id_0"
+[Warning] 29-06 03:47:18 || Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[Information] 29-06 03:47:18 || Executed DbCommand ("33"ms) [Parameters=["@__request_Id_0='2', @__currentAthlete_Id_1='2'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[Certificate], [t].[IsApproved], [t].[IsSuspended], [t].[OverallRating], [t].[RatingsCount], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token], [t0].[Id], [t0].[CoachId], [t0].[DurationInMonths], [t0].[Name], [t0].[price], [t0].[SubscribtionId], [t0].[FeatureId], [t0].[Id0], [t0].[Description], [t0].[Name0], [t2].[AthleteId], [t2].[CoachId], [t2].[Comment], [t2].[Rate], [t2].[Id], [t2].[ApplicationUserId], [t2].[HeightInCm], [t2].[Id0], [t2].[AccessFailedCount], [t2].[Bio], [t2].[ConcurrencyStamp], [t2].[CreatedAt], [t2].[DateOfBirth], [t2].[Email], [t2].[EmailConfirmed], [t2].[FirstName], [t2].[Gender], [t2].[IsActive], [t2].[LastName], [t2].[LockoutEnabled], [t2].[LockoutEnd], [t2].[NormalizedEmail], [t2].[NormalizedUserName], [t2].[PasswordHash], [t2].[PhoneNumber], [t2].[PhoneNumberConfirmed], [t2].[ProfilePicture], [t2].[SecurityStamp], [t2].[TwoFactorEnabled], [t2].[UserName], [t2].[ApplicationUserId0], [t2].[Id1], [t2].[CreatedOn], [t2].[ExpiresOn], [t2].[RevokedOn], [t2].[Token]
+FROM (
+    SELECT TOP(1) [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount], [a].[Id] AS [Id0], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [Coaches] AS [c]
+    INNER JOIN [AspNetUsers] AS [a] ON [c].[ApplicationUserId] = [a].[Id]
+    WHERE [c].[Id] = @__request_Id_0 AND [c].[IsSuspended] = CAST(0 AS bit) AND [c].[IsApproved] = CAST(1 AS bit) AND NOT EXISTS (
+        SELECT 1
+        FROM [CoachesBlockedAthletees] AS [c0]
+        WHERE [c].[Id] = [c0].[CoachId] AND [c0].[AthleteId] = @__currentAthlete_Id_1)
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+LEFT JOIN (
+    SELECT [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price], [t1].[SubscribtionId], [t1].[FeatureId], [t1].[Id] AS [Id0], [t1].[Description], [t1].[Name] AS [Name0]
+    FROM [Subscribtions] AS [s]
+    LEFT JOIN (
+        SELECT [s0].[SubscribtionId], [s0].[FeatureId], [f].[Id], [f].[Description], [f].[Name]
+        FROM [SubscribtionFeatures] AS [s0]
+        INNER JOIN [Features] AS [f] ON [s0].[FeatureId] = [f].[Id]
+    ) AS [t1] ON [s].[Id] = [t1].[SubscribtionId]
+) AS [t0] ON [t].[Id] = [t0].[CoachId]
+LEFT JOIN (
+    SELECT [c1].[AthleteId], [c1].[CoachId], [c1].[Comment], [c1].[Rate], [a0].[Id], [a0].[ApplicationUserId], [a0].[HeightInCm], [a1].[Id] AS [Id0], [a1].[AccessFailedCount], [a1].[Bio], [a1].[ConcurrencyStamp], [a1].[CreatedAt], [a1].[DateOfBirth], [a1].[Email], [a1].[EmailConfirmed], [a1].[FirstName], [a1].[Gender], [a1].[IsActive], [a1].[LastName], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[ProfilePicture], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [r0].[ApplicationUserId] AS [ApplicationUserId0], [r0].[Id] AS [Id1], [r0].[CreatedOn], [r0].[ExpiresOn], [r0].[RevokedOn], [r0].[Token]
+    FROM [CoachesRatings] AS [c1]
+    INNER JOIN [Athletes] AS [a0] ON [c1].[AthleteId] = [a0].[Id]
+    INNER JOIN [AspNetUsers] AS [a1] ON [a0].[ApplicationUserId] = [a1].[Id]
+    LEFT JOIN [RefreshToken] AS [r0] ON [a1].[Id] = [r0].[ApplicationUserId]
+) AS [t2] ON [t].[Id] = [t2].[CoachId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId], [r].[Id], [t0].[Id], [t0].[SubscribtionId], [t0].[FeatureId], [t0].[Id0], [t2].[AthleteId], [t2].[CoachId], [t2].[Id], [t2].[Id0], [t2].[ApplicationUserId0]"
+[Information] 29-06 03:47:18 || HTTP "GET" "/api/coaches/2" responded 200 in 86.5136 ms
+[Warning] 29-06 04:47:06 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 29-06 04:47:06 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 29-06 04:47:06 || Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 29-06 04:47:06 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 29-06 04:47:06 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 29-06 04:47:06 || Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 29-06 04:47:06 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 04:47:06 || Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 04:47:06 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 04:47:06 || Start installing Hangfire SQL objects...
+[Information] 29-06 04:47:06 || Hangfire SQL objects installed.
+[Information] 29-06 04:47:06 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 29-06 04:47:06 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 29-06 04:47:06 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 29-06 04:47:06 || Server laptop-q547jk4h:37924:ff9ae079 successfully announced in 12.3428 ms
+[Information] 29-06 04:47:06 || Server laptop-q547jk4h:37924:ff9ae079 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 29-06 04:47:06 || 1 servers were removed due to timeout
+[Information] 29-06 04:47:06 || Server laptop-q547jk4h:37924:ff9ae079 all the dispatchers started
+[Warning] 29-06 07:10:18 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 29-06 07:10:18 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 29-06 07:10:19 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 29-06 07:10:19 || Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 29-06 07:10:19 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 29-06 07:10:19 || Executed DbCommand ("18"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 29-06 07:10:19 || Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 07:10:19 || Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 07:10:19 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 29-06 07:10:19 || Start installing Hangfire SQL objects...
+[Information] 29-06 07:10:19 || Hangfire SQL objects installed.
+[Information] 29-06 07:10:19 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 29-06 07:10:19 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 29-06 07:10:19 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 29-06 07:10:19 || Server laptop-q547jk4h:15284:cf40f053 successfully announced in 14.7838 ms
+[Information] 29-06 07:10:19 || Server laptop-q547jk4h:15284:cf40f053 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 29-06 07:10:19 || Server laptop-q547jk4h:15284:cf40f053 all the dispatchers started
+[Warning] 29-06 07:10:38 || Failed to determine the https port for redirect.
+[Warning] 29-06 07:10:38 || Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[Information] 29-06 07:10:38 || Executed DbCommand ("69"ms) [Parameters=["@__request_Id_0='2'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[Certificate], [t].[IsApproved], [t].[IsSuspended], [t].[OverallRating], [t].[RatingsCount], [t].[Id0], [t].[AccessFailedCount], [t].[Bio], [t].[ConcurrencyStamp], [t].[CreatedAt], [t].[DateOfBirth], [t].[Email], [t].[EmailConfirmed], [t].[FirstName], [t].[Gender], [t].[IsActive], [t].[LastName], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[ProfilePicture], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token], [t0].[Id], [t0].[CoachId], [t0].[DurationInMonths], [t0].[Name], [t0].[price], [t0].[SubscribtionId], [t0].[FeatureId], [t0].[Id0], [t0].[Description], [t0].[Name0], [t2].[AthleteId], [t2].[CoachId], [t2].[Comment], [t2].[Rate], [t2].[Id], [t2].[ApplicationUserId], [t2].[HeightInCm], [t2].[Id0], [t2].[AccessFailedCount], [t2].[Bio], [t2].[ConcurrencyStamp], [t2].[CreatedAt], [t2].[DateOfBirth], [t2].[Email], [t2].[EmailConfirmed], [t2].[FirstName], [t2].[Gender], [t2].[IsActive], [t2].[LastName], [t2].[LockoutEnabled], [t2].[LockoutEnd], [t2].[NormalizedEmail], [t2].[NormalizedUserName], [t2].[PasswordHash], [t2].[PhoneNumber], [t2].[PhoneNumberConfirmed], [t2].[ProfilePicture], [t2].[SecurityStamp], [t2].[TwoFactorEnabled], [t2].[UserName], [t2].[ApplicationUserId0], [t2].[Id1], [t2].[CreatedOn], [t2].[ExpiresOn], [t2].[RevokedOn], [t2].[Token]
+FROM (
+    SELECT TOP(1) [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount], [a].[Id] AS [Id0], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+    FROM [Coaches] AS [c]
+    INNER JOIN [AspNetUsers] AS [a] ON [c].[ApplicationUserId] = [a].[Id]
+    WHERE [c].[Id] = @__request_Id_0 AND [c].[IsSuspended] = CAST(0 AS bit) AND [c].[IsApproved] = CAST(1 AS bit)
+) AS [t]
+LEFT JOIN [RefreshToken] AS [r] ON [t].[Id0] = [r].[ApplicationUserId]
+LEFT JOIN (
+    SELECT [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price], [t1].[SubscribtionId], [t1].[FeatureId], [t1].[Id] AS [Id0], [t1].[Description], [t1].[Name] AS [Name0]
+    FROM [Subscribtions] AS [s]
+    LEFT JOIN (
+        SELECT [s0].[SubscribtionId], [s0].[FeatureId], [f].[Id], [f].[Description], [f].[Name]
+        FROM [SubscribtionFeatures] AS [s0]
+        INNER JOIN [Features] AS [f] ON [s0].[FeatureId] = [f].[Id]
+    ) AS [t1] ON [s].[Id] = [t1].[SubscribtionId]
+) AS [t0] ON [t].[Id] = [t0].[CoachId]
+LEFT JOIN (
+    SELECT [c0].[AthleteId], [c0].[CoachId], [c0].[Comment], [c0].[Rate], [a0].[Id], [a0].[ApplicationUserId], [a0].[HeightInCm], [a1].[Id] AS [Id0], [a1].[AccessFailedCount], [a1].[Bio], [a1].[ConcurrencyStamp], [a1].[CreatedAt], [a1].[DateOfBirth], [a1].[Email], [a1].[EmailConfirmed], [a1].[FirstName], [a1].[Gender], [a1].[IsActive], [a1].[LastName], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[ProfilePicture], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [r0].[ApplicationUserId] AS [ApplicationUserId0], [r0].[Id] AS [Id1], [r0].[CreatedOn], [r0].[ExpiresOn], [r0].[RevokedOn], [r0].[Token]
+    FROM [CoachesRatings] AS [c0]
+    INNER JOIN [Athletes] AS [a0] ON [c0].[AthleteId] = [a0].[Id]
+    INNER JOIN [AspNetUsers] AS [a1] ON [a0].[ApplicationUserId] = [a1].[Id]
+    LEFT JOIN [RefreshToken] AS [r0] ON [a1].[Id] = [r0].[ApplicationUserId]
+) AS [t2] ON [t].[Id] = [t2].[CoachId]
+ORDER BY [t].[Id], [t].[Id0], [r].[ApplicationUserId], [r].[Id], [t0].[Id], [t0].[SubscribtionId], [t0].[FeatureId], [t0].[Id0], [t2].[AthleteId], [t2].[CoachId], [t2].[Id], [t2].[Id0], [t2].[ApplicationUserId0]"
+[Information] 29-06 07:10:38 || HTTP "GET" "/api/coaches/2" responded 200 in 731.6543 ms

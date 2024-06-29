@@ -16,26 +16,8 @@ using System.Linq.Expressions;
 
 namespace AthleteHub.Application.Coaches.Queries.GetAllCoaches
 {
-    public class GetAllCoachesHandeler : IRequestHandler<GetAllCoachesQuery, PageResultsDto<CoachDto>>
+    public class GetAllCoachesHandeler(IUnitOfWork _unitOfWork, IMapper _mapper, IFilterService _filterService, ISearchService _searchService, ISortService _sortService, IBlobStorageService _blobStorageService, IUserContext _userContext) : IRequestHandler<GetAllCoachesQuery, PageResultsDto<CoachDto>>
     {
-        private readonly IMapper _mapper;
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IFilterService _filterService;
-        private readonly ISearchService _searchService;
-        private readonly ISortService _sortService;
-        private readonly IBlobStorageService _blobStorageService;
-        private readonly IUserContext _userContext;
-        public GetAllCoachesHandeler(IUnitOfWork unitOfWork, IMapper mapper, IFilterService filterService, ISearchService searchService, ISortService sortService, IBlobStorageService blobStorageService,IUserContext usercontext)
-        {
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
-            _filterService = filterService;
-            _searchService = searchService;
-            _sortService = sortService;
-            _blobStorageService = blobStorageService;
-            _userContext = usercontext;
-        }
-
         public async Task<PageResultsDto<CoachDto>> Handle(GetAllCoachesQuery request, CancellationToken cancellationToken)
         {
             IEnumerable<Coach> coaches;
@@ -43,10 +25,8 @@ namespace AthleteHub.Application.Coaches.Queries.GetAllCoaches
             int totalCount;
             Dictionary<Expression<Func<Coach, object>>, KeyValuePair<Expression<Func<object, object>>, Expression<Func<object, object>>>> includes = new()
             {
-                {c=>c.ApplicationUser , 
-                             new KeyValuePair<Expression<Func<object, object>>, Expression<Func<object, object>>>(null,null) },
-                {c=>c.Subscribtions, new KeyValuePair<Expression<Func<object, object>>,
-                                              Expression<Func<object, object>>>(s=>((Subscribtion)s).SubscribtionsFeatures,null)}
+                {c=>c.ApplicationUser , new(null,null) },
+                {c=>c.Subscribtions, new(s=>((Subscribtion)s).SubscribtionsFeatures,null)}
             };
 
             var currentUser= _userContext.GetCurrentUser();
@@ -63,9 +43,9 @@ namespace AthleteHub.Application.Coaches.Queries.GetAllCoaches
                 includes.Add(c => c.CoachesRatings,
                     new KeyValuePair<Expression<Func<object, object>>, Expression<Func<object, object>>>(exp1, exp2));
             }
-                
-            IEnumerable<Expression<Func<Coach, bool>>> filterExpressions = _filterService.GetCoachFilterExpressions(request.GenderFilterCritrea,
-                                              request.RateFilterCritrea, request.AgeFilterCritrea, request.PriceFilterCritrea);
+
+            IEnumerable<Expression<Func<Coach, bool>>> filterExpressions = _filterService.GetCoachFilterExpressions(request.GenderFilterCritrea, request.RateFilterCritrea
+                                                                             , request.AgeFilterCritrea, request.PriceFilterCritrea);
             
             
             Expression<Func<Coach, bool>> searchExperssion = _searchService.GetCoachSearchExpression(request.SearchCritrea, currentAthlete?.Id??null);
@@ -76,17 +56,18 @@ namespace AthleteHub.Application.Coaches.Queries.GetAllCoaches
                                       request.SortingDirection, sortExperssion, filterExpressions, searchExperssion, includes);
 
             var coachesDtos = _mapper.Map<IEnumerable<CoachDto>>(coaches);
-            foreach (var dto in coachesDtos)
-            {
-                if (!string.IsNullOrEmpty(dto.ProfilePicture))
-                {
-                    dto.SasProfilePicture = _blobStorageService.GetBlobSasUrl(dto.ProfilePicture);
-                }
-                if (!string.IsNullOrEmpty(dto.Certificate))
-                {
-                    dto.SasCertificate = _blobStorageService.GetBlobSasUrl(dto.Certificate);
-                }
-            }
+
+            //foreach (var dto in coachesDtos)
+            //{
+            //    if (!string.IsNullOrEmpty(dto.ProfilePicture))
+            //    {
+            //        dto.SasProfilePicture = _blobStorageService.GetBlobSasUrl(dto.ProfilePicture);
+            //    }
+            //    if (!string.IsNullOrEmpty(dto.Certificate))
+            //    {
+            //        dto.SasCertificate = _blobStorageService.GetBlobSasUrl(dto.Certificate);
+            //    }
+            //}
 
             return new PageResultsDto<CoachDto>(coachesDtos, totalCount, request.PageNumber, request.PageSize);
         }
