@@ -1,8 +1,10 @@
 ﻿using AthleteHub.Domain.Interfaces.Repositories;
 using AthleteHub.Infrastructure.Persistance;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Asn1;
 using Resturants.Domain.Enums;
 using System.Linq.Expressions;
+using System.Threading;
 
 namespace AthleteHub.Infrastructure.Repositories;
 
@@ -139,4 +141,8 @@ internal class GenericRepository<T>(AthleteHubDbContext _context) : IGenericRepo
         _context.Set<T>().Update(entity);
     }
 
+    public async Task<int> CountAsync()
+    {
+        return await _context.Set<T>().CountAsync();
+    }
 }
