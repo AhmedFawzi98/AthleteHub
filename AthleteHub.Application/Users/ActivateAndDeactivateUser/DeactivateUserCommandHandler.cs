@@ -10,10 +10,10 @@ using System.Linq.Expressions;
 
 namespace AthleteHub.Application.Users.ActivateAndDeactivateUser;
 
-public class ActivateOrDeactivateUserCommandHandler(IMapper _mapper, UserManager<ApplicationUser> _userManager,
-    IUnitOfWork _unitOfWork, IUserContext _userContext) : IRequestHandler<ActivateOrDeactivateUserCommand>
+public class DeactivateUserCommandHandler(IMapper _mapper, UserManager<ApplicationUser> _userManager,
+    IUnitOfWork _unitOfWork, IUserContext _userContext) : IRequestHandler<DeactivateUserCommand>
 {
-    public async Task Handle(ActivateOrDeactivateUserCommand request, CancellationToken cancellationToken)
+    public async Task Handle(DeactivateUserCommand request, CancellationToken cancellationToken)
     {
         var currentUser = _userContext.GetCurrentUser()
             ?? throw new UnAuthorizedException();
@@ -27,17 +27,17 @@ public class ActivateOrDeactivateUserCommandHandler(IMapper _mapper, UserManager
         }
     }
 
-    private async Task<bool> HandleAthleteActivationAsync(ActivateOrDeactivateUserCommand request, ApplicationUser user, string currentUserId)
+    private async Task<bool> HandleAthleteActivationAsync(DeactivateUserCommand request, ApplicationUser user, string currentUserId)
     {
         var athlete = await _unitOfWork.Athletes.FindAsync(c => c.ApplicationUserId == currentUserId, null!);
         if (athlete == null)
             return false;
 
-        user.IsActive = !request.IsDeactivating;
+        user.IsActive = false;
         return true;
     }
 
-    private async Task<bool> HandleCoachActivationAsync(ActivateOrDeactivateUserCommand request, ApplicationUser user, string currentUserId)
+    private async Task<bool> HandleCoachActivationAsync(DeactivateUserCommand request, ApplicationUser user, string currentUserId)
     {
         Dictionary<Expression<Func<Coach, object>>, KeyValuePair<Expression<Func<object, object>>, Expression<Func<object, object>>>> includes = new()
         {
@@ -49,20 +49,13 @@ public class ActivateOrDeactivateUserCommandHandler(IMapper _mapper, UserManager
             return false;
 
 
-        if (!request.IsDeactivating)
+        if (!CoachHasActiveSubscribtions(coach.AthleteCoaches))
         {
-            user.IsActive = true;
+            user.IsActive = false;
         }
         else
         {
-            if (!CoachHasActiveSubscribtions(coach.AthleteCoaches))
-            {
-                user.IsActive = false;
-            }
-            else
-            {
-                throw new BadRequestException(new[] { new BadRequestException.ValidationError { Field = "IsActive", Message = "Account can't be deactivated while having active subscriptions." } });
-            }
+            throw new BadRequestException(new[] { new BadRequestException.ValidationError { Field = "IsActive", Message = "Account can't be deactivated while having active subscriptions." } });
         }
 
         return true;

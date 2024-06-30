@@ -66,14 +66,13 @@ public class IdentityController(IMediator _mediator) : ControllerBase
 
 
 
-    [HttpPatch("activateOrDeactivateUser")]
+    [HttpPatch("deactivateUser")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(string))]
-    [Authorize]
-    public async Task<IActionResult> ActivateOrDeactivateUser([FromBody] ActivateOrDeactivateUserCommand activateOrDeactivateUserCommand)
+    public async Task<IActionResult> DeactivateUser([FromBody] DeactivateUserCommand deactivateUserCommand)
     {
-        await _mediator.Send(activateOrDeactivateUserCommand);
+        await _mediator.Send(deactivateUserCommand);
         return NoContent();
     }
 
