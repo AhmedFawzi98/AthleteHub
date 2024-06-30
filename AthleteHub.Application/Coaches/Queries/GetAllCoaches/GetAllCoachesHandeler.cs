@@ -57,17 +57,17 @@ namespace AthleteHub.Application.Coaches.Queries.GetAllCoaches
 
             var coachesDtos = _mapper.Map<IEnumerable<CoachDto>>(coaches);
 
-            //foreach (var dto in coachesDtos)
-            //{
-            //    if (!string.IsNullOrEmpty(dto.ProfilePicture))
-            //    {
-            //        dto.SasProfilePicture = _blobStorageService.GetBlobSasUrl(dto.ProfilePicture);
-            //    }
-            //    if (!string.IsNullOrEmpty(dto.Certificate))
-            //    {
-            //        dto.SasCertificate = _blobStorageService.GetBlobSasUrl(dto.Certificate);
-            //    }
-            //}
+            foreach (var dto in coachesDtos)
+            {
+                if (!string.IsNullOrEmpty(dto.ProfilePicture))
+                {
+                    dto.SasProfilePicture = _blobStorageService.GetBlobSasUrl(dto.ProfilePicture);
+                }
+                if (!string.IsNullOrEmpty(dto.Certificate))
+                {
+                    dto.SasCertificate = _blobStorageService.GetBlobSasUrl(dto.Certificate);
+                }
+            }
 
             return new PageResultsDto<CoachDto>(coachesDtos, totalCount, request.PageNumber, request.PageSize);
         }
