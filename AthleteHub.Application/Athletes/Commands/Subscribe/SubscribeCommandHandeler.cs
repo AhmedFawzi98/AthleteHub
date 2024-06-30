@@ -20,8 +20,13 @@ namespace AthleteHub.Application.Athletes.Commands.Subscribe
 
             var athlete = await _unitOfWork.Athletes.FindAsync(a => a.ApplicationUserId == currentUser.Id);
 
-            await AddAthleteCoachAsync(athlete.Id, request.CoachId);
-            await AddAthleteActiveSubscribtionAsync(athlete.Id, request.SubscribtionId, request.SubscribtionDurationInMonth,request.SessionId);
+            var session = await new SessionService().GetAsync(request.SessionId);
+
+            var subscribtion = await _unitOfWork.Subscribtions.FindAsync(s => s.Id == int.Parse(session.SubscriptionId), new() { { s => s.Coach,new(null,null)} });
+
+            await AddAthleteCoachAsync(athlete.Id, subscribtion.Id);
+
+            await AddAthleteActiveSubscribtionAsync(athlete.Id, subscribtion.Id, subscribtion.DurationInMonths,session.PaymentIntentId);
             
             await _unitOfWork.CommitAsync();
 
@@ -46,15 +51,14 @@ namespace AthleteHub.Application.Athletes.Commands.Subscribe
             }
         }
 
-        private async Task AddAthleteActiveSubscribtionAsync(int athleteId,int subscribtionId,int SubscribtionDurationInMonth,string sessionId)
+        private async Task AddAthleteActiveSubscribtionAsync(int athleteId,int subscribtionId,int SubscribtionDurationInMonth,string paymentIntentId)
         {
-            var session = await new SessionService().GetAsync(sessionId);
             var athleteActiveSubscribtion = new AthleteActiveSubscribtion()
             {
                 AthleteId = athleteId,
                 SubscribtionId = subscribtionId,
                 SubscribtionEndDate = DateOnly.FromDateTime(DateTime.Now).AddMonths(SubscribtionDurationInMonth),
-                PaymentIntentId = session.PaymentIntentId
+                PaymentIntentId = paymentIntentId
             };
            
             await _unitOfWork.AthleteActiveSubscribtions.AddAsync(athleteActiveSubscribtion);

@@ -7,15 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-
-    <Folder Include="Services\ContentTypeService\" />
-
-    <Compile Remove="Services\ContentTypeService\**" />
-    <EmbeddedResource Remove="Services\ContentTypeService\**" />
-    <None Remove="Services\ContentTypeService\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Athletes\Queries\" />
 
   </ItemGroup>

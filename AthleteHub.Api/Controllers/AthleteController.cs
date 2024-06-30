@@ -13,7 +13,6 @@ using AthleteHub.Domain.Constants;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualBasic;
 
 namespace AthleteHub.Api.Controllers
 {

@@ -3120,3 +3120,4 @@ UPDATE [CoachesRatings] SET [Comment] = @p7, [Rate] = @p8
 OUTPUT 1
 WHERE [AthleteId] = @p9 AND [CoachId] = @p10;"
 [Information] 29-06 22:29:48 || HTTP "POST" "/api/Athlete/RateCoach" responded 200 in 45.2708 ms
+[Information] 29-06 22:32:26 || 1 servers were removed due to timeout
