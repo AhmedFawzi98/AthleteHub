@@ -21,10 +21,11 @@ namespace AthleteHub.Application.Athletes.Commands.Subscribe
             var athlete = await _unitOfWork.Athletes.FindAsync(a => a.ApplicationUserId == currentUser.Id);
 
             var session = await new SessionService().GetAsync(request.SessionId);
+            var subscriptionId = session.Metadata["SubscriptionId"];
 
-            var subscribtion = await _unitOfWork.Subscribtions.FindAsync(s => s.Id == int.Parse(session.SubscriptionId), new() { { s => s.Coach,new(null,null)} });
-
-            await AddAthleteCoachAsync(athlete.Id, subscribtion.Id);
+            var subscribtion = await _unitOfWork.Subscribtions.FindAsync(s => s.Id == int.Parse(subscriptionId), new() { { s => s.Coach,new(null,null)} });
+             
+            await AddAthleteCoachAsync(athlete.Id, subscribtion.CoachId);
 
             await AddAthleteActiveSubscribtionAsync(athlete.Id, subscribtion.Id, subscribtion.DurationInMonths,session.PaymentIntentId);
             
@@ -39,6 +40,7 @@ namespace AthleteHub.Application.Athletes.Commands.Subscribe
             if (athleteCoach != null) 
             {
                 athleteCoach.IsCurrentlySubscribed = true;
+                _unitOfWork.AthletesCoaches.Update(athleteCoach);
             }
             else
             {
