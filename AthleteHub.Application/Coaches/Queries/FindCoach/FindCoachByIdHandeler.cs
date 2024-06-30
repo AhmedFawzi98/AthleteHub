@@ -58,14 +58,14 @@ namespace AthleteHub.Application.Coaches.Queries.FindCoach
             
 
             var coatchDto = _mapper.Map<CoachDto>(coach);
-            //if (!string.IsNullOrEmpty(coatchDto.ProfilePicture))
-            //{
-            //    coatchDto.SasProfilePicture = _blobStorageService.GetBlobSasUrl(coatchDto.ProfilePicture);
-            //}
-            //if (!string.IsNullOrEmpty(coatchDto.Certificate))
-            //{
-            //    coatchDto.SasCertificate = _blobStorageService.GetBlobSasUrl(coatchDto.Certificate);
-            //}
+            if (!string.IsNullOrEmpty(coatchDto.ProfilePicture))
+            {
+                coatchDto.SasProfilePicture = _blobStorageService.GetBlobSasUrl(coatchDto.ProfilePicture);
+            }
+            if (!string.IsNullOrEmpty(coatchDto.Certificate))
+            {
+                coatchDto.SasCertificate = _blobStorageService.GetBlobSasUrl(coatchDto.Certificate);
+            }
             return coatchDto;
         }
         
