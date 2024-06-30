@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 namespace AthleteHub.Application.Athletes.Queries.GetAllMeasurement
 {
     public class GetAllMeasurementssQueryHandler(IUnitOfWork _unitOfWork, IMapper _mapper, IFilterService _filterService,
-        ISearchService _searchService, ISortService _sortService, IBlobStorageService _blobStorageService, IUserContext _usercontext)
+        ISearchService _searchService, ISortingService _sortService, IBlobStorageService _blobStorageService, IUserContext _usercontext)
         : IRequestHandler<GetAllMeasurementssQuery, PageResultsDto<MeasurementDto>>
     {
         public async Task<PageResultsDto<MeasurementDto>> Handle(GetAllMeasurementssQuery request, CancellationToken cancellationToken)

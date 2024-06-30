@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 namespace AthleteHub.Application.Athletes.Queries.GetAllfavoriteCoaches
 {
     public class GetAllfavoriteCoachesQueryHandler(IUnitOfWork _unitOfWork, IMapper _mapper, IFilterService _filterService,
-        ISearchService _searchService, ISortService _sortService, IBlobStorageService _blobStorageService, IUserContext _usercontext)
+        ISearchService _searchService, ISortingService _sortService, IBlobStorageService _blobStorageService, IUserContext _usercontext)
         : IRequestHandler<GetAllfavoriteCoachesQuery, PageResultsDto<CoachDto>>
     {
         public async Task<PageResultsDto<CoachDto>> Handle(GetAllfavoriteCoachesQuery request, CancellationToken cancellationToken)
