@@ -12,6 +12,7 @@ using AthleteHub.Application.Admin.Commands.DeclineCoach;
 
 
 using Microsoft.AspNetCore.Mvc;
+using AthleteHub.Application.Admin.Queries.GetAllSuspendedOrNotApprovedCoaches;
 
 namespace AthleteHub.Api.Controllers
 {
