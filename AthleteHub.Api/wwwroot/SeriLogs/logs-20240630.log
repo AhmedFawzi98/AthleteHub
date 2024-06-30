@@ -1,0 +1,73 @@
+[Warning] 30-06 22:42:52 || Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+[Warning] 30-06 22:42:53 || No store type was specified for the decimal property '"OverallRating"' on entity type '"Coach"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+[Information] 30-06 22:42:53 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 30-06 22:42:53 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+[Information] 30-06 22:42:53 || Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+[Information] 30-06 22:42:53 || Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+[Information] 30-06 22:42:53 || Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 30-06 22:42:53 || Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 30-06 22:42:53 || Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Features] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[Information] 30-06 22:42:53 || Start installing Hangfire SQL objects...
+[Information] 30-06 22:42:53 || Hangfire SQL objects installed.
+[Information] 30-06 22:42:54 || Starting Hangfire Server using job storage: 'SQL Server: .@AthleteHubDb'
+[Information] 30-06 22:42:54 || Using the following options for SQL Server job storage: Queue poll interval: 08:00:00.
+[Information] 30-06 22:42:54 || Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+[Information] 30-06 22:42:54 || Server laptop-q547jk4h:34924:aec9373c successfully announced in 32.2054 ms
+[Information] 30-06 22:42:54 || Server laptop-q547jk4h:34924:aec9373c is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+[Information] 30-06 22:42:54 || Server laptop-q547jk4h:34924:aec9373c all the dispatchers started
+[Information] 30-06 22:42:54 || 1 servers were removed due to timeout
+[Information] 30-06 22:42:55 || Executed DbCommand ("126"ms) [Parameters=["@__today_0='06/30/2024' (DbType = Date)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[AthleteId], [a].[SubscribtionId], [a].[PaymentIntentId], [a].[SubscribtionEndDate], [a].[SubscribtionStartDate], [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price]
+FROM [AthleteActiveSubscribtions] AS [a]
+INNER JOIN [Subscribtions] AS [s] ON [a].[SubscribtionId] = [s].[Id]
+WHERE [a].[SubscribtionEndDate] <= @__today_0"
+[Warning] 30-06 22:43:17 || Failed to determine the https port for redirect.
+[Information] 30-06 22:43:18 || Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Coaches] AS [c]"
+[Warning] 30-06 22:43:18 || Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[Information] 30-06 22:43:18 || Executed DbCommand ("29"ms) [Parameters=["@__p_0='0', @__p_1='5'"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[ApplicationUserId], [t].[Certificate], [t].[IsApproved], [t].[IsSuspended], [t].[OverallRating], [t].[RatingsCount], [a].[Id], [a].[AccessFailedCount], [a].[Bio], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[IsActive], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [r].[ApplicationUserId], [r].[Id], [r].[CreatedOn], [r].[ExpiresOn], [r].[RevokedOn], [r].[Token], [t0].[Id], [t0].[CoachId], [t0].[DurationInMonths], [t0].[Name], [t0].[price], [t0].[SubscribtionId], [t0].[FeatureId]
+FROM (
+    SELECT [c].[Id], [c].[ApplicationUserId], [c].[Certificate], [c].[IsApproved], [c].[IsSuspended], [c].[OverallRating], [c].[RatingsCount]
+    FROM [Coaches] AS [c]
+    ORDER BY [c].[OverallRating]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [AspNetUsers] AS [a] ON [t].[ApplicationUserId] = [a].[Id]
+LEFT JOIN [RefreshToken] AS [r] ON [a].[Id] = [r].[ApplicationUserId]
+LEFT JOIN (
+    SELECT [s].[Id], [s].[CoachId], [s].[DurationInMonths], [s].[Name], [s].[price], [s0].[SubscribtionId], [s0].[FeatureId]
+    FROM [Subscribtions] AS [s]
+    LEFT JOIN [SubscribtionFeatures] AS [s0] ON [s].[Id] = [s0].[SubscribtionId]
+) AS [t0] ON [t].[Id] = [t0].[CoachId]
+ORDER BY [t].[OverallRating], [t].[Id], [a].[Id], [r].[ApplicationUserId], [r].[Id], [t0].[Id], [t0].[SubscribtionId]"
+[Information] 30-06 22:43:18 || HTTP "GET" "/api/coaches" responded 200 in 678.4945 ms

@@ -1,20 +1,14 @@
 ﻿using AthleteHub.Application.Coaches.Dtoes;
 using AthleteHub.Application.Services.BlobStorageService;
 using AthleteHub.Application.Users;
-using AthleteHub.Domain.Constants;
 using AthleteHub.Domain.Entities;
 using AthleteHub.Domain.Enums;
 using AthleteHub.Domain.Exceptions;
 using AthleteHub.Domain.Interfaces.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AthleteHub.Application.Coaches.Commands.AddContent
 {

@@ -30,9 +30,8 @@ namespace AthleteHub.Infrastructure.Authorization.Services.Payment
         }
         public async Task<string> CreateCheckoutSessionAsync(decimal price, string subscriptionName, int athleteId, int subscriptionId)
         {
-            var successUrl = "http://localhost:5068/api/Payment/Success?sessionId={CHECKOUT_SESSION_ID}";
-
-            var cancelUrl = "http://yourtestserver/cancel";
+            var successUrl = "http://localhost:4200/successpayment?sessionId={CHECKOUT_SESSION_ID}";
+            var cancelUrl = "http://localhost:4200/cancelpayment";
 
             var options = new SessionCreateOptions
             {
@@ -63,11 +62,7 @@ namespace AthleteHub.Infrastructure.Authorization.Services.Payment
             }
             };
             var service = new SessionService();
-            var existingSubscription = _unitOfWork.AthleteActiveSubscribtions.FindAsync(acs => acs.AthleteId == athleteId && acs.SubscribtionId == subscriptionId);
-            if (existingSubscription is not null)
-            {
-                throw new InvalidOperationException("you cannot subscribe to the same bundle twice!!");
-            }
+            
             Session session = await service.CreateAsync(options);
 
        
