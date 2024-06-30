@@ -9,7 +9,7 @@ namespace AthleteHub.Application.Coaches.Queries.GetAllCoaches
 {
     public class GetAllCoachesValidator: AbstractValidator<GetAllCoachesQuery>
     {
-        private readonly int[] allowedPageSizes = [5, 10, 15, 20, 50];
+        private readonly int[] allowedPageSizes = [6, 12, 18, 24, 60];
         public GetAllCoachesValidator()
         {
             RuleFor(r => r.PageNumber).GreaterThanOrEqualTo(1)
