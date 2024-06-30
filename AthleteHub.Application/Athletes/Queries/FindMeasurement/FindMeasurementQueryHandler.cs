@@ -19,8 +19,9 @@ namespace AthleteHub.Application.Athletes.Queries.FindMeasurement
         {
             var currentUser = _userContext.GetCurrentUser() ?? throw new UnAuthorizedException();
 
-            var measurement = await _unitOfWork.Measurements.FindAsync(m => m.AthleteId == request.AthleteId && m.Date == request.Date)
+            var athleteMeasurements = await _unitOfWork.Measurements.GetAllAsync(m => m.AthleteId == request.AthleteId)
                 ?? throw new NotFoundException(nameof(Measurement), request.AthleteId.ToString());
+            var measurement = athleteMeasurements.OrderByDescending(m => m.Date).FirstOrDefault();
             var measurementDto = _mapper.Map<MeasurementDto>(measurement);
             return measurementDto;
         }
